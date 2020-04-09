@@ -189,6 +189,14 @@
     <Compile Include="Migrations\202004091054014_calenderviewmodel.Designer.cs">
       <DependentUpon>202004091054014_calenderviewmodel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004091209037_UppdateratRegistreringsform.cs" />
+    <Compile Include="Migrations\202004091209037_UppdateratRegistreringsform.Designer.cs">
+      <DependentUpon>202004091209037_UppdateratRegistreringsform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004091237241_UppdateratMobilnummer.cs" />
+    <Compile Include="Migrations\202004091237241_UppdateratMobilnummer.Designer.cs">
+      <DependentUpon>202004091237241_UppdateratMobilnummer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
@@ -281,6 +289,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004091054014_calenderviewmodel.resx">
       <DependentUpon>202004091054014_calenderviewmodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004091209037_UppdateratRegistreringsform.resx">
+      <DependentUpon>202004091209037_UppdateratRegistreringsform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004091237241_UppdateratMobilnummer.resx">
+      <DependentUpon>202004091237241_UppdateratMobilnummer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
