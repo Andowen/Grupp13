@@ -184,8 +184,13 @@
     <Compile Include="Migrations\202004090853519_asdasd.Designer.cs">
       <DependentUpon>202004090853519_asdasd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004091054014_calenderviewmodel.cs" />
+    <Compile Include="Migrations\202004091054014_calenderviewmodel.Designer.cs">
+      <DependentUpon>202004091054014_calenderviewmodel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CalenderViewModel.cs" />
     <Compile Include="Models\FormalBlogPost.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -271,6 +276,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004090853519_asdasd.resx">
       <DependentUpon>202004090853519_asdasd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004091054014_calenderviewmodel.resx">
+      <DependentUpon>202004091054014_calenderviewmodel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

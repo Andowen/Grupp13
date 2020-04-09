@@ -31,9 +31,8 @@ namespace WebApplicationGrupp13.Models
             return new ApplicationDbContext();
         }
 
-        public DbSet<FormalBlogPost> BlogPosts { get; set; }
+        public DbSet<FormalBlogPost> BlogPosts { get; set; }   
 
-
-    
+        public DbSet<CalenderViewModel> Calender { get; set; }
 }
 }
