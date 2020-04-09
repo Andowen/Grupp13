@@ -32,8 +32,9 @@ namespace WebApplicationGrupp13.Models
         }
 
         public DbSet<FormalBlogPost> BlogPosts { get; set; }
+        public DbSet<EducationalPost> EduPosts { get; set; }
 
 
-    
-}
+
+    }
 }
