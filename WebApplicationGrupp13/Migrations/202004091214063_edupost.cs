@@ -3,7 +3,7 @@ namespace WebApplicationGrupp13.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class _200409_1241_max : DbMigration
+    public partial class edupost : DbMigration
     {
         public override void Up()
         {

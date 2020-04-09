@@ -190,9 +190,9 @@
     <Compile Include="Migrations\202004091054014_calenderviewmodel.Designer.cs">
       <DependentUpon>202004091054014_calenderviewmodel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202004091041571_200409_1241_max.cs" />
-    <Compile Include="Migrations\202004091041571_200409_1241_max.Designer.cs">
-      <DependentUpon>202004091041571_200409_1241_max.cs</DependentUpon>
+    <Compile Include="Migrations\202004091214063_edupost.cs" />
+    <Compile Include="Migrations\202004091214063_edupost.Designer.cs">
+      <DependentUpon>202004091214063_edupost.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -264,7 +264,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Calender\" />
     <Folder Include="Views\EduPosts\" />
   </ItemGroup>
   <ItemGroup>
@@ -290,8 +289,8 @@
     <EmbeddedResource Include="Migrations\202004091054014_calenderviewmodel.resx">
       <DependentUpon>202004091054014_calenderviewmodel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004091041571_200409_1241_max.resx">
-      <DependentUpon>202004091041571_200409_1241_max.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202004091214063_edupost.resx">
+      <DependentUpon>202004091214063_edupost.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
