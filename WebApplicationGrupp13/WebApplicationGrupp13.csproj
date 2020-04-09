@@ -190,9 +190,9 @@
     <Compile Include="Migrations\202004091054014_calenderviewmodel.Designer.cs">
       <DependentUpon>202004091054014_calenderviewmodel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202004091041571_200409_1241_max.cs" />
-    <Compile Include="Migrations\202004091041571_200409_1241_max.Designer.cs">
-      <DependentUpon>202004091041571_200409_1241_max.cs</DependentUpon>
+    <Compile Include="Migrations\202004091214063_edupost.cs" />
+    <Compile Include="Migrations\202004091214063_edupost.Designer.cs">
+      <DependentUpon>202004091214063_edupost.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202004091127117_blogpost.cs" />
     <Compile Include="Migrations\202004091127117_blogpost.Designer.cs">
@@ -294,8 +294,8 @@
     <EmbeddedResource Include="Migrations\202004091054014_calenderviewmodel.resx">
       <DependentUpon>202004091054014_calenderviewmodel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004091041571_200409_1241_max.resx">
-      <DependentUpon>202004091041571_200409_1241_max.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202004091214063_edupost.resx">
+      <DependentUpon>202004091214063_edupost.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004091127117_blogpost.resx">
       <DependentUpon>202004091127117_blogpost.cs</DependentUpon>
