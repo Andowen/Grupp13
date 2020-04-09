@@ -172,6 +172,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CalenderController.cs" />
+    <Compile Include="Controllers\EduPostsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -189,6 +190,14 @@
     <Compile Include="Migrations\202004091054014_calenderviewmodel.Designer.cs">
       <DependentUpon>202004091054014_calenderviewmodel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004091214063_edupost.cs" />
+    <Compile Include="Migrations\202004091214063_edupost.Designer.cs">
+      <DependentUpon>202004091214063_edupost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004091127117_blogpost.cs" />
+    <Compile Include="Migrations\202004091127117_blogpost.Designer.cs">
+      <DependentUpon>202004091127117_blogpost.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202004091209037_UppdateratRegistreringsform.cs" />
     <Compile Include="Migrations\202004091209037_UppdateratRegistreringsform.Designer.cs">
       <DependentUpon>202004091209037_UppdateratRegistreringsform.cs</DependentUpon>
@@ -200,9 +209,11 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
+    <Compile Include="Models\EducationalPost.cs" />
     <Compile Include="Models\FormalBlogPost.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ResearchBlogPost.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -266,6 +277,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\EduPosts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -289,6 +301,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004091054014_calenderviewmodel.resx">
       <DependentUpon>202004091054014_calenderviewmodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004091214063_edupost.resx">
+      <DependentUpon>202004091214063_edupost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004091127117_blogpost.resx">
+      <DependentUpon>202004091127117_blogpost.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004091209037_UppdateratRegistreringsform.resx">
       <DependentUpon>202004091209037_UppdateratRegistreringsform.cs</DependentUpon>
