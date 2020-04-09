@@ -171,6 +171,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CalenderController.cs" />
     <Compile Include="Controllers\EduPostsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -185,12 +186,17 @@
     <Compile Include="Migrations\202004090853519_asdasd.Designer.cs">
       <DependentUpon>202004090853519_asdasd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004091054014_calenderviewmodel.cs" />
+    <Compile Include="Migrations\202004091054014_calenderviewmodel.Designer.cs">
+      <DependentUpon>202004091054014_calenderviewmodel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202004091041571_200409_1241_max.cs" />
     <Compile Include="Migrations\202004091041571_200409_1241_max.Designer.cs">
       <DependentUpon>202004091041571_200409_1241_max.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CalenderViewModel.cs" />
     <Compile Include="Models\EducationalPost.cs" />
     <Compile Include="Models\FormalBlogPost.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -257,6 +263,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Calender\" />
     <Folder Include="Views\EduPosts\" />
   </ItemGroup>
   <ItemGroup>
@@ -278,6 +285,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004090853519_asdasd.resx">
       <DependentUpon>202004090853519_asdasd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004091054014_calenderviewmodel.resx">
+      <DependentUpon>202004091054014_calenderviewmodel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004091041571_200409_1241_max.resx">
       <DependentUpon>202004091041571_200409_1241_max.cs</DependentUpon>
