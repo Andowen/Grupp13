@@ -10,5 +10,7 @@ namespace WebApplicationGrupp13
         {
             ConfigureAuth(app);
         }
+
+
     }
 }

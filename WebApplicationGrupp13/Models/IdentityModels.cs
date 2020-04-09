@@ -20,6 +20,7 @@ namespace WebApplicationGrupp13.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -29,5 +30,10 @@ namespace WebApplicationGrupp13.Models
         {
             return new ApplicationDbContext();
         }
-    }
+
+        public DbSet<FormalBlogPost> BlogPosts { get; set; }
+
+
+    
+}
 }
