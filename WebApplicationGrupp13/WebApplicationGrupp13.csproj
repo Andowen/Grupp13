@@ -191,6 +191,10 @@
     <Compile Include="Migrations\202004091054014_calenderviewmodel.Designer.cs">
       <DependentUpon>202004091054014_calenderviewmodel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004091214063_edupost.cs" />
+    <Compile Include="Migrations\202004091214063_edupost.Designer.cs">
+      <DependentUpon>202004091214063_edupost.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202004091127117_blogpost.cs" />
     <Compile Include="Migrations\202004091127117_blogpost.Designer.cs">
       <DependentUpon>202004091127117_blogpost.cs</DependentUpon>
@@ -202,10 +206,6 @@
     <Compile Include="Migrations\202004091237241_UppdateratMobilnummer.cs" />
     <Compile Include="Migrations\202004091237241_UppdateratMobilnummer.Designer.cs">
       <DependentUpon>202004091237241_UppdateratMobilnummer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004131245489_abcdef.cs" />
-    <Compile Include="Migrations\202004131245489_abcdef.Designer.cs">
-      <DependentUpon>202004131245489_abcdef.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -305,6 +305,9 @@
     <EmbeddedResource Include="Migrations\202004091054014_calenderviewmodel.resx">
       <DependentUpon>202004091054014_calenderviewmodel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004091214063_edupost.resx">
+      <DependentUpon>202004091214063_edupost.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004091127117_blogpost.resx">
       <DependentUpon>202004091127117_blogpost.cs</DependentUpon>
     </EmbeddedResource>
@@ -313,9 +316,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004091237241_UppdateratMobilnummer.resx">
       <DependentUpon>202004091237241_UppdateratMobilnummer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004131245489_abcdef.resx">
-      <DependentUpon>202004131245489_abcdef.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
