@@ -73,6 +73,8 @@ namespace WebApplicationGrupp13.Controllers
             //  if (ModelState.IsValid)
             //   {
             var test = formalBlogPost.category;
+           
+
                 formalBlogPost.creator = User.Identity.Name;
                 formalBlogPost.dateTime = DateTime.Now;
                 db.BlogPosts.Add(formalBlogPost);

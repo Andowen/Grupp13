@@ -221,6 +221,22 @@
     <Compile Include="Migrations\202004101322502_formalblogpost_added_category_field.Designer.cs">
       <DependentUpon>202004101322502_formalblogpost_added_category_field.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004131528188_formamblogpostcategory.cs" />
+    <Compile Include="Migrations\202004131528188_formamblogpostcategory.Designer.cs">
+      <DependentUpon>202004131528188_formamblogpostcategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004131535327_namechange.cs" />
+    <Compile Include="Migrations\202004131535327_namechange.Designer.cs">
+      <DependentUpon>202004131535327_namechange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004131538092_namechange2.cs" />
+    <Compile Include="Migrations\202004131538092_namechange2.Designer.cs">
+      <DependentUpon>202004131538092_namechange2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004131550101_removed_foreignKey.cs" />
+    <Compile Include="Migrations\202004131550101_removed_foreignKey.Designer.cs">
+      <DependentUpon>202004131550101_removed_foreignKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
@@ -350,6 +366,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004101322502_formalblogpost_added_category_field.resx">
       <DependentUpon>202004101322502_formalblogpost_added_category_field.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004131528188_formamblogpostcategory.resx">
+      <DependentUpon>202004131528188_formamblogpostcategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004131535327_namechange.resx">
+      <DependentUpon>202004131535327_namechange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004131538092_namechange2.resx">
+      <DependentUpon>202004131538092_namechange2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004131550101_removed_foreignKey.resx">
+      <DependentUpon>202004131550101_removed_foreignKey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

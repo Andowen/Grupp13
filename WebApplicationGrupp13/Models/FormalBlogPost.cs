@@ -13,7 +13,8 @@ namespace WebApplicationGrupp13.Models {
         public string title { get; set; }
         public string creator { get; set; }
         public DateTime dateTime {get; set;}
-        public FormalBlogPostCategory category { get; set; }
+        
+        public string category { get; set; }
 
         
         }
