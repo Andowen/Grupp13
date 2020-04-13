@@ -7,13 +7,13 @@ namespace WebApplicationGrupp13.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class edupost : IMigrationMetadata
+    public sealed partial class abcdef : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(edupost));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(abcdef));
         
         string IMigrationMetadata.Id
         {
-            get { return "202004091214063_edupost"; }
+            get { return "202004131245489_abcdef"; }
         }
         
         string IMigrationMetadata.Source
