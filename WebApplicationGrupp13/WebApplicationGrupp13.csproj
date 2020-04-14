@@ -173,7 +173,10 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CalenderController.cs" />
     <Compile Include="Controllers\EduPostsController.cs" />
+    <Compile Include="Controllers\FormalBlogPostCategoriesController.cs" />
+    <Compile Include="Controllers\FormalBlogPostsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InformalBlogPostsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ResearchController.cs" />
     <Compile Include="Global.asax.cs">
@@ -195,12 +198,58 @@
     <Compile Include="Migrations\202004091214063_edupost.Designer.cs">
       <DependentUpon>202004091214063_edupost.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004091209037_UppdateratRegistreringsform.cs" />
+    <Compile Include="Migrations\202004091209037_UppdateratRegistreringsform.Designer.cs">
+      <DependentUpon>202004091209037_UppdateratRegistreringsform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004091237241_UppdateratMobilnummer.cs" />
+    <Compile Include="Migrations\202004091237241_UppdateratMobilnummer.Designer.cs">
+      <DependentUpon>202004091237241_UppdateratMobilnummer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004091328466_test.cs" />
+    <Compile Include="Migrations\202004091328466_test.Designer.cs">
+      <DependentUpon>202004091328466_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004101142440_FormalBlogpost_creator_dateTime.cs" />
+    <Compile Include="Migrations\202004101142440_FormalBlogpost_creator_dateTime.Designer.cs">
+      <DependentUpon>202004101142440_FormalBlogpost_creator_dateTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004101319153_FormalBlogpostCategories.cs" />
+    <Compile Include="Migrations\202004101319153_FormalBlogpostCategories.Designer.cs">
+      <DependentUpon>202004101319153_FormalBlogpostCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004101322502_formalblogpost_added_category_field.cs" />
+    <Compile Include="Migrations\202004101322502_formalblogpost_added_category_field.Designer.cs">
+      <DependentUpon>202004101322502_formalblogpost_added_category_field.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004131528188_formamblogpostcategory.cs" />
+    <Compile Include="Migrations\202004131528188_formamblogpostcategory.Designer.cs">
+      <DependentUpon>202004131528188_formamblogpostcategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004131535327_namechange.cs" />
+    <Compile Include="Migrations\202004131535327_namechange.Designer.cs">
+      <DependentUpon>202004131535327_namechange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004131538092_namechange2.cs" />
+    <Compile Include="Migrations\202004131538092_namechange2.Designer.cs">
+      <DependentUpon>202004131538092_namechange2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004131550101_removed_foreignKey.cs" />
+    <Compile Include="Migrations\202004131550101_removed_foreignKey.Designer.cs">
+      <DependentUpon>202004131550101_removed_foreignKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004140824249_added_informalblogpost.cs" />
+    <Compile Include="Migrations\202004140824249_added_informalblogpost.Designer.cs">
+      <DependentUpon>202004140824249_added_informalblogpost.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
     <Compile Include="Models\EducationalPost.cs" />
     <Compile Include="Models\FormalBlogPost.cs" />
+    <Compile Include="Models\FormalBlogPostCategory.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\InformalBlogPost.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ResearchBlogPost.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -264,6 +313,21 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Calender\Index.cshtml" />
     <Content Include="Views\ResearchBlog\ResearchBlog.cshtml" />
+    <Content Include="Views\FormalBlogPosts\Create.cshtml" />
+    <Content Include="Views\FormalBlogPosts\Delete.cshtml" />
+    <Content Include="Views\FormalBlogPosts\Details.cshtml" />
+    <Content Include="Views\FormalBlogPosts\Edit.cshtml" />
+    <Content Include="Views\FormalBlogPosts\Index.cshtml" />
+    <Content Include="Views\FormalBlogPostCategories\Create.cshtml" />
+    <Content Include="Views\FormalBlogPostCategories\Delete.cshtml" />
+    <Content Include="Views\FormalBlogPostCategories\Details.cshtml" />
+    <Content Include="Views\FormalBlogPostCategories\Edit.cshtml" />
+    <Content Include="Views\FormalBlogPostCategories\Index.cshtml" />
+    <Content Include="Views\InformalBlogPosts\Create.cshtml" />
+    <Content Include="Views\InformalBlogPosts\Delete.cshtml" />
+    <Content Include="Views\InformalBlogPosts\Details.cshtml" />
+    <Content Include="Views\InformalBlogPosts\Edit.cshtml" />
+    <Content Include="Views\InformalBlogPosts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -295,6 +359,39 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004091214063_edupost.resx">
       <DependentUpon>202004091214063_edupost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004091209037_UppdateratRegistreringsform.resx">
+      <DependentUpon>202004091209037_UppdateratRegistreringsform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004091237241_UppdateratMobilnummer.resx">
+      <DependentUpon>202004091237241_UppdateratMobilnummer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004091328466_test.resx">
+      <DependentUpon>202004091328466_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004101142440_FormalBlogpost_creator_dateTime.resx">
+      <DependentUpon>202004101142440_FormalBlogpost_creator_dateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004101319153_FormalBlogpostCategories.resx">
+      <DependentUpon>202004101319153_FormalBlogpostCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004101322502_formalblogpost_added_category_field.resx">
+      <DependentUpon>202004101322502_formalblogpost_added_category_field.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004131528188_formamblogpostcategory.resx">
+      <DependentUpon>202004131528188_formamblogpostcategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004131535327_namechange.resx">
+      <DependentUpon>202004131535327_namechange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004131538092_namechange2.resx">
+      <DependentUpon>202004131538092_namechange2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004131550101_removed_foreignKey.resx">
+      <DependentUpon>202004131550101_removed_foreignKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004140824249_added_informalblogpost.resx">
+      <DependentUpon>202004140824249_added_informalblogpost.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
