@@ -179,7 +179,7 @@
     <Compile Include="Controllers\InformalBlogPostCategoriesController.cs" />
     <Compile Include="Controllers\InformalBlogPostsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\ResearchController.cs" />
+    <Compile Include="Controllers\ResearchBlogPostsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -326,7 +326,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Calender\Index.cshtml" />
-    <Content Include="Views\ResearchBlog\ResearchBlog.cshtml" />
     <Content Include="Views\FormalBlogPosts\Create.cshtml" />
     <Content Include="Views\FormalBlogPosts\Delete.cshtml" />
     <Content Include="Views\FormalBlogPosts\Details.cshtml" />
@@ -347,6 +346,11 @@
     <Content Include="Views\InformalBlogPostCategories\Details.cshtml" />
     <Content Include="Views\InformalBlogPostCategories\Edit.cshtml" />
     <Content Include="Views\InformalBlogPostCategories\Index.cshtml" />
+    <Content Include="Views\ResearchBlogPosts\Create.cshtml" />
+    <Content Include="Views\ResearchBlogPosts\Delete.cshtml" />
+    <Content Include="Views\ResearchBlogPosts\Details.cshtml" />
+    <Content Include="Views\ResearchBlogPosts\Edit.cshtml" />
+    <Content Include="Views\ResearchBlogPosts\Index.cshtml" />
     <Content Include="Views\EducationalPosts\Create.cshtml" />
     <Content Include="Views\EducationalPosts\Delete.cshtml" />
     <Content Include="Views\EducationalPosts\Details.cshtml" />
@@ -356,7 +360,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\EduPosts\" />
-    <Folder Include="Views\Research\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
