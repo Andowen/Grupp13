@@ -251,6 +251,14 @@
     <Compile Include="Migrations\202004140929182_updatedInformalBLogPostCategory.Designer.cs">
       <DependentUpon>202004140929182_updatedInformalBLogPostCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004141221581_addedresearchblogpost.cs" />
+    <Compile Include="Migrations\202004141221581_addedresearchblogpost.Designer.cs">
+      <DependentUpon>202004141221581_addedresearchblogpost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004141248395_addedResearchCategories.cs" />
+    <Compile Include="Migrations\202004141248395_addedResearchCategories.Designer.cs">
+      <DependentUpon>202004141248395_addedResearchCategories.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
@@ -262,6 +270,7 @@
     <Compile Include="Models\InformalBlogPostCategory.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ResearchBlogPost.cs" />
+    <Compile Include="Models\ResearchBlogPostCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -416,6 +425,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004140929182_updatedInformalBLogPostCategory.resx">
       <DependentUpon>202004140929182_updatedInformalBLogPostCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004141221581_addedresearchblogpost.resx">
+      <DependentUpon>202004141221581_addedresearchblogpost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004141248395_addedResearchCategories.resx">
+      <DependentUpon>202004141248395_addedResearchCategories.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

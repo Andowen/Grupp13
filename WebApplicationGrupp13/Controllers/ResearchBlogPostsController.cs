@@ -17,7 +17,7 @@ namespace WebApplicationGrupp13.Controllers
         // GET: ResearchBlogPosts
         public ActionResult Index()
         {
-            return View(db.ResearchPosts.ToList());
+            return View(db.ResearchBlogPosts.ToList());
         }
 
         // GET: ResearchBlogPosts/Details/5
@@ -27,7 +27,7 @@ namespace WebApplicationGrupp13.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ResearchBlogPost researchBlogPost = db.ResearchPosts.Find(id);
+            ResearchBlogPost researchBlogPost = db.ResearchBlogPosts.Find(id);
             if (researchBlogPost == null)
             {
                 return HttpNotFound();
@@ -46,11 +46,11 @@ namespace WebApplicationGrupp13.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,postText,title,date")] ResearchBlogPost researchBlogPost)
+        public ActionResult Create([Bind(Include = "id,postText,title,creator,dateTime,category")] ResearchBlogPost researchBlogPost)
         {
             if (ModelState.IsValid)
             {
-                db.ResearchPosts.Add(researchBlogPost);
+                db.ResearchBlogPosts.Add(researchBlogPost);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace WebApplicationGrupp13.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ResearchBlogPost researchBlogPost = db.ResearchPosts.Find(id);
+            ResearchBlogPost researchBlogPost = db.ResearchBlogPosts.Find(id);
             if (researchBlogPost == null)
             {
                 return HttpNotFound();
@@ -78,7 +78,7 @@ namespace WebApplicationGrupp13.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,postText,title,date")] ResearchBlogPost researchBlogPost)
+        public ActionResult Edit([Bind(Include = "id,postText,title,creator,dateTime,category")] ResearchBlogPost researchBlogPost)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace WebApplicationGrupp13.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ResearchBlogPost researchBlogPost = db.ResearchPosts.Find(id);
+            ResearchBlogPost researchBlogPost = db.ResearchBlogPosts.Find(id);
             if (researchBlogPost == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace WebApplicationGrupp13.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ResearchBlogPost researchBlogPost = db.ResearchPosts.Find(id);
-            db.ResearchPosts.Remove(researchBlogPost);
+            ResearchBlogPost researchBlogPost = db.ResearchBlogPosts.Find(id);
+            db.ResearchBlogPosts.Remove(researchBlogPost);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

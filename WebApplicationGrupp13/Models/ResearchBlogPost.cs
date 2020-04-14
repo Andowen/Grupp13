@@ -13,7 +13,14 @@ namespace WebApplicationGrupp13.Models
         public int id { get; set; }
         public string postText { get; set; }
         public string title { get; set; }
-        public string date { get; set; }
+        public string creator { get; set; }
+        public DateTime dateTime { get; set; }
+
+        public string category { get; set; }
+
 
     }
+
+
 }
+
