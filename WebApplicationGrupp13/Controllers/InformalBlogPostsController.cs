@@ -17,6 +17,15 @@ namespace WebApplicationGrupp13.Controllers
         // GET: InformalBlogPosts
         public ActionResult Index()
         {
+            List<string> ct = new List<string>();
+            foreach (InformalBlogPostCategory category in db.InformalBlogPostCategories)
+            {
+                ct.Add(category.name);
+            }
+
+
+            ViewBag.CategoryList = ct;
+
             return View(db.InformalBlogPosts.ToList());
         }
 
@@ -38,6 +47,13 @@ namespace WebApplicationGrupp13.Controllers
         // GET: InformalBlogPosts/Create
         public ActionResult Create()
         {
+            var categories = db.InformalBlogPostCategories.ToList();
+            List<string> categorylist = new List<string>();
+            foreach (InformalBlogPostCategory ct in categories)
+            {
+                categorylist.Add(ct.name);
+            }
+            ViewBag.CategoryList = categorylist;
             return View();
         }
 
@@ -48,14 +64,32 @@ namespace WebApplicationGrupp13.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,postText,title,creator,dateTime,category")] InformalBlogPost informalBlogPost)
         {
-            if (ModelState.IsValid)
-            {
-                db.InformalBlogPosts.Add(informalBlogPost);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
 
-            return View(informalBlogPost);
+            var categories = db.InformalBlogPostCategories.ToList();
+            List<string> categorylist = new List<string>();
+            foreach (InformalBlogPostCategory ct in categories)
+            {
+                categorylist.Add(ct.name);
+            }
+            ViewBag.CategoryList = categorylist;
+            
+            var test = informalBlogPost.category;
+
+
+            informalBlogPost.creator = User.Identity.Name;
+            informalBlogPost.dateTime = DateTime.Now;
+            db.InformalBlogPosts.Add(informalBlogPost);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
+            //if (ModelState.IsValid)
+            //{
+            //    db.InformalBlogPosts.Add(informalBlogPost);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
+
+            //return View(informalBlogPost);
         }
 
         // GET: InformalBlogPosts/Edit/5
