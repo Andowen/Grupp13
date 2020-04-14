@@ -172,7 +172,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CalenderController.cs" />
-    <Compile Include="Controllers\EduPostsController.cs" />
+    <Compile Include="Controllers\EducationalPostsController.cs" />
     <Compile Include="Controllers\FormalBlogPostCategoriesController.cs" />
     <Compile Include="Controllers\FormalBlogPostsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -250,6 +250,10 @@
     <Compile Include="Migrations\202004140929182_updatedInformalBLogPostCategory.cs" />
     <Compile Include="Migrations\202004140929182_updatedInformalBLogPostCategory.Designer.cs">
       <DependentUpon>202004140929182_updatedInformalBLogPostCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004141121493_educationalpostscontroller.cs" />
+    <Compile Include="Migrations\202004141121493_educationalpostscontroller.Designer.cs">
+      <DependentUpon>202004141121493_educationalpostscontroller.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -343,6 +347,11 @@
     <Content Include="Views\InformalBlogPostCategories\Details.cshtml" />
     <Content Include="Views\InformalBlogPostCategories\Edit.cshtml" />
     <Content Include="Views\InformalBlogPostCategories\Index.cshtml" />
+    <Content Include="Views\EducationalPosts\Create.cshtml" />
+    <Content Include="Views\EducationalPosts\Delete.cshtml" />
+    <Content Include="Views\EducationalPosts\Details.cshtml" />
+    <Content Include="Views\EducationalPosts\Edit.cshtml" />
+    <Content Include="Views\EducationalPosts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -413,6 +422,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004140929182_updatedInformalBLogPostCategory.resx">
       <DependentUpon>202004140929182_updatedInformalBLogPostCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004141121493_educationalpostscontroller.resx">
+      <DependentUpon>202004141121493_educationalpostscontroller.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
