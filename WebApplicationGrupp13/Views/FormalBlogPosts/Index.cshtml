@@ -55,13 +55,13 @@
             </tr>*@
 <div class="formalBlogPost">
     <h3>@Html.DisplayFor(modelItem => item.title)<span class="authorTime">@Html.DisplayFor(modelItem => item.creator)@Html.DisplayFor(modelItem => item.dateTime)</span></h3>
-        <p style="float: right"></p>
-        <p style="float: right"></p>
+       
         <p>@Html.DisplayFor(modelItem => item.postText)</p>
         @if (item.creator.Equals(User.Identity.Name)) {
+
             @Html.ActionLink("Edit", "Edit", new { id = item.id });
-@Html.ActionLink("Details", "Details", new { id = item.id });
-@Html.ActionLink("Delete", "Delete", new { id = item.id });
+            @Html.ActionLink("Details", "Details", new { id = item.id });
+            @Html.ActionLink("Delete", "Delete", new { id = item.id });
 
 }
     </div>

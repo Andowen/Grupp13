@@ -176,6 +176,7 @@
     <Compile Include="Controllers\FormalBlogPostCategoriesController.cs" />
     <Compile Include="Controllers\FormalBlogPostsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InformalBlogPostsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ResearchController.cs" />
     <Compile Include="Global.asax.cs">
@@ -237,6 +238,10 @@
     <Compile Include="Migrations\202004131550101_removed_foreignKey.Designer.cs">
       <DependentUpon>202004131550101_removed_foreignKey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004140824249_added_informalblogpost.cs" />
+    <Compile Include="Migrations\202004140824249_added_informalblogpost.Designer.cs">
+      <DependentUpon>202004140824249_added_informalblogpost.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
@@ -244,6 +249,7 @@
     <Compile Include="Models\FormalBlogPost.cs" />
     <Compile Include="Models\FormalBlogPostCategory.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\InformalBlogPost.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ResearchBlogPost.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -317,6 +323,11 @@
     <Content Include="Views\FormalBlogPostCategories\Details.cshtml" />
     <Content Include="Views\FormalBlogPostCategories\Edit.cshtml" />
     <Content Include="Views\FormalBlogPostCategories\Index.cshtml" />
+    <Content Include="Views\InformalBlogPosts\Create.cshtml" />
+    <Content Include="Views\InformalBlogPosts\Delete.cshtml" />
+    <Content Include="Views\InformalBlogPosts\Details.cshtml" />
+    <Content Include="Views\InformalBlogPosts\Edit.cshtml" />
+    <Content Include="Views\InformalBlogPosts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -378,6 +389,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004131550101_removed_foreignKey.resx">
       <DependentUpon>202004131550101_removed_foreignKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004140824249_added_informalblogpost.resx">
+      <DependentUpon>202004140824249_added_informalblogpost.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

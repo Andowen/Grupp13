@@ -38,6 +38,9 @@ namespace WebApplicationGrupp13.Models
         public DbSet<CalenderViewModel> Calender { get; set; }
         public DbSet<EducationalPost> EduPosts { get; set; }
         public DbSet<ResearchBlogPost> ResearchPosts { get; set; }
-       public DbSet<FormalBlogPostCategory> FormalBlogPostCategories { get; set; }
+        public DbSet<FormalBlogPostCategory> FormalBlogPostCategories { get; set; }
+
+        public DbSet<InformalBlogPost> InformalBlogPosts { get; set; }
+
     }
 }
