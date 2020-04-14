@@ -41,6 +41,7 @@ namespace WebApplicationGrupp13.Models
         public DbSet<FormalBlogPostCategory> FormalBlogPostCategories { get; set; }
 
         public DbSet<InformalBlogPost> InformalBlogPosts { get; set; }
+        public DbSet<InformalBlogPostCategory> InformalBlogPostCategories { get; set; }
 
     }
 }

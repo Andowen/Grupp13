@@ -176,6 +176,7 @@
     <Compile Include="Controllers\FormalBlogPostCategoriesController.cs" />
     <Compile Include="Controllers\FormalBlogPostsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InformalBlogPostCategoriesController.cs" />
     <Compile Include="Controllers\InformalBlogPostsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ResearchController.cs" />
@@ -242,6 +243,14 @@
     <Compile Include="Migrations\202004140824249_added_informalblogpost.Designer.cs">
       <DependentUpon>202004140824249_added_informalblogpost.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004140923223_added_informalblogpostcategory.cs" />
+    <Compile Include="Migrations\202004140923223_added_informalblogpostcategory.Designer.cs">
+      <DependentUpon>202004140923223_added_informalblogpostcategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004140929182_updatedInformalBLogPostCategory.cs" />
+    <Compile Include="Migrations\202004140929182_updatedInformalBLogPostCategory.Designer.cs">
+      <DependentUpon>202004140929182_updatedInformalBLogPostCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
@@ -250,6 +259,7 @@
     <Compile Include="Models\FormalBlogPostCategory.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\InformalBlogPost.cs" />
+    <Compile Include="Models\InformalBlogPostCategory.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ResearchBlogPost.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -328,6 +338,11 @@
     <Content Include="Views\InformalBlogPosts\Details.cshtml" />
     <Content Include="Views\InformalBlogPosts\Edit.cshtml" />
     <Content Include="Views\InformalBlogPosts\Index.cshtml" />
+    <Content Include="Views\InformalBlogPostCategories\Create.cshtml" />
+    <Content Include="Views\InformalBlogPostCategories\Delete.cshtml" />
+    <Content Include="Views\InformalBlogPostCategories\Details.cshtml" />
+    <Content Include="Views\InformalBlogPostCategories\Edit.cshtml" />
+    <Content Include="Views\InformalBlogPostCategories\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -392,6 +407,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004140824249_added_informalblogpost.resx">
       <DependentUpon>202004140824249_added_informalblogpost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004140923223_added_informalblogpostcategory.resx">
+      <DependentUpon>202004140923223_added_informalblogpostcategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004140929182_updatedInformalBLogPostCategory.resx">
+      <DependentUpon>202004140929182_updatedInformalBLogPostCategory.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
