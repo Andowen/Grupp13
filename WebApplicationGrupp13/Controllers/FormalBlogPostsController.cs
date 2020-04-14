@@ -16,14 +16,17 @@ namespace WebApplicationGrupp13.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: FormalBlogPosts
+
+       
         public ActionResult Index()
         {
-            FormalBlogPostCategory fbp = new FormalBlogPostCategory();
+            
             List<string> ct = new List<string>();
             foreach (FormalBlogPostCategory category in db.FormalBlogPostCategories) {
                 ct.Add(category.name);
             }
 
+          
             ViewBag.CategoryList = ct;
            
             return View(db.BlogPosts.ToList());

@@ -16,8 +16,8 @@ namespace WebApplicationGrupp13.Models {
         
         public string category { get; set; }
 
-        
-        }
+       
+    }
     
        
 }
