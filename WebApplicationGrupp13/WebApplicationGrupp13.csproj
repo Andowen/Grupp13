@@ -172,7 +172,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CalenderController.cs" />
-    <Compile Include="Controllers\EduPostsController.cs" />
+    <Compile Include="Controllers\EducationalBlogPostsController.cs" />
     <Compile Include="Controllers\FormalBlogPostCategoriesController.cs" />
     <Compile Include="Controllers\FormalBlogPostsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -356,10 +356,14 @@
     <Content Include="Views\ResearchBlogPosts\Details.cshtml" />
     <Content Include="Views\ResearchBlogPosts\Edit.cshtml" />
     <Content Include="Views\ResearchBlogPosts\Index.cshtml" />
+    <Content Include="Views\EducationalBlogPosts\Create.cshtml" />
+    <Content Include="Views\EducationalBlogPosts\Delete.cshtml" />
+    <Content Include="Views\EducationalBlogPosts\Details.cshtml" />
+    <Content Include="Views\EducationalBlogPosts\Edit.cshtml" />
+    <Content Include="Views\EducationalBlogPosts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\EduPosts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
