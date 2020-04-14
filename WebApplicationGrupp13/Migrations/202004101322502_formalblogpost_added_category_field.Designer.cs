@@ -7,13 +7,13 @@ namespace WebApplicationGrupp13.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class blogpost : IMigrationMetadata
+    public sealed partial class formalblogpost_added_category_field : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(blogpost));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(formalblogpost_added_category_field));
         
         string IMigrationMetadata.Id
         {
-            get { return "202004091127117_blogpost"; }
+            get { return "202004101322502_formalblogpost_added_category_field"; }
         }
         
         string IMigrationMetadata.Source

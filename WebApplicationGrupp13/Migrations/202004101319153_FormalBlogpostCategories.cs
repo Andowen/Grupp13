@@ -3,25 +3,23 @@ namespace WebApplicationGrupp13.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class blogpost : DbMigration
+    public partial class FormalBlogpostCategories : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.EducationalPosts",
+                "dbo.FormalBlogPostCategories",
                 c => new
                     {
-                        id = c.Int(nullable: false, identity: true),
-                        postText = c.String(),
-                        title = c.String(),
+                        name = c.String(nullable: false, maxLength: 128),
                     })
-                .PrimaryKey(t => t.id);
+                .PrimaryKey(t => t.name);
             
         }
         
         public override void Down()
         {
-            DropTable("dbo.EducationalPosts");
+            DropTable("dbo.FormalBlogPostCategories");
         }
     }
 }
