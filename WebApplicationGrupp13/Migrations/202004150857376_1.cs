@@ -3,7 +3,7 @@ namespace WebApplicationGrupp13.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class addedResearchCategories : DbMigration
+    public partial class _1 : DbMigration
     {
         public override void Up()
         {
@@ -14,7 +14,6 @@ namespace WebApplicationGrupp13.Migrations
                         name = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.name);
-            
         }
         
         public override void Down()

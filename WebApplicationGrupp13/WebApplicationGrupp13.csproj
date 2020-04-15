@@ -333,9 +333,9 @@
     <Compile Include="Migrations\202004141221581_addedresearchblogpost.Designer.cs">
       <DependentUpon>202004141221581_addedresearchblogpost.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202004141248395_addedResearchCategories.cs" />
-    <Compile Include="Migrations\202004141248395_addedResearchCategories.Designer.cs">
-      <DependentUpon>202004141248395_addedResearchCategories.cs</DependentUpon>
+    <Compile Include="Migrations\202004150857376_1.cs" />
+    <Compile Include="Migrations\202004150857376_1.Designer.cs">
+      <DependentUpon>202004150857376_1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -514,9 +514,6 @@
     <EmbeddedResource Include="Migrations\202004141221581_addedresearchblogpost.resx">
       <DependentUpon>202004141221581_addedresearchblogpost.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004141248395_addedResearchCategories.resx">
-      <DependentUpon>202004141248395_addedResearchCategories.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004141207049_fileupload_formalblogpost.resx">
       <DependentUpon>202004141207049_fileupload_formalblogpost.cs</DependentUpon>
     </EmbeddedResource>
@@ -525,6 +522,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004141333378_komigennu.resx">
       <DependentUpon>202004141333378_komigennu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004150857376_1.resx">
+      <DependentUpon>202004150857376_1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

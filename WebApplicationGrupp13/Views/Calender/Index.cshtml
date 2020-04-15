@@ -139,8 +139,8 @@
                         selectedEvent = calEvent;
                         $('#myModal #eventTitle').text(calEvent.title);
                         var $description = $('<div/>');
-                        $description.append($('<p/>').html('<b>Start:</b>' + calEvent.start.format("YYYY-MMM-DD HH:mm")));
-                        $description.append($('<p/>').html('<b>Slut:</b>' + calEvent.end.format("YYYY-MMM-DD HH:mm")));
+                        $description.append($('<p/>').html('<b>Start:</b>' + calEvent.start.format("DD-MMM-YYYY HH:mm")));
+                        $description.append($('<p/>').html('<b>Slut:</b>' + calEvent.end.format("DD-MMM-YYYY HH:mm")));
                         $description.append($('<p/>').html('<b>Beskrivning:</b>' + calEvent.description));
                         $('#myModal #pDetails').empty().html($description);
 
