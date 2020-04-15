@@ -360,6 +360,10 @@
     <Compile Include="Migrations\202004150816364_testarHjälp.Designer.cs">
       <DependentUpon>202004150816364_testarHjälp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004151122228_testarAgnes.cs" />
+    <Compile Include="Migrations\202004151122228_testarAgnes.Designer.cs">
+      <DependentUpon>202004151122228_testarAgnes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
@@ -566,6 +570,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004150816364_testarHjälp.resx">
       <DependentUpon>202004150816364_testarHjälp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004151122228_testarAgnes.resx">
+      <DependentUpon>202004151122228_testarAgnes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
