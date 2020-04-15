@@ -112,8 +112,11 @@ namespace WebApplicationGrupp13.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,postText,title,creator,dateTime,category")] InformalBlogPost informalBlogPost)
+        public ActionResult Edit([Bind(Include = "id,postText,title,creator")] InformalBlogPost informalBlogPost)
         {
+            informalBlogPost.creator = User.Identity.Name;
+            informalBlogPost.dateTime = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 db.Entry(informalBlogPost).State = EntityState.Modified;

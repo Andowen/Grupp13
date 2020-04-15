@@ -337,6 +337,10 @@
     <Compile Include="Migrations\202004141248395_addedResearchCategories.Designer.cs">
       <DependentUpon>202004141248395_addedResearchCategories.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004150816364_testarHjälp.cs" />
+    <Compile Include="Migrations\202004150816364_testarHjälp.Designer.cs">
+      <DependentUpon>202004150816364_testarHjälp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
@@ -525,6 +529,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004141333378_komigennu.resx">
       <DependentUpon>202004141333378_komigennu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004150816364_testarHjälp.resx">
+      <DependentUpon>202004150816364_testarHjälp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
