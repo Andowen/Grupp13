@@ -20,6 +20,85 @@ namespace WebApplicationGrupp13.Controllers
             return View(db.EduPosts.ToList());
         }
 
+
+        public static string GetDateFromDateTime(DateTime dateTime) {
+
+            string year = dateTime.Year.ToString();
+            string month = dateTime.Month.ToString();
+            string day = dateTime.Day.ToString();
+            string day2 = dateTime.DayOfWeek.ToString();
+            string monthInText = "";
+            string dayinText = "";
+
+
+
+            switch (dateTime.Month) {
+                case 1:
+                    monthInText = "januari";
+                    break;
+                case 2:
+                    monthInText = "februari";
+                    break;
+                case 3:
+                    monthInText = "mars";
+                    break;
+                case 4:
+                    monthInText = "april";
+                    break;
+                case 5:
+                    monthInText = "maj";
+                    break;
+                case 6:
+                    monthInText = "juni";
+                    break;
+                case 7:
+                    monthInText = "juli";
+                    break;
+                case 8:
+                    monthInText = "augusti";
+                    break;
+                case 9:
+                    monthInText = "september";
+                    break;
+                case 10:
+                    monthInText = "oktober";
+                    break;
+                case 11:
+                    monthInText = "november";
+                    break;
+                case 12:
+                    monthInText = "december";
+                    break;
+            }
+
+            if (dateTime.DayOfWeek.ToString().Equals("Monday")) {
+                dayinText = "Måndag";
+
+            } else if (dateTime.DayOfWeek.ToString().Equals("Tuesday")) {
+                dayinText = "Tisdag";
+
+            } else if (dateTime.DayOfWeek.ToString().Equals("Wednesday")) {
+                dayinText = "Onsdag";
+
+            } else if (dateTime.DayOfWeek.ToString().Equals("Thursday")) {
+                dayinText = "Torsdag";
+
+            } else if (dateTime.DayOfWeek.ToString().Equals("Friday")) {
+                dayinText = "Fredag";
+
+            } else if (dateTime.DayOfWeek.ToString().Equals("Saturday")) {
+                dayinText = "Lördag";
+
+            } else if (dateTime.DayOfWeek.ToString().Equals("Sunday")) {
+                dayinText = "Söndag";
+
+            }
+            string fullDate = dayinText + ", " + day + " " + monthInText + " " + year;
+
+
+            return fullDate;
+        }
+
         // GET: EducationalBlogPosts/Details/5
         public ActionResult Details(int? id)
         {
@@ -46,16 +125,14 @@ namespace WebApplicationGrupp13.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,postText,title")] EducationalPost educationalPost)
+        public ActionResult Create([Bind(Include = "id,postText,title,subject")] EducationalPost educationalPost)
         {
-            if (ModelState.IsValid)
-            {
-                db.EduPosts.Add(educationalPost);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
 
-            return View(educationalPost);
+            educationalPost.creator = User.Identity.Name;
+            educationalPost.dateTime = DateTime.Now;
+            db.EduPosts.Add(educationalPost);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // GET: EducationalBlogPosts/Edit/5

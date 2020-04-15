@@ -337,6 +337,14 @@
     <Compile Include="Migrations\202004141248395_addedResearchCategories.Designer.cs">
       <DependentUpon>202004141248395_addedResearchCategories.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004150840150_1040max.cs" />
+    <Compile Include="Migrations\202004150840150_1040max.Designer.cs">
+      <DependentUpon>202004150840150_1040max.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004150845022_educationalpost_properties_change.cs" />
+    <Compile Include="Migrations\202004150845022_educationalpost_properties_change.Designer.cs">
+      <DependentUpon>202004150845022_educationalpost_properties_change.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
@@ -525,6 +533,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004141333378_komigennu.resx">
       <DependentUpon>202004141333378_komigennu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004150840150_1040max.resx">
+      <DependentUpon>202004150840150_1040max.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004150845022_educationalpost_properties_change.resx">
+      <DependentUpon>202004150845022_educationalpost_properties_change.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
