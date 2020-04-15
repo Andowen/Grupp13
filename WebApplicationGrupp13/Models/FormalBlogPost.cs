@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using Microsoft.AspNetCore.Mvc;
 using ServiceStack.DataAnnotations;
 
 namespace WebApplicationGrupp13.Models {
@@ -16,7 +17,10 @@ namespace WebApplicationGrupp13.Models {
         
         public string category { get; set; }
 
-       
+        public string fileName { get; set; }
+        public FormalBlogPost() {
+
+        }
     }
     
        
