@@ -112,7 +112,7 @@ namespace WebApplicationGrupp13.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,postText,title,creator")] InformalBlogPost informalBlogPost)
+        public ActionResult Edit([Bind(Include = "id,postText,title,creator,category")] InformalBlogPost informalBlogPost)
         {
             informalBlogPost.creator = User.Identity.Name;
             informalBlogPost.dateTime = DateTime.Now;
