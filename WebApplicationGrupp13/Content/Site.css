@@ -22,17 +22,24 @@ select,
 textarea {
     max-width: 280px;
 }
-
 .formalBlogPost{
     width: 80%;
-    height: 200px;
+}
+.formalBlogPostContent{
     
-    border-bottom-style: dotted;
-    border-bottom-color: lightslategrey;
-    border-bottom-width: 1px;
+    height: 200px;
+   
 }
 .authorTime{
     float: right;
     font-size: 80%;
+}
+.uploadedFile {
+    float: right;
+}
+.blogButtons {
+    border-bottom-style: dotted;
+    border-bottom-color: lightslategrey;
+    border-bottom-width: 1px;
 }
 
