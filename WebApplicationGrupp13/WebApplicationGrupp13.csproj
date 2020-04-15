@@ -245,7 +245,10 @@
     <Compile Include="Controllers\InformalBlogPostCategoriesController.cs" />
     <Compile Include="Controllers\InformalBlogPostsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\ResearchBlogPostsController.cs" />
+    <Compile Include="Enums\NotificationType.cs" />
+    <Compile Include="Enums\PostType.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -345,6 +348,14 @@
     <Compile Include="Migrations\202004150845022_educationalpost_properties_change.Designer.cs">
       <DependentUpon>202004150845022_educationalpost_properties_change.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004150843252_empty.cs" />
+    <Compile Include="Migrations\202004150843252_empty.Designer.cs">
+      <DependentUpon>202004150843252_empty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004151047011_addedUserNotifications.cs" />
+    <Compile Include="Migrations\202004151047011_addedUserNotifications.Designer.cs">
+      <DependentUpon>202004151047011_addedUserNotifications.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202004150816364_testarHjälp.cs" />
     <Compile Include="Migrations\202004150816364_testarHjälp.Designer.cs">
       <DependentUpon>202004150816364_testarHjälp.cs</DependentUpon>
@@ -359,8 +370,10 @@
     <Compile Include="Models\InformalBlogPost.cs" />
     <Compile Include="Models\InformalBlogPostCategory.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\NotificationViewModel.cs" />
     <Compile Include="Models\ResearchBlogPost.cs" />
     <Compile Include="Models\ResearchBlogPostCategory.cs" />
+    <Compile Include="Models\UserNotifications.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -451,6 +464,7 @@
     <Content Include="Views\EducationalBlogPosts\Details.cshtml" />
     <Content Include="Views\EducationalBlogPosts\Edit.cshtml" />
     <Content Include="Views\EducationalBlogPosts\Index.cshtml" />
+    <Content Include="Views\NotificationViewModels\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -543,6 +557,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004150845022_educationalpost_properties_change.resx">
       <DependentUpon>202004150845022_educationalpost_properties_change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004150843252_empty.resx">
+      <DependentUpon>202004150843252_empty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004151047011_addedUserNotifications.resx">
+      <DependentUpon>202004151047011_addedUserNotifications.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004150816364_testarHjälp.resx">
       <DependentUpon>202004150816364_testarHjälp.cs</DependentUpon>
