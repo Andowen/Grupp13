@@ -356,6 +356,10 @@
     <Compile Include="Migrations\202004151047011_addedUserNotifications.Designer.cs">
       <DependentUpon>202004151047011_addedUserNotifications.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004151109172_1309max.cs" />
+    <Compile Include="Migrations\202004151109172_1309max.Designer.cs">
+      <DependentUpon>202004151109172_1309max.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
@@ -559,6 +563,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004151047011_addedUserNotifications.resx">
       <DependentUpon>202004151047011_addedUserNotifications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004151109172_1309max.resx">
+      <DependentUpon>202004151109172_1309max.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
