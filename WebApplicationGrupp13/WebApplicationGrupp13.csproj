@@ -356,6 +356,10 @@
     <Compile Include="Migrations\202004151047011_addedUserNotifications.Designer.cs">
       <DependentUpon>202004151047011_addedUserNotifications.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004150816364_testarHjälp.cs" />
+    <Compile Include="Migrations\202004150816364_testarHjälp.Designer.cs">
+      <DependentUpon>202004150816364_testarHjälp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202004151102309_empty2.cs" />
     <Compile Include="Migrations\202004151102309_empty2.Designer.cs">
       <DependentUpon>202004151102309_empty2.cs</DependentUpon>
@@ -572,6 +576,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004151047011_addedUserNotifications.resx">
       <DependentUpon>202004151047011_addedUserNotifications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004150816364_testarHjälp.resx">
+      <DependentUpon>202004150816364_testarHjälp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004151102309_empty2.resx">
       <DependentUpon>202004151102309_empty2.cs</DependentUpon>
