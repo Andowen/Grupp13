@@ -2,7 +2,8 @@
 
 
 namespace WebApplicationGrupp13.Enums
-{   [Flags]
+{
+    [Flags]
     public enum NotificationType
     {
         None = 0,
