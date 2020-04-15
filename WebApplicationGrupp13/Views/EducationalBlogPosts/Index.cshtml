@@ -3,8 +3,51 @@
 @{
     ViewBag.Title = "Index";
 }
+@using WebApplicationGrupp13.Controllers
+@if (Request.IsAuthenticated) {
+    <h2>Utbildningsinlägg</h2>
+    <p>
+        @Html.ActionLink("Skapa nytt ubildningsinlägg", "Create")
+    </p>
+    var Model1 = Model.OrderByDescending(c => c.id);
+    foreach (var item in Model1) {
 
-<h2>Index</h2>
+        <div class="educationalBlogPost">
+            <div class="formalBlogPostContent">
+                @{
+                    var time = FormalBlogPostsController.GetDateFromDateTime(item.dateTime);
+                }
+                <h3>@Html.DisplayFor(modelItem => item.title)<span class="authorTime">@time</span></h3>
+                
+                <p>Ämne: @Html.DisplayFor(modelItem => item.subject)</p>
+                <p>@Html.DisplayFor(modelItem => item.postText)</p>
+                <br />
+            </div>
+            <div class="blogButtons">
+                @if (item.creator.Equals(User.Identity.Name)) {
+
+                    <p>
+                        @Html.ActionLink("Se inlägg", "Details", new { id = item.id }) | @Html.ActionLink("Redigera", "Edit", new { id = item.id }) | @Html.ActionLink("Ta bort", "Delete", new { id = item.id })
+                        <span class="authorTime">
+                            @Html.DisplayFor(modelItem => item.creator)
+                        </span>
+                    </p>
+                } else {
+                    <p>
+                        @Html.ActionLink("Se inlägg", "Details", new { id = item.id })
+                    </p>
+                }
+            </div>
+        </div>
+    }
+
+    @*</table>*@
+} else {
+    <h1>Du måste logga in för att komma åt denna sida!</h1>
+}
+
+
+@*<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -20,20 +63,20 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.postText)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.title)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.postText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
 
-</table>
+</table>*@

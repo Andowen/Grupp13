@@ -47,6 +47,8 @@ namespace WebApplicationGrupp13.Models
 
         public DbSet<ResearchBlogPostCategory> ResearchBlogPostCategories { get; set; }
 
+        public DbSet<UserNotifications> UserNotifications { get; set; }
+        public DbSet<ViewedNotifications> ViewedNotifications { get; set; }
 
     }
 }

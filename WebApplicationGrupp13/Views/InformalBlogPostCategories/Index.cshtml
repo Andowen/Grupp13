@@ -4,24 +4,30 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Kategorier</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Lägg till ny kategori", "Create")
 </p>
 <table class="table">
     <tr>
-        <th></th>
+        <th>@Html.DisplayNameFor(model => model.name)</th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.name }) |
-            @Html.ActionLink("Details", "Details", new { id=item.name }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.name })
+            @Html.DisplayFor(modelItem => item.name)
+            </td>
+        <td>
+            @Html.ActionLink("Redigera", "Edit", new { id = item.name }) |
+            @Html.ActionLink("Detaljer", "Details", new { id = item.name }) |
+            @Html.ActionLink("Ta bort", "Delete", new { id = item.name })
         </td>
     </tr>
 }
 
 </table>
+<div>
+    @Html.ActionLink("Tillbaka till skapa inlägg", "Create", "InformalBlogPosts")
+</div>
