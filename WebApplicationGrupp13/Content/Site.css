@@ -27,7 +27,7 @@ textarea {
 }
 .formalBlogPostContent{
     
-    height: 400px;
+    height: 200px;
    
 }
 .authorTime{
@@ -38,15 +38,20 @@ textarea {
     float: right;
 }
 .blogButtons {
-    border-bottom-style: solid;
-    border-bottom-color: blue;
+    border-bottom-style: dotted;
+    border-bottom-color: lightslategrey;
     border-bottom-width: 1px;
 }
-.formalBlogPostComments {
-    border-bottom-style: dotted;
-    border-bottom-color: lightgrey;
-    border-bottom-width: 0.5px;
-   
-    
+#bakgrund {
+    background-image: url("https://static-cdn.sr.se/sida/images/159/3593021_2048_1152.jpg?preset=1200x675");
+    height: 500px;
 }
-
+#bakgrundstext {
+    color: lightgray;
+    margin: 0 auto;
+    width: 50%;
+    height: 40%;
+}
+#bakgrundstext h1 {
+    text-align: center;
+}

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace WebApplicationGrupp13.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : NotificationControllerBase
     {
         public ActionResult Index()
         {

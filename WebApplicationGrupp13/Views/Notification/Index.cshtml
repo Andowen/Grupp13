@@ -1,0 +1,29 @@
+﻿@model IEnumerable<WebApplicationGrupp13.Models.NotificationViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Notiser</h2>
+
+
+<table>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Author)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsNew)
+        </td>
+    </tr>
+}
+
+</table>

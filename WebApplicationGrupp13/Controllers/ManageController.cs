@@ -11,7 +11,7 @@ using WebApplicationGrupp13.Models;
 namespace WebApplicationGrupp13.Controllers
 {
     [Authorize]
-    public class ManageController : Controller
+    public class ManageController : NotificationControllerBase
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;

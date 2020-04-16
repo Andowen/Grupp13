@@ -48,6 +48,10 @@ namespace WebApplicationGrupp13.Models
         public DbSet<ResearchBlogPostCategory> ResearchBlogPostCategories { get; set; }
         public DbSet<FormalBlogPostComment> FormalBlogPostComments { get; set; }
 
+        public DbSet<UserNotifications> UserNotifications { get; set; }
+        public DbSet<ViewedNotifications> ViewedNotifications { get; set; }
 
+      //  public System.Data.Entity.DbSet<WebApplicationGrupp13.Models.Meetings> Meetings { get; set; }
+        public DbSet<Meetings> Meeting { get; set; }
     }
 }

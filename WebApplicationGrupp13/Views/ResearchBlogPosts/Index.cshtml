@@ -3,55 +3,57 @@
 @{
     ViewBag.Title = "Index";
 }
+@using WebApplicationGrupp13.Controllers
+@if (Request.IsAuthenticated)
+{
+    <h2>Forskningsblogg</h2>
 
-<h2>Index</h2>
+    <p>
+        @Html.ActionLink("Skapa nytt inlägg", "Create")
+    </p>
+    var Model1 = Model.OrderByDescending(c => c.id);
+    foreach (var item in Model1)
+    {
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.postText)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.creator)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dateTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.category)
-        </th>
-        <th></th>
-    </tr>
+        <div class="formalBlogPost">
+            <div class="formalBlogPostContent">
+                @{
+                    var time = FormalBlogPostsController.GetDateFromDateTime(item.dateTime);
+                }
+                <h3>@Html.DisplayFor(modelItem => item.title)<span class="authorTime">@time</span></h3>
+                <h6>@Html.DisplayFor(modelItem => item.category)</h6>
+                <p>@Html.DisplayFor(modelItem => item.postText)</p>
+                <br />
+            </div>
+            <div class="blogButtons">
+                @*@if (item.fileName != null)
+                    {
+                        <a href="~/FormalBlogPostUploads/@item.fileName" download>@item.fileName</a>
+                    }*@
+                @if (item.creator.Equals(User.Identity.Name))
+                {
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.postText)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.creator)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dateTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.category)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
+                    <p>
+                        @Html.ActionLink("Se inlägg", "Details", new { id = item.id }) | @Html.ActionLink("Redigera", "Edit", new { id = item.id }) | @Html.ActionLink("Ta bort", "Delete", new { id = item.id })
+                        <span class="authorTime">
+                            @Html.DisplayFor(modelItem => item.creator)
+                        </span>
+                    </p>
+                }
+                else
+                {
+                    <p>
+                        @Html.ActionLink("Se inlägg", "Details", new { id = item.id })
+                    </p>
+                }
+            </div>
+        </div>
+    }
+
+    @*</table>*@
+}
+else
+{
+    <h1>Du måste logga in för att komma åt denna sida!</h1>
 }
 
-</table>
