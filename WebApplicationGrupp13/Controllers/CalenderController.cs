@@ -26,15 +26,13 @@ namespace WebApplicationGrupp13.Controllers
             var status = false;
             using (ApplicationDbContext dc = new ApplicationDbContext()) {
                 if (e.EventId > 0) {
-                    //Update the event
+                    //spara/uppdatera händelse  
                     var v = dc.Calender.Where(a => a.EventId == e.EventId).FirstOrDefault();
                     if (v != null) {
                         v.Subject = e.Subject;
                         v.Start = e.Start;
                         v.End = e.End;
                         v.Description = e.Description;
-                        //v.IsFullDay = e.IsFullDay;
-                        //v.ThemeColor = e.ThemeColor;
                     }
                 } else {
                     dc.Calender.Add(e);
