@@ -419,6 +419,10 @@
     <Compile Include="Migrations\202004161538561_giulia.Designer.cs">
       <DependentUpon>202004161538561_giulia.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004161643489_hwello.cs" />
+    <Compile Include="Migrations\202004161643489_hwello.Designer.cs">
+      <DependentUpon>202004161643489_hwello.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
@@ -677,6 +681,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004161538561_giulia.resx">
       <DependentUpon>202004161538561_giulia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004161643489_hwello.resx">
+      <DependentUpon>202004161643489_hwello.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
