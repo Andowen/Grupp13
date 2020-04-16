@@ -50,5 +50,7 @@ namespace WebApplicationGrupp13.Models
         public DbSet<UserNotifications> UserNotifications { get; set; }
         public DbSet<ViewedNotifications> ViewedNotifications { get; set; }
 
+      //  public System.Data.Entity.DbSet<WebApplicationGrupp13.Models.Meetings> Meetings { get; set; }
+        public DbSet<Meetings> Meeting { get; set; }
     }
 }
