@@ -227,7 +227,7 @@ namespace WebApplicationGrupp13.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,postText,title,creator")] FormalBlogPost formalBlogPost)
+        public ActionResult Edit([Bind(Include = "id,postText,title,creator,category,fileName")] FormalBlogPost formalBlogPost)
         {
             formalBlogPost.creator = User.Identity.Name;
             formalBlogPost.dateTime = DateTime.Now;
