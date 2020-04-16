@@ -245,9 +245,9 @@
     <Compile Include="Controllers\InformalBlogPostCategoriesController.cs" />
     <Compile Include="Controllers\InformalBlogPostsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\MeetingsController.cs" />
     <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\NotificationControllerBase.cs" />
+    <Compile Include="Controllers\ResearchBlogPostCategoriesController.cs" />
     <Compile Include="Controllers\ResearchBlogPostsController.cs" />
     <Compile Include="Enums\NotificationType.cs" />
     <Compile Include="Enums\PostType.cs" />
@@ -394,6 +394,10 @@
     <Compile Include="Migrations\202004151450288_updatedViewedNotifications.Designer.cs">
       <DependentUpon>202004151450288_updatedViewedNotifications.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004161430287_educational_formal_post_change.cs" />
+    <Compile Include="Migrations\202004161430287_educational_formal_post_change.Designer.cs">
+      <DependentUpon>202004161430287_educational_formal_post_change.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202004161110090_updatedID_UserNotifications.cs" />
     <Compile Include="Migrations\202004161110090_updatedID_UserNotifications.Designer.cs">
       <DependentUpon>202004161110090_updatedID_UserNotifications.cs</DependentUpon>
@@ -410,10 +414,6 @@
     <Compile Include="Migrations\202004161126450_updatedID_UserNotifications2.Designer.cs">
       <DependentUpon>202004161126450_updatedID_UserNotifications2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202004161349317_meetingss.cs" />
-    <Compile Include="Migrations\202004161349317_meetingss.Designer.cs">
-      <DependentUpon>202004161349317_meetingss.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
@@ -424,7 +424,6 @@
     <Compile Include="Models\InformalBlogPost.cs" />
     <Compile Include="Models\InformalBlogPostCategory.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Meetings.cs" />
     <Compile Include="Models\NotificationViewModel.cs" />
     <Compile Include="Models\ResearchBlogPost.cs" />
     <Compile Include="Models\ResearchBlogPostCategory.cs" />
@@ -521,11 +520,11 @@
     <Content Include="Views\EducationalBlogPosts\Edit.cshtml" />
     <Content Include="Views\EducationalBlogPosts\Index.cshtml" />
     <Content Include="Views\Notification\Index.cshtml" />
-    <Content Include="Views\Meetings\Create.cshtml" />
-    <Content Include="Views\Meetings\Delete.cshtml" />
-    <Content Include="Views\Meetings\Details.cshtml" />
-    <Content Include="Views\Meetings\Edit.cshtml" />
-    <Content Include="Views\Meetings\Index.cshtml" />
+    <Content Include="Views\ResearchBlogPostCategories\Create.cshtml" />
+    <Content Include="Views\ResearchBlogPostCategories\Delete.cshtml" />
+    <Content Include="Views\ResearchBlogPostCategories\Details.cshtml" />
+    <Content Include="Views\ResearchBlogPostCategories\Edit.cshtml" />
+    <Content Include="Views\ResearchBlogPostCategories\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -652,6 +651,9 @@
     <EmbeddedResource Include="Migrations\202004151450288_updatedViewedNotifications.resx">
       <DependentUpon>202004151450288_updatedViewedNotifications.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004161430287_educational_formal_post_change.resx">
+      <DependentUpon>202004161430287_educational_formal_post_change.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004161110090_updatedID_UserNotifications.resx">
       <DependentUpon>202004161110090_updatedID_UserNotifications.cs</DependentUpon>
     </EmbeddedResource>
@@ -663,9 +665,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004161126450_updatedID_UserNotifications2.resx">
       <DependentUpon>202004161126450_updatedID_UserNotifications2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004161349317_meetingss.resx">
-      <DependentUpon>202004161349317_meetingss.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
