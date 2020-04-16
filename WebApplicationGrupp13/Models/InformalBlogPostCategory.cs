@@ -9,6 +9,7 @@ namespace WebApplicationGrupp13.Models
     public class InformalBlogPostCategory
     {
         [Key]
+        [Display(Name = "Kategori")]
         public string name { get; set; }
     }
 }

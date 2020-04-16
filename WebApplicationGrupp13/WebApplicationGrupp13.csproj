@@ -246,6 +246,7 @@
     <Compile Include="Controllers\InformalBlogPostsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NotificationController.cs" />
+    <Compile Include="Controllers\NotificationControllerBase.cs" />
     <Compile Include="Controllers\ResearchBlogPostsController.cs" />
     <Compile Include="Enums\NotificationType.cs" />
     <Compile Include="Enums\PostType.cs" />
@@ -356,6 +357,10 @@
     <Compile Include="Migrations\202004151047011_addedUserNotifications.Designer.cs">
       <DependentUpon>202004151047011_addedUserNotifications.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004151109172_1309max.cs" />
+    <Compile Include="Migrations\202004151109172_1309max.Designer.cs">
+      <DependentUpon>202004151109172_1309max.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202004150816364_testarHjälp.cs" />
     <Compile Include="Migrations\202004150816364_testarHjälp.Designer.cs">
       <DependentUpon>202004150816364_testarHjälp.cs</DependentUpon>
@@ -375,6 +380,34 @@
     <Compile Include="Migrations\202004151216236_test1.cs" />
     <Compile Include="Migrations\202004151216236_test1.Designer.cs">
       <DependentUpon>202004151216236_test1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004151122228_testarAgnes.cs" />
+    <Compile Include="Migrations\202004151122228_testarAgnes.Designer.cs">
+      <DependentUpon>202004151122228_testarAgnes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004151448450_updatedUserNotifications1.cs" />
+    <Compile Include="Migrations\202004151448450_updatedUserNotifications1.Designer.cs">
+      <DependentUpon>202004151448450_updatedUserNotifications1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004151450288_updatedViewedNotifications.cs" />
+    <Compile Include="Migrations\202004151450288_updatedViewedNotifications.Designer.cs">
+      <DependentUpon>202004151450288_updatedViewedNotifications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004161110090_updatedID_UserNotifications.cs" />
+    <Compile Include="Migrations\202004161110090_updatedID_UserNotifications.Designer.cs">
+      <DependentUpon>202004161110090_updatedID_UserNotifications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004161111015_updatedID_ViewedNotifications.cs" />
+    <Compile Include="Migrations\202004161111015_updatedID_ViewedNotifications.Designer.cs">
+      <DependentUpon>202004161111015_updatedID_ViewedNotifications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004161124550_updatedID_ViewedNotifications2.cs" />
+    <Compile Include="Migrations\202004161124550_updatedID_ViewedNotifications2.Designer.cs">
+      <DependentUpon>202004161124550_updatedID_ViewedNotifications2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004161126450_updatedID_UserNotifications2.cs" />
+    <Compile Include="Migrations\202004161126450_updatedID_UserNotifications2.Designer.cs">
+      <DependentUpon>202004161126450_updatedID_UserNotifications2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -481,7 +514,7 @@
     <Content Include="Views\EducationalBlogPosts\Details.cshtml" />
     <Content Include="Views\EducationalBlogPosts\Edit.cshtml" />
     <Content Include="Views\EducationalBlogPosts\Index.cshtml" />
-    <Content Include="Views\NotificationViewModels\Index.cshtml" />
+    <Content Include="Views\Notification\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -595,6 +628,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004151216236_test1.resx">
       <DependentUpon>202004151216236_test1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004151109172_1309max.resx">
+      <DependentUpon>202004151109172_1309max.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004151122228_testarAgnes.resx">
+      <DependentUpon>202004151122228_testarAgnes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004151448450_updatedUserNotifications1.resx">
+      <DependentUpon>202004151448450_updatedUserNotifications1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004151450288_updatedViewedNotifications.resx">
+      <DependentUpon>202004151450288_updatedViewedNotifications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004161110090_updatedID_UserNotifications.resx">
+      <DependentUpon>202004161110090_updatedID_UserNotifications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004161111015_updatedID_ViewedNotifications.resx">
+      <DependentUpon>202004161111015_updatedID_ViewedNotifications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004161124550_updatedID_ViewedNotifications2.resx">
+      <DependentUpon>202004161124550_updatedID_ViewedNotifications2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004161126450_updatedID_UserNotifications2.resx">
+      <DependentUpon>202004161126450_updatedID_UserNotifications2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

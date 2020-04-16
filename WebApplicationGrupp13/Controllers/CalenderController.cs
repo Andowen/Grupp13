@@ -7,7 +7,7 @@ using WebApplicationGrupp13.Models;
 
 namespace WebApplicationGrupp13.Controllers
 {
-    public class CalenderController : Controller
+    public class CalenderController : NotificationControllerBase
     {
         // GET: Calender
         public ActionResult Index()
