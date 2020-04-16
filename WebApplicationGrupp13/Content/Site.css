@@ -42,4 +42,16 @@ textarea {
     border-bottom-color: lightslategrey;
     border-bottom-width: 1px;
 }
-
+#bakgrund {
+    background-image: url("https://static-cdn.sr.se/sida/images/159/3593021_2048_1152.jpg?preset=1200x675");
+    height: 500px;
+}
+#bakgrundstext {
+    color: lightgray;
+    margin: 0 auto;
+    width: 50%;
+    height: 40%;
+}
+#bakgrundstext h1 {
+    text-align: center;
+}
