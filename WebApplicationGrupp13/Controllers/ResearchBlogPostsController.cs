@@ -38,6 +38,13 @@ namespace WebApplicationGrupp13.Controllers
         // GET: ResearchBlogPosts/Create
         public ActionResult Create()
         {
+            var categories = db.ResearchBlogPostCategories.ToList();
+            List<string> categorylist = new List<string>();
+            foreach (ResearchBlogPostCategory ct in categories)
+            {
+                categorylist.Add(ct.name);
+            }
+            ViewBag.CategoryList = categorylist;
             return View();
         }
 
@@ -48,14 +55,23 @@ namespace WebApplicationGrupp13.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,postText,title,creator,dateTime,category")] ResearchBlogPost researchBlogPost)
         {
-            if (ModelState.IsValid)
+            var categories = db.ResearchBlogPostCategories.ToList();
+            List<string> categorylist = new List<string>();
+            foreach (ResearchBlogPostCategory ct in categories)
             {
-                db.ResearchBlogPosts.Add(researchBlogPost);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                categorylist.Add(ct.name);
             }
+            ViewBag.CategoryList = categorylist;
 
-            return View(researchBlogPost);
+            var test = researchBlogPost.category;
+
+
+            researchBlogPost.creator = User.Identity.Name;
+            researchBlogPost.dateTime = DateTime.Now;
+            db.ResearchBlogPosts.Add(researchBlogPost);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
         }
 
         // GET: ResearchBlogPosts/Edit/5
@@ -78,8 +94,11 @@ namespace WebApplicationGrupp13.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,postText,title,creator,dateTime,category")] ResearchBlogPost researchBlogPost)
+        public ActionResult Edit([Bind(Include = "id,postText,title,category")] ResearchBlogPost researchBlogPost)
         {
+            researchBlogPost.creator = User.Identity.Name;
+            researchBlogPost.dateTime = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 db.Entry(researchBlogPost).State = EntityState.Modified;

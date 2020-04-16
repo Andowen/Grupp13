@@ -10,10 +10,10 @@ namespace WebApplicationGrupp13.Models
     public class ViewedNotifications
     {
         [Key]
-        public string ID { get; set; }
-        public string PostID { get; set; }
+        public int ViewedId { get; set; }
+        public string PostId { get; set; }
         public PostType PostType { get; set; }
-        public string UserID { get; set; }
+        public string UserId { get; set; }
         public DateTime TimeStamp { get; set; }
     }
 }
