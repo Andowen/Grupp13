@@ -247,6 +247,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\NotificationControllerBase.cs" />
+    <Compile Include="Controllers\ResearchBlogPostCategoriesController.cs" />
     <Compile Include="Controllers\ResearchBlogPostsController.cs" />
     <Compile Include="Enums\NotificationType.cs" />
     <Compile Include="Enums\PostType.cs" />
@@ -499,6 +500,11 @@
     <Content Include="Views\EducationalBlogPosts\Edit.cshtml" />
     <Content Include="Views\EducationalBlogPosts\Index.cshtml" />
     <Content Include="Views\Notification\Index.cshtml" />
+    <Content Include="Views\ResearchBlogPostCategories\Create.cshtml" />
+    <Content Include="Views\ResearchBlogPostCategories\Delete.cshtml" />
+    <Content Include="Views\ResearchBlogPostCategories\Details.cshtml" />
+    <Content Include="Views\ResearchBlogPostCategories\Edit.cshtml" />
+    <Content Include="Views\ResearchBlogPostCategories\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
