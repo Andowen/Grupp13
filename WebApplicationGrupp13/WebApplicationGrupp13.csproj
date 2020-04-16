@@ -414,6 +414,10 @@
     <Compile Include="Migrations\202004161126450_updatedID_UserNotifications2.Designer.cs">
       <DependentUpon>202004161126450_updatedID_UserNotifications2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004161503265_meetMeetings.cs" />
+    <Compile Include="Migrations\202004161503265_meetMeetings.Designer.cs">
+      <DependentUpon>202004161503265_meetMeetings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
@@ -666,6 +670,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004161126450_updatedID_UserNotifications2.resx">
       <DependentUpon>202004161126450_updatedID_UserNotifications2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004161503265_meetMeetings.resx">
+      <DependentUpon>202004161503265_meetMeetings.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
