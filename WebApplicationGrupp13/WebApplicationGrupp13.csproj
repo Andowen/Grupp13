@@ -424,6 +424,7 @@
     <Compile Include="Models\InformalBlogPost.cs" />
     <Compile Include="Models\InformalBlogPostCategory.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Meetings.cs" />
     <Compile Include="Models\NotificationViewModel.cs" />
     <Compile Include="Models\ResearchBlogPost.cs" />
     <Compile Include="Models\ResearchBlogPostCategory.cs" />
