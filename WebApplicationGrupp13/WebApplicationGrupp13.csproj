@@ -240,6 +240,7 @@
     <Compile Include="Controllers\CalenderController.cs" />
     <Compile Include="Controllers\EducationalBlogPostsController.cs" />
     <Compile Include="Controllers\FormalBlogPostCategoriesController.cs" />
+    <Compile Include="Controllers\FormalBlogPostCommentsController.cs" />
     <Compile Include="Controllers\FormalBlogPostsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InformalBlogPostCategoriesController.cs" />
@@ -337,12 +338,17 @@
     <Compile Include="Migrations\202004141248395_addedResearchCategories.Designer.cs">
       <DependentUpon>202004141248395_addedResearchCategories.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004150803095_formalblogpostcomment.cs" />
+    <Compile Include="Migrations\202004150803095_formalblogpostcomment.Designer.cs">
+      <DependentUpon>202004150803095_formalblogpostcomment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
     <Compile Include="Models\EducationalPost.cs" />
     <Compile Include="Models\FormalBlogPost.cs" />
     <Compile Include="Models\FormalBlogPostCategory.cs" />
+    <Compile Include="Models\FormalBlogPostComment.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\InformalBlogPost.cs" />
     <Compile Include="Models\InformalBlogPostCategory.cs" />
@@ -444,6 +450,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="FormalBlogPostUploads\" />
     <Folder Include="Views\EduPosts\" />
+    <Folder Include="Views\FormalBlogPostComments\" />
+    <Folder Include="Views\FormalBlogPostComment\" />
     <Folder Include="Views\Research\" />
   </ItemGroup>
   <ItemGroup>
@@ -525,6 +533,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004141333378_komigennu.resx">
       <DependentUpon>202004141333378_komigennu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004150803095_formalblogpostcomment.resx">
+      <DependentUpon>202004150803095_formalblogpostcomment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

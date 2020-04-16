@@ -21,6 +21,10 @@ namespace WebApplicationGrupp13.Controllers
        public FormalBlogPostsController() {
 
         }
+        public static FormalBlogPost GetBlogPostFromId(int id) {
+            ApplicationDbContext dbContext = new ApplicationDbContext();
+            return dbContext.BlogPosts.Find(id);
+        }
 
         public static string GetDateFromDateTime(DateTime dateTime) {
 
@@ -223,8 +227,11 @@ namespace WebApplicationGrupp13.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,postText,title")] FormalBlogPost formalBlogPost)
+        public ActionResult Edit([Bind(Include = "id,postText,title,creator")] FormalBlogPost formalBlogPost)
         {
+            formalBlogPost.creator = User.Identity.Name;
+            formalBlogPost.dateTime = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 db.Entry(formalBlogPost).State = EntityState.Modified;

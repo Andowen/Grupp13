@@ -27,7 +27,7 @@ textarea {
 }
 .formalBlogPostContent{
     
-    height: 200px;
+    height: 400px;
    
 }
 .authorTime{
@@ -38,8 +38,15 @@ textarea {
     float: right;
 }
 .blogButtons {
-    border-bottom-style: dotted;
-    border-bottom-color: lightslategrey;
+    border-bottom-style: solid;
+    border-bottom-color: blue;
     border-bottom-width: 1px;
+}
+.formalBlogPostComments {
+    border-bottom-style: dotted;
+    border-bottom-color: lightgrey;
+    border-bottom-width: 0.5px;
+   
+    
 }
 

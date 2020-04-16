@@ -46,6 +46,7 @@ namespace WebApplicationGrupp13.Models
         public DbSet<ResearchBlogPost> ResearchBlogPosts { get; set; }
 
         public DbSet<ResearchBlogPostCategory> ResearchBlogPostCategories { get; set; }
+        public DbSet<FormalBlogPostComment> FormalBlogPostComments { get; set; }
 
 
     }
