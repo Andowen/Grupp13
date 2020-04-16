@@ -393,6 +393,10 @@
     <Compile Include="Migrations\202004151450288_updatedViewedNotifications.Designer.cs">
       <DependentUpon>202004151450288_updatedViewedNotifications.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004161430287_educational_formal_post_change.cs" />
+    <Compile Include="Migrations\202004161430287_educational_formal_post_change.Designer.cs">
+      <DependentUpon>202004161430287_educational_formal_post_change.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
@@ -624,6 +628,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004151450288_updatedViewedNotifications.resx">
       <DependentUpon>202004151450288_updatedViewedNotifications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004161430287_educational_formal_post_change.resx">
+      <DependentUpon>202004161430287_educational_formal_post_change.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
