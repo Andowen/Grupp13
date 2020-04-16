@@ -394,6 +394,22 @@
     <Compile Include="Migrations\202004151450288_updatedViewedNotifications.Designer.cs">
       <DependentUpon>202004151450288_updatedViewedNotifications.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004161110090_updatedID_UserNotifications.cs" />
+    <Compile Include="Migrations\202004161110090_updatedID_UserNotifications.Designer.cs">
+      <DependentUpon>202004161110090_updatedID_UserNotifications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004161111015_updatedID_ViewedNotifications.cs" />
+    <Compile Include="Migrations\202004161111015_updatedID_ViewedNotifications.Designer.cs">
+      <DependentUpon>202004161111015_updatedID_ViewedNotifications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004161124550_updatedID_ViewedNotifications2.cs" />
+    <Compile Include="Migrations\202004161124550_updatedID_ViewedNotifications2.Designer.cs">
+      <DependentUpon>202004161124550_updatedID_ViewedNotifications2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004161126450_updatedID_UserNotifications2.cs" />
+    <Compile Include="Migrations\202004161126450_updatedID_UserNotifications2.Designer.cs">
+      <DependentUpon>202004161126450_updatedID_UserNotifications2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
@@ -630,6 +646,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004151450288_updatedViewedNotifications.resx">
       <DependentUpon>202004151450288_updatedViewedNotifications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004161110090_updatedID_UserNotifications.resx">
+      <DependentUpon>202004161110090_updatedID_UserNotifications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004161111015_updatedID_ViewedNotifications.resx">
+      <DependentUpon>202004161111015_updatedID_ViewedNotifications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004161124550_updatedID_ViewedNotifications2.resx">
+      <DependentUpon>202004161124550_updatedID_ViewedNotifications2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004161126450_updatedID_UserNotifications2.resx">
+      <DependentUpon>202004161126450_updatedID_UserNotifications2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
