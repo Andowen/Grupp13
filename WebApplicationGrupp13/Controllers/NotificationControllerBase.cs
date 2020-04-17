@@ -11,7 +11,8 @@ namespace WebApplicationGrupp13.Controllers
         public NotificationControllerBase()
         {
             //Mock-up notisräknare
-            ViewBag.Notifications = DateTime.Now.Second;
+            //  ViewBag.Notifications = DateTime.Now.Second;
+            ViewBag.Notifications = 0; 
         }
     }
 }
