@@ -8,10 +8,15 @@ namespace WebApplicationGrupp13.Models {
     public class EducationalPost {
         [Key]
         public int id { get; set; }
+        [Display(Name = "Innehåll")]
         public string postText { get; set; }
+        [Display(Name = "Titel")]
         public string title { get; set; }
+        [Display(Name = "Författare")]
         public string creator { get; set; }
+        [Display(Name = "Datum")]
         public DateTime dateTime { get; set; }
+        [Display(Name = "Ämne")]
         public string subject { get; set; }
 
 

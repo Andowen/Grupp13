@@ -1,0 +1,28 @@
+﻿@model WebApplicationGrupp13.Models.ResearchBlogPostCategory
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Radera</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Radera kategori" class="btn btn-default" /> |
+            @Html.ActionLink("Tillbaka till kategorierna", "Index")
+        </div>
+    }
+</div>
