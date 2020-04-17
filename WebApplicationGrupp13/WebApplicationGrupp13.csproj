@@ -536,6 +536,7 @@
     <Content Include="Views\ResearchBlogPostCategories\Details.cshtml" />
     <Content Include="Views\ResearchBlogPostCategories\Edit.cshtml" />
     <Content Include="Views\ResearchBlogPostCategories\Index.cshtml" />
+    <Content Include="Views\Manage\EditUserInformation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

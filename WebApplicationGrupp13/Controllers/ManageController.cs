@@ -106,6 +106,12 @@ namespace WebApplicationGrupp13.Controllers
             return View();
         }
 
+        public ActionResult EditUserInformation() 
+        {
+            return View();
+        }
+
+
         //
         // POST: /Manage/AddPhoneNumber
         [HttpPost]
