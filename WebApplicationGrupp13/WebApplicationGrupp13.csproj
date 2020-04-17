@@ -456,6 +456,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
+    <Compile Include="Models\EditInformationViewModel.cs" />
     <Compile Include="Models\EducationalPost.cs" />
     <Compile Include="Models\EducationalPostCategory.cs" />
     <Compile Include="Models\FormalBlogPost.cs" />
