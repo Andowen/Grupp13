@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<WebApplicationGrupp13.Models.NotificationViewModel>
+@using WebApplicationGrupp13.Enums;
 
 @{
     ViewBag.Title = "Index";
@@ -7,10 +8,34 @@
 <h2>Notiser</h2>
 
 
-<table>
+
 @foreach (var item in Model)
-{
-    <tr>
+{<div class="row">
+     <div class="col-md-4 col-md-offset-2">
+         @switch (item.PostType)
+         {
+             case PostType.Formal:
+                 <span>@Html.ActionLink($"Information: {item.Title} av {item.Author}", "Details", "FormalBlogPosts", routeValues: new { Id = item.PostId }, htmlAttributes: null)</span>
+                 break;
+             case PostType.Informal:
+                <span>@Html.ActionLink($"Information: {item.Title} av {item.Author}", "Details", "InformalBlogPosts", routeValues: new { Id = item.PostId }, htmlAttributes: null)</span>
+                 break;
+             case PostType.Education:
+                <span>@Html.ActionLink($"Information: {item.Title} av {item.Author}", "Details", "EducationalBlogPosts", routeValues: new { Id = item.PostId }, htmlAttributes: null)</span>
+                 break;
+             case PostType.Research:
+                <span>@Html.ActionLink($"Information: {item.Title} av {item.Author}", "Details", "ResearchBlogPosts", routeValues: new { Id = item.PostId }, htmlAttributes: null)</span>
+                 break;
+             //case PostType.Calender:
+             //    break;
+             default:
+                 break;
+
+         }
+     </div>
+    </div>
+
+    @*<tr>
         <td>
             @Html.DisplayFor(modelItem => item.PostType)
         </td>
@@ -23,7 +48,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.IsNew)
         </td>
-    </tr>
-}
+    </tr>*@
+    }
 
-</table>
+
