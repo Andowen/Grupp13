@@ -19,6 +19,14 @@ namespace WebApplicationGrupp13.Controllers
         // GET: EducationalBlogPosts
         public ActionResult Index()
         {
+            List<string> ct = new List<string>();
+            foreach (EducationalPostCategory category in db.EducationalPostCategories) {
+                ct.Add(category.category);
+            }
+
+
+            ViewBag.CategoryList = ct;
+
             return View(db.EduPosts.ToList());
         }
 
@@ -151,6 +159,13 @@ namespace WebApplicationGrupp13.Controllers
         // GET: EducationalBlogPosts/Create
         public ActionResult Create()
         {
+            var categories = db.EducationalPostCategories.ToList();
+            List<string> categorylist = new List<string>();
+            foreach (EducationalPostCategory ct in categories) {
+                categorylist.Add(ct.category);
+            }
+            ViewBag.CategoryList = categorylist;
+
             return View();
         }
 
@@ -159,11 +174,17 @@ namespace WebApplicationGrupp13.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,postText,title,subject")] EducationalPost educationalPost)
+        public ActionResult Create([Bind(Include = "id,postText,title,category")] EducationalPost educationalPost)
         {
-
+            var categories = db.EducationalPostCategories.ToList();
+            List<string> categorylist = new List<string>();
+            foreach (EducationalPostCategory ct in categories) {
+                categorylist.Add(ct.category);
+            }
+            ViewBag.CategoryList = categorylist;
             educationalPost.creator = User.Identity.Name;
             educationalPost.dateTime = DateTime.Now;
+
             db.EduPosts.Add(educationalPost);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -189,7 +210,7 @@ namespace WebApplicationGrupp13.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,postText,title,subject")] EducationalPost educationalPost)
+        public ActionResult Edit([Bind(Include = "id,postText,title,category")] EducationalPost educationalPost)
         {
             educationalPost.creator = User.Identity.Name;
             educationalPost.dateTime = DateTime.Now;
