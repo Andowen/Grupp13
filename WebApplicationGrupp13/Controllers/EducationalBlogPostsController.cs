@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WebApplicationGrupp13.Enums;
 using WebApplicationGrupp13.Models;
 
 namespace WebApplicationGrupp13.Controllers
@@ -105,6 +107,38 @@ namespace WebApplicationGrupp13.Controllers
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            else
+            {
+                try
+                {
+                    using (var context = new ApplicationDbContext())
+                    {
+                        var currentUser = User.Identity.GetUserId();
+                        var postId = id.Value;
+                        var postType = PostType.Education;
+                        var exists = context.ViewedNotifications
+                            .Any(x => x.PostId == postId &&
+                                      x.PostType == postType &&
+                                      x.UserId == currentUser);
+                        if (!exists)
+                        {
+                            var viewedNotification = new ViewedNotifications
+                            {
+                                PostId = postId,
+                                UserId = currentUser,
+                                PostType = postType,
+                                TimeStamp = DateTime.Now
+                            };
+                            context.ViewedNotifications.Add(viewedNotification);
+                            context.SaveChanges();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
             EducationalPost educationalPost = db.EduPosts.Find(id);
             if (educationalPost == null)

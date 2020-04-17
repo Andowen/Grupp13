@@ -32,7 +32,7 @@ namespace WebApplicationGrupp13.Controllers
             var service = new NotificationService();
             var result = service.GetNotifications(currentUser, userName);
 
-            return result.Select(x => x.IsNew).Count();
+            return result.Where(x => x.IsNew).Count();
         }
     }
 }
