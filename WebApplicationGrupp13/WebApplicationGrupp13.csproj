@@ -239,6 +239,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CalenderController.cs" />
     <Compile Include="Controllers\EducationalBlogPostsController.cs" />
+    <Compile Include="Controllers\EducationalPostCategoriesController.cs" />
     <Compile Include="Controllers\FormalBlogPostCategoriesController.cs" />
     <Compile Include="Controllers\FormalBlogPostCommentsController.cs" />
     <Compile Include="Controllers\FormalBlogPostsController.cs" />
@@ -436,10 +437,19 @@
     <Compile Include="Migrations\202004161258436_updatedID_ViewedNotifications3.Designer.cs">
       <DependentUpon>202004161258436_updatedID_ViewedNotifications3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004170906004_1105max.cs" />
+    <Compile Include="Migrations\202004170906004_1105max.Designer.cs">
+      <DependentUpon>202004170906004_1105max.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004170923260_educationalpostcategories.cs" />
+    <Compile Include="Migrations\202004170923260_educationalpostcategories.Designer.cs">
+      <DependentUpon>202004170923260_educationalpostcategories.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
     <Compile Include="Models\EducationalPost.cs" />
+    <Compile Include="Models\EducationalPostCategory.cs" />
     <Compile Include="Models\FormalBlogPost.cs" />
     <Compile Include="Models\FormalBlogPostCategory.cs" />
     <Compile Include="Models\FormalBlogPostComment.cs" />
@@ -550,6 +560,11 @@
     <Content Include="Views\ResearchBlogPostCategories\Details.cshtml" />
     <Content Include="Views\ResearchBlogPostCategories\Edit.cshtml" />
     <Content Include="Views\ResearchBlogPostCategories\Index.cshtml" />
+    <Content Include="Views\EducationalPostCategories\Create.cshtml" />
+    <Content Include="Views\EducationalPostCategories\Delete.cshtml" />
+    <Content Include="Views\EducationalPostCategories\Details.cshtml" />
+    <Content Include="Views\EducationalPostCategories\Edit.cshtml" />
+    <Content Include="Views\EducationalPostCategories\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -704,6 +719,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004161643489_hwello.resx">
       <DependentUpon>202004161643489_hwello.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004170906004_1105max.resx">
+      <DependentUpon>202004170906004_1105max.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004170923260_educationalpostcategories.resx">
+      <DependentUpon>202004170923260_educationalpostcategories.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

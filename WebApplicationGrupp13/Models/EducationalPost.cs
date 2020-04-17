@@ -16,8 +16,8 @@ namespace WebApplicationGrupp13.Models {
         public string creator { get; set; }
         [Display(Name = "Datum")]
         public DateTime dateTime { get; set; }
-        [Display(Name = "Ämne")]
-        public string subject { get; set; }
+        [Display(Name = "Kategori")]
+        public string category { get; set; }
 
 
     }

@@ -21,6 +21,7 @@ namespace WebApplicationGrupp13.Controllers
                 //ViewBag.Notifications = DateTime.Now.Second;
                 var count = CountNotifications();
                 ViewBag.Notifications = count;
+                
             }
             base.OnActionExecuted(filterContext);
         }
