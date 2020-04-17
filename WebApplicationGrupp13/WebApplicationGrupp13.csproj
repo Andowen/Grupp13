@@ -240,6 +240,7 @@
     <Compile Include="Controllers\CalenderController.cs" />
     <Compile Include="Controllers\EducationalBlogPostsController.cs" />
     <Compile Include="Controllers\FormalBlogPostCategoriesController.cs" />
+    <Compile Include="Controllers\FormalBlogPostCommentsController.cs" />
     <Compile Include="Controllers\FormalBlogPostsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InformalBlogPostCategoriesController.cs" />
@@ -251,6 +252,11 @@
     <Compile Include="Controllers\ResearchBlogPostsController.cs" />
     <Compile Include="Enums\NotificationType.cs" />
     <Compile Include="Enums\PostType.cs" />
+    <Compile Include="Extensions\CalenderViewModelExtensions.cs" />
+    <Compile Include="Extensions\EducationalPostExtensions.cs" />
+    <Compile Include="Extensions\FormalBlogPostExtensions.cs" />
+    <Compile Include="Extensions\InformalBlogPostExtensions.cs" />
+    <Compile Include="Extensions\ResearchBlogPostExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -418,22 +424,37 @@
     <Compile Include="Migrations\202004161440014_vadfan.Designer.cs">
       <DependentUpon>202004161440014_vadfan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004161538561_giulia.cs" />
+    <Compile Include="Migrations\202004161538561_giulia.Designer.cs">
+      <DependentUpon>202004161538561_giulia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004161643489_hwello.cs" />
+    <Compile Include="Migrations\202004161643489_hwello.Designer.cs">
+      <DependentUpon>202004161643489_hwello.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004161258436_updatedID_ViewedNotifications3.cs" />
+    <Compile Include="Migrations\202004161258436_updatedID_ViewedNotifications3.Designer.cs">
+      <DependentUpon>202004161258436_updatedID_ViewedNotifications3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
     <Compile Include="Models\EducationalPost.cs" />
     <Compile Include="Models\FormalBlogPost.cs" />
     <Compile Include="Models\FormalBlogPostCategory.cs" />
+    <Compile Include="Models\FormalBlogPostComment.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\InformalBlogPost.cs" />
     <Compile Include="Models\InformalBlogPostCategory.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Meetings.cs" />
     <Compile Include="Models\NotificationViewModel.cs" />
     <Compile Include="Models\ResearchBlogPost.cs" />
     <Compile Include="Models\ResearchBlogPostCategory.cs" />
     <Compile Include="Models\UserNotifications.cs" />
     <Compile Include="Models\ViewedNotifications.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\NotificationService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -534,6 +555,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="FormalBlogPostUploads\" />
     <Folder Include="Views\EduPosts\" />
+    <Folder Include="Views\FormalBlogPostComments\" />
+    <Folder Include="Views\FormalBlogPostComment\" />
     <Folder Include="Views\Research\" />
   </ItemGroup>
   <ItemGroup>
@@ -672,6 +695,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004161440014_vadfan.resx">
       <DependentUpon>202004161440014_vadfan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004161258436_updatedID_ViewedNotifications3.resx">
+      <DependentUpon>202004161258436_updatedID_ViewedNotifications3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004161538561_giulia.resx">
+      <DependentUpon>202004161538561_giulia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004161643489_hwello.resx">
+      <DependentUpon>202004161643489_hwello.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

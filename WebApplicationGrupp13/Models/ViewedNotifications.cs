@@ -11,7 +11,7 @@ namespace WebApplicationGrupp13.Models
     {
         [Key]
         public int ViewedId { get; set; }
-        public string PostId { get; set; }
+        public int PostId { get; set; }
         public PostType PostType { get; set; }
         public string UserId { get; set; }
         public DateTime TimeStamp { get; set; }
