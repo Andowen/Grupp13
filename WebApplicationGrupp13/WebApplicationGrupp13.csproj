@@ -449,9 +449,18 @@
     <Compile Include="Migrations\202004170845287_test3.Designer.cs">
       <DependentUpon>202004170845287_test3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004171219448_agnesTestar.cs" />
+    <Compile Include="Migrations\202004171219448_agnesTestar.Designer.cs">
+      <DependentUpon>202004171219448_agnesTestar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004200842108_EditInfoViewModel.cs" />
+    <Compile Include="Migrations\202004200842108_EditInfoViewModel.Designer.cs">
+      <DependentUpon>202004200842108_EditInfoViewModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
+    <Compile Include="Models\EditInformationViewModel.cs" />
     <Compile Include="Models\EducationalPost.cs" />
     <Compile Include="Models\EducationalPostCategory.cs" />
     <Compile Include="Models\FormalBlogPost.cs" />
@@ -734,6 +743,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004170845287_test3.resx">
       <DependentUpon>202004170845287_test3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004171219448_agnesTestar.resx">
+      <DependentUpon>202004171219448_agnesTestar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004200842108_EditInfoViewModel.resx">
+      <DependentUpon>202004200842108_EditInfoViewModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

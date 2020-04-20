@@ -75,6 +75,36 @@ namespace WebApplicationGrupp13.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public ActionResult EditInfoNew(EditInformationViewModel model)
+        {
+            var ctx = new ApplicationDbContext();
+            var user = User.Identity.GetUserId();
+            var account = ctx.Users.FirstOrDefault(a => a.Id == user);
+
+            if (!model.Firstname.Equals(account.Firstname))
+            {
+                account.Firstname = model.Firstname;
+            }
+
+            if (!model.Lastname.Equals(account.Lastname))
+            {
+                account.Lastname = model.Lastname;
+
+            }
+
+            if (!model.Mobilenumber.Equals(account.Mobilenumber))
+            {
+                account.Mobilenumber = model.Mobilenumber;
+            }
+
+            ctx.SaveChanges();
+
+            //return View("EditUserInformation");
+            return RedirectToAction("Index");
+
+        }
+
         //
         // POST: /Manage/RemoveLogin
         [HttpPost]
@@ -106,9 +136,20 @@ namespace WebApplicationGrupp13.Controllers
             return View();
         }
 
-        public ActionResult EditUserInformation() 
+        public ActionResult EditUserInformation([Bind(Include = "Firstname, Lastname, Mobilenumber")]EditInformationViewModel model) 
         {
-            return View();
+            var ctx = new ApplicationDbContext();
+            var edit = new EditInformationViewModel();
+            var user = User.Identity.GetUserId();
+            var account = ctx.Users.FirstOrDefault(a => a.Id == user);
+
+            edit.Firstname = account.Firstname;
+            edit.Lastname = account.Lastname;
+            edit.Mobilenumber = account.Mobilenumber;
+
+
+
+            return View(edit);
         }
 
 
