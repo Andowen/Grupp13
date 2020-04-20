@@ -457,6 +457,10 @@
     <Compile Include="Migrations\202004200842108_EditInfoViewModel.Designer.cs">
       <DependentUpon>202004200842108_EditInfoViewModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004201214388_profilbildTest.cs" />
+    <Compile Include="Migrations\202004201214388_profilbildTest.Designer.cs">
+      <DependentUpon>202004201214388_profilbildTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
@@ -584,6 +588,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="FormalBlogPostUploads\" />
+    <Folder Include="Image\" />
     <Folder Include="Views\EduPosts\" />
     <Folder Include="Views\FormalBlogPostComments\" />
     <Folder Include="Views\FormalBlogPostComment\" />
@@ -749,6 +754,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004200842108_EditInfoViewModel.resx">
       <DependentUpon>202004200842108_EditInfoViewModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004201214388_profilbildTest.resx">
+      <DependentUpon>202004201214388_profilbildTest.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

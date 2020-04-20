@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web;
 
 namespace WebApplicationGrupp13.Models
 {
@@ -94,6 +95,10 @@ namespace WebApplicationGrupp13.Models
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [Display(Name = "Telefonnummer")]
         public string Mobilenumber { get; set; }
+
+        [Display(Name = "Profilbild")]
+        public string Img { get; set; }
+        public HttpPostedFileBase ImageFile { get; set; }
     }
 
     public class ResetPasswordViewModel
