@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<WebApplicationGrupp13.Models.NotificationViewModel>
 @using WebApplicationGrupp13.Enums;
+@using Microsoft.AspNet.Identity
 
 @{
     ViewBag.Title = "Index";
@@ -8,47 +9,139 @@
 <h2>Notiser</h2>
 
 
+<div class="row">
+    <div class="col-md-9">
+        @foreach (var item in Model)
+        {<div class="row">
+                <div class="col-md-12">
+                    @switch (item.PostType)
+                    {
+                        case PostType.Formal:
+                            <div class="col-md-12">
+                                <a href="@Url.Action("Details", "FormalBlogPosts", new {id = item.PostId })">
+                                    <div class="row @Html.Raw(item.IsNew? "newNotification" : "oldNotification")">
+                                        <div class="col-md-1">
+                                            <span class="noti glyphicon glyphicon-list-alt postType"></span>
+                                            @if (item.IsNew)
+                                            {
+                                                <span class="badge isNew">Nytt</span>
+                                            }
+                                        </div>
+                                        <div class="col-md-11">
 
-@foreach (var item in Model)
-{<div class="row">
-     <div class="col-md-4 col-md-offset-2">
-         @switch (item.PostType)
-         {
-             case PostType.Formal:
-                 <span>@Html.ActionLink($"Information: {item.Title} av {item.Author}", "Details", "FormalBlogPosts", routeValues: new { Id = item.PostId }, htmlAttributes: null)</span>
-                 break;
-             case PostType.Informal:
-                <span>@Html.ActionLink($"Information: {item.Title} av {item.Author}", "Details", "InformalBlogPosts", routeValues: new { Id = item.PostId }, htmlAttributes: null)</span>
-                 break;
-             case PostType.Education:
-                <span>@Html.ActionLink($"Information: {item.Title} av {item.Author}", "Details", "EducationalBlogPosts", routeValues: new { Id = item.PostId }, htmlAttributes: null)</span>
-                 break;
-             case PostType.Research:
-                <span>@Html.ActionLink($"Information: {item.Title} av {item.Author}", "Details", "ResearchBlogPosts", routeValues: new { Id = item.PostId }, htmlAttributes: null)</span>
-                 break;
-             //case PostType.Calender:
-             //    break;
-             default:
-                 break;
+                                            <p class="topRow">
+                                                <span class="authorName">@item.Author</span> har skrivit ett inlägg: @item.Title
+                                            </p>
+                                            <div class="col-sm-2 type">
+                                                <p class="bottomRow">Information</p>
+                                            </div>
+                                            <div class="col-sm-10 date">
+                                                <p class="bottomRow">@item.Date</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <hr class="notificationDivider" />
+                            </div>
 
-         }
-     </div>
+                            break;
+                        case PostType.Informal:
+                            <div class="col-md-12">
+                                <a href="@Url.Action("Details", "InformalBlogPosts", new {id = item.PostId })">
+                                    <div class="row @Html.Raw(item.IsNew? "newNotification" : "oldNotification")">
+                                        <div class="col-md-1">
+                                            <span class="noti glyphicon glyphicon-comment postType"></span>
+                                            @if (item.IsNew)
+                                            {
+                                                <span class="badge isNew">Nytt</span>
+                                            }
+                                        </div>
+                                        <div class="col-md-11">
+                                            <p class="topRow">
+                                                <span class="authorName">@item.Author</span> har skrivit ett inlägg: @item.Title
+                                            </p>
+                                            <div class="col-sm-2 type">
+                                                <p class="bottomRow">Anslagstavla</p>
+                                            </div>
+                                            <div class="col-sm-10 date">
+                                                <p class="bottomRow">@item.Date</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <hr class="notificationDivider" />
+                            </div>
+                            break;
+                        case PostType.Education:
+                            <div class="col-md-12">
+                                <a href="@Url.Action("Details", "EducationalBlogPosts", new {id = item.PostId })">
+                                    <div class="row @Html.Raw(item.IsNew? "newNotification" : "oldNotification")">
+                                        <div class="col-md-1">
+                                            <span class="noti glyphicon glyphicon-education postType"></span>
+                                            @if (item.IsNew)
+                                            {
+                                                <span class="badge isNew">Nytt</span>
+                                            }
+                                        </div>
+                                        <div class="col-md-11">
+
+                                            <p class="topRow">
+                                                <span class="authorName">@item.Author</span> har skrivit ett inlägg: @item.Title
+                                            </p>
+                                            <div class="col-sm-2 type">
+                                                <p class="bottomRow">Utbildning</p>
+                                            </div>
+                                            <div class="col-sm-10 date">
+                                                <p class="bottomRow">@item.Date</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                <hr class="notificationDivider" />
+                            </div>
+                            break;
+                        case PostType.Research:
+                            <div class="col-md-12">
+                                <a href="@Url.Action("Details", "ResearchBlogPosts", new {id = item.PostId })">
+                                    <div class="row @Html.Raw(item.IsNew? "newNotification" : "oldNotification")">
+                                        <div class="col-md-1">
+                                            <span class="noti glyphicon glyphicon-folder-open postType"></span>
+                                            @if (item.IsNew)
+                                            {
+                                                <span class="badge isNew">Nytt</span>
+                                            }
+                                        </div>
+                                        <div class="col-md-11">
+                                            <p class="topRow">
+                                                <span class="authorName">@item.Author</span> har skrivit ett inlägg: @item.Title
+                                            </p>
+                                            <div class="col-sm-2 type">
+                                                <p class="bottomRow">Forskning</p>
+                                            </div>
+                                            <div class="col-sm-10 date">
+                                                <p class="bottomRow">@item.Date</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </a>
+                                <hr class="notificationDivider" />
+                            </div>
+                            break;
+                        //case PostType.Calender:
+                        //    break;
+                        default:
+                            break;
+
+                    }
+                </div>
+            </div>
+        }
     </div>
-
-    @*<tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Author)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsNew)
-        </td>
-    </tr>*@
-    }
+    <div class="col-md-3">
+        <input type="button" class="btn btn-default" value="Aviseringsinställningar" onclick="location.href='@Url.Action("ChangeSettings", "Notification" , new { userId= User.Identity.GetUserId() })'" />
+    </div>
+</div>
 
 
