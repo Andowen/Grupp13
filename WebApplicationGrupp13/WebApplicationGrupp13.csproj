@@ -432,6 +432,10 @@
     <Compile Include="Migrations\202004161258436_updatedID_ViewedNotifications3.Designer.cs">
       <DependentUpon>202004161258436_updatedID_ViewedNotifications3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004171012547_fåbortpending.cs" />
+    <Compile Include="Migrations\202004171012547_fåbortpending.Designer.cs">
+      <DependentUpon>202004171012547_fåbortpending.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
@@ -697,6 +701,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004161643489_hwello.resx">
       <DependentUpon>202004161643489_hwello.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004171012547_fåbortpending.resx">
+      <DependentUpon>202004171012547_fåbortpending.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
