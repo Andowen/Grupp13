@@ -75,23 +75,6 @@ namespace WebApplicationGrupp13.Controllers
             return View(model);
         }
 
-        public ActionResult EditInfo()
-        {
-            var ctx = new ApplicationDbContext();
-            var edit = new EditInformationViewModel();
-            var user = User.Identity.GetUserId();
-            var account = ctx.Users.FirstOrDefault(a => a.Id == user);
-
-            edit.Firstname = account.Firstname;
-            edit.Lastname = account.Lastname;
-            edit.Mobilenumber = account.Mobilenumber;
-
-
-
-            return View(edit);
-
-        }
-
         [HttpPost]
         public ActionResult EditInfoNew(EditInformationViewModel model)
         {
@@ -117,7 +100,8 @@ namespace WebApplicationGrupp13.Controllers
 
             ctx.SaveChanges();
 
-            return View("EditUserInformation");
+            //return View("EditUserInformation");
+            return RedirectToAction("Index");
 
         }
 
@@ -152,9 +136,20 @@ namespace WebApplicationGrupp13.Controllers
             return View();
         }
 
-        public ActionResult EditUserInformation() 
+        public ActionResult EditUserInformation([Bind(Include = "Firstname, Lastname, Mobilenumber")]EditInformationViewModel model) 
         {
-            return View();
+            var ctx = new ApplicationDbContext();
+            var edit = new EditInformationViewModel();
+            var user = User.Identity.GetUserId();
+            var account = ctx.Users.FirstOrDefault(a => a.Id == user);
+
+            edit.Firstname = account.Firstname;
+            edit.Lastname = account.Lastname;
+            edit.Mobilenumber = account.Mobilenumber;
+
+
+
+            return View(edit);
         }
 
 

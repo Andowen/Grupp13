@@ -453,6 +453,10 @@
     <Compile Include="Migrations\202004171219448_agnesTestar.Designer.cs">
       <DependentUpon>202004171219448_agnesTestar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004200842108_EditInfoViewModel.cs" />
+    <Compile Include="Migrations\202004200842108_EditInfoViewModel.Designer.cs">
+      <DependentUpon>202004200842108_EditInfoViewModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
@@ -742,6 +746,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004171219448_agnesTestar.resx">
       <DependentUpon>202004171219448_agnesTestar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004200842108_EditInfoViewModel.resx">
+      <DependentUpon>202004200842108_EditInfoViewModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
