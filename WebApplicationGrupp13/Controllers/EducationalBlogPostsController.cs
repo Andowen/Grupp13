@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WebApplicationGrupp13.Enums;
 using WebApplicationGrupp13.Models;
 
 namespace WebApplicationGrupp13.Controllers
@@ -17,6 +19,14 @@ namespace WebApplicationGrupp13.Controllers
         // GET: EducationalBlogPosts
         public ActionResult Index()
         {
+            List<string> ct = new List<string>();
+            foreach (EducationalPostCategory category in db.EducationalPostCategories) {
+                ct.Add(category.category);
+            }
+
+
+            ViewBag.CategoryList = ct;
+
             return View(db.EduPosts.ToList());
         }
 
@@ -106,6 +116,38 @@ namespace WebApplicationGrupp13.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            else
+            {
+                try
+                {
+                    using (var context = new ApplicationDbContext())
+                    {
+                        var currentUser = User.Identity.GetUserId();
+                        var postId = id.Value;
+                        var postType = PostType.Education;
+                        var exists = context.ViewedNotifications
+                            .Any(x => x.PostId == postId &&
+                                      x.PostType == postType &&
+                                      x.UserId == currentUser);
+                        if (!exists)
+                        {
+                            var viewedNotification = new ViewedNotifications
+                            {
+                                PostId = postId,
+                                UserId = currentUser,
+                                PostType = postType,
+                                TimeStamp = DateTime.Now
+                            };
+                            context.ViewedNotifications.Add(viewedNotification);
+                            context.SaveChanges();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
             EducationalPost educationalPost = db.EduPosts.Find(id);
             if (educationalPost == null)
             {
@@ -117,6 +159,13 @@ namespace WebApplicationGrupp13.Controllers
         // GET: EducationalBlogPosts/Create
         public ActionResult Create()
         {
+            var categories = db.EducationalPostCategories.ToList();
+            List<string> categorylist = new List<string>();
+            foreach (EducationalPostCategory ct in categories) {
+                categorylist.Add(ct.category);
+            }
+            ViewBag.CategoryList = categorylist;
+
             return View();
         }
 
@@ -125,11 +174,17 @@ namespace WebApplicationGrupp13.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,postText,title,subject")] EducationalPost educationalPost)
+        public ActionResult Create([Bind(Include = "id,postText,title,category")] EducationalPost educationalPost)
         {
-
+            var categories = db.EducationalPostCategories.ToList();
+            List<string> categorylist = new List<string>();
+            foreach (EducationalPostCategory ct in categories) {
+                categorylist.Add(ct.category);
+            }
+            ViewBag.CategoryList = categorylist;
             educationalPost.creator = User.Identity.Name;
             educationalPost.dateTime = DateTime.Now;
+
             db.EduPosts.Add(educationalPost);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -155,7 +210,7 @@ namespace WebApplicationGrupp13.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,postText,title,subject")] EducationalPost educationalPost)
+        public ActionResult Edit([Bind(Include = "id,postText,title,category")] EducationalPost educationalPost)
         {
             educationalPost.creator = User.Identity.Name;
             educationalPost.dateTime = DateTime.Now;

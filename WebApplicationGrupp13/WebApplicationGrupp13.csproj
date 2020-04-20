@@ -239,6 +239,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CalenderController.cs" />
     <Compile Include="Controllers\EducationalBlogPostsController.cs" />
+    <Compile Include="Controllers\EducationalPostCategoriesController.cs" />
     <Compile Include="Controllers\FormalBlogPostCategoriesController.cs" />
     <Compile Include="Controllers\FormalBlogPostCommentsController.cs" />
     <Compile Include="Controllers\FormalBlogPostsController.cs" />
@@ -420,6 +421,10 @@
     <Compile Include="Migrations\202004161126450_updatedID_UserNotifications2.Designer.cs">
       <DependentUpon>202004161126450_updatedID_UserNotifications2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004161440014_vadfan.cs" />
+    <Compile Include="Migrations\202004161440014_vadfan.Designer.cs">
+      <DependentUpon>202004161440014_vadfan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202004161538561_giulia.cs" />
     <Compile Include="Migrations\202004161538561_giulia.Designer.cs">
       <DependentUpon>202004161538561_giulia.cs</DependentUpon>
@@ -432,14 +437,28 @@
     <Compile Include="Migrations\202004161258436_updatedID_ViewedNotifications3.Designer.cs">
       <DependentUpon>202004161258436_updatedID_ViewedNotifications3.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202004171012547_fåbortpending.cs" />
-    <Compile Include="Migrations\202004171012547_fåbortpending.Designer.cs">
-      <DependentUpon>202004171012547_fåbortpending.cs</DependentUpon>
+    <Compile Include="Migrations\202004170906004_1105max.cs" />
+    <Compile Include="Migrations\202004170906004_1105max.Designer.cs">
+      <DependentUpon>202004170906004_1105max.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004170923260_educationalpostcategories.cs" />
+    <Compile Include="Migrations\202004170923260_educationalpostcategories.Designer.cs">
+      <DependentUpon>202004170923260_educationalpostcategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004170845287_test3.cs" />
+    <Compile Include="Migrations\202004170845287_test3.Designer.cs">
+      <DependentUpon>202004170845287_test3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004171219448_agnesTestar.cs" />
+    <Compile Include="Migrations\202004171219448_agnesTestar.Designer.cs">
+      <DependentUpon>202004171219448_agnesTestar.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
+    <Compile Include="Models\EditInformationViewModel.cs" />
     <Compile Include="Models\EducationalPost.cs" />
+    <Compile Include="Models\EducationalPostCategory.cs" />
     <Compile Include="Models\FormalBlogPost.cs" />
     <Compile Include="Models\FormalBlogPostCategory.cs" />
     <Compile Include="Models\FormalBlogPostComment.cs" />
@@ -462,6 +481,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Notification-Style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -550,6 +570,12 @@
     <Content Include="Views\ResearchBlogPostCategories\Details.cshtml" />
     <Content Include="Views\ResearchBlogPostCategories\Edit.cshtml" />
     <Content Include="Views\ResearchBlogPostCategories\Index.cshtml" />
+    <Content Include="Views\EducationalPostCategories\Create.cshtml" />
+    <Content Include="Views\EducationalPostCategories\Delete.cshtml" />
+    <Content Include="Views\EducationalPostCategories\Details.cshtml" />
+    <Content Include="Views\EducationalPostCategories\Edit.cshtml" />
+    <Content Include="Views\EducationalPostCategories\Index.cshtml" />
+    <Content Include="Views\Manage\EditUserInformation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -693,6 +719,9 @@
     <EmbeddedResource Include="Migrations\202004161126450_updatedID_UserNotifications2.resx">
       <DependentUpon>202004161126450_updatedID_UserNotifications2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004161440014_vadfan.resx">
+      <DependentUpon>202004161440014_vadfan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004161258436_updatedID_ViewedNotifications3.resx">
       <DependentUpon>202004161258436_updatedID_ViewedNotifications3.cs</DependentUpon>
     </EmbeddedResource>
@@ -702,8 +731,17 @@
     <EmbeddedResource Include="Migrations\202004161643489_hwello.resx">
       <DependentUpon>202004161643489_hwello.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004171012547_fåbortpending.resx">
-      <DependentUpon>202004171012547_fåbortpending.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202004170906004_1105max.resx">
+      <DependentUpon>202004170906004_1105max.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004170923260_educationalpostcategories.resx">
+      <DependentUpon>202004170923260_educationalpostcategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004170845287_test3.resx">
+      <DependentUpon>202004170845287_test3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004171219448_agnesTestar.resx">
+      <DependentUpon>202004171219448_agnesTestar.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
