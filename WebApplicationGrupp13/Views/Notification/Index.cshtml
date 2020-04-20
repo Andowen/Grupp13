@@ -47,7 +47,7 @@
                             break;
                         case PostType.Informal:
                             <div class="col-md-12">
-                                <a href="@Url.Action("Details", "FormalBlogPosts", new {id = item.PostId })">
+                                <a href="@Url.Action("Details", "InformalBlogPosts", new {id = item.PostId })">
                                     <div class="row @Html.Raw(item.IsNew? "newNotification" : "oldNotification")">
                                         <div class="col-md-1">
                                             <span class="noti glyphicon glyphicon-comment postType"></span>
@@ -74,7 +74,7 @@
                             break;
                         case PostType.Education:
                             <div class="col-md-12">
-                                <a href="@Url.Action("Details", "FormalBlogPosts", new {id = item.PostId })">
+                                <a href="@Url.Action("Details", "EducationalBlogPosts", new {id = item.PostId })">
                                     <div class="row @Html.Raw(item.IsNew? "newNotification" : "oldNotification")">
                                         <div class="col-md-1">
                                             <span class="noti glyphicon glyphicon-education postType"></span>
@@ -103,7 +103,7 @@
                             break;
                         case PostType.Research:
                             <div class="col-md-12">
-                                <a href="@Url.Action("Details", "FormalBlogPosts", new {id = item.PostId })">
+                                <a href="@Url.Action("Details", "ResearchBlogPosts", new {id = item.PostId })">
                                     <div class="row @Html.Raw(item.IsNew? "newNotification" : "oldNotification")">
                                         <div class="col-md-1">
                                             <span class="noti glyphicon glyphicon-folder-open postType"></span>
