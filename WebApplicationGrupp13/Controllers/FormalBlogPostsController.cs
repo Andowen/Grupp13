@@ -106,15 +106,16 @@ namespace WebApplicationGrupp13.Controllers
         }
         public ActionResult Index()
         {
-            
+
             List<string> ct = new List<string>();
-            foreach (FormalBlogPostCategory category in db.FormalBlogPostCategories) {
+            foreach (FormalBlogPostCategory category in db.FormalBlogPostCategories)
+            {
                 ct.Add(category.name);
             }
 
-          
+
             ViewBag.CategoryList = ct;
-           
+
             return View(db.BlogPosts.ToList());
         }
 
@@ -149,38 +150,40 @@ namespace WebApplicationGrupp13.Controllers
         // POST: FormalBlogPosts/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "id,postText,title,category")] FormalBlogPost formalBlogPost) {
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include = "id,postText,title,category")] FormalBlogPost formalBlogPost)
+        //{
         //    var categories = db.FormalBlogPostCategories.ToList();
         //    List<string> categorylist = new List<string>();
-        //    foreach (FormalBlogPostCategory ct in categories) {
+        //    foreach (FormalBlogPostCategory ct in categories)
+        //    {
         //        categorylist.Add(ct.name);
         //    }
         //    ViewBag.CategoryList = categorylist;
-        //    //  if (ModelState.IsValid)
-        //    //   {
-        //    var test = formalBlogPost.category;
+        //    if (ModelState.IsValid)
+        //    {
+        //        var test = formalBlogPost.category;
 
 
-        //    formalBlogPost.creator = User.Identity.Name;
-        //    formalBlogPost.dateTime = DateTime.Now;
+        //        formalBlogPost.creator = User.Identity.Name;
+        //        formalBlogPost.dateTime = DateTime.Now;
 
-        //    db.BlogPosts.Add(formalBlogPost);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //    //  }
+        //        db.BlogPosts.Add(formalBlogPost);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
 
-        //    //   return View(formalBlogPost);
-        //}
+        //           //   return View(formalBlogPost);
+        //        }
 
-        //GET: FormalBlogPosts/Edit/5
-
-
+            //GET: FormalBlogPosts/Edit/5
 
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
         // Endast om en fil tas med i uppladdningen
         public ActionResult Create([Bind(Include = "id,postText,title,category,fileName")] FormalBlogPost formalBlogPost, HttpPostedFileBase file) {
             var categories = db.FormalBlogPostCategories.ToList();
