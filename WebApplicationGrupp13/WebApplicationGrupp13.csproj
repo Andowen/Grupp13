@@ -247,6 +247,7 @@
     <Compile Include="Controllers\InformalBlogPostCategoriesController.cs" />
     <Compile Include="Controllers\InformalBlogPostsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MeetingsNewController.cs" />
     <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\NotificationControllerBase.cs" />
     <Compile Include="Controllers\ResearchBlogPostCategoriesController.cs" />
@@ -584,6 +585,11 @@
     <Content Include="Views\EducationalPostCategories\Edit.cshtml" />
     <Content Include="Views\EducationalPostCategories\Index.cshtml" />
     <Content Include="Views\Manage\EditUserInformation.cshtml" />
+    <Content Include="Views\MeetingsNew\Create.cshtml" />
+    <Content Include="Views\MeetingsNew\Delete.cshtml" />
+    <Content Include="Views\MeetingsNew\Details.cshtml" />
+    <Content Include="Views\MeetingsNew\Edit.cshtml" />
+    <Content Include="Views\MeetingsNew\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
