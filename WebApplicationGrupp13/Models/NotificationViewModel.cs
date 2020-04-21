@@ -15,4 +15,13 @@ namespace WebApplicationGrupp13.Models
         public DateTime Date { get; set; }
         public bool IsNew { get; set; }
     }
+
+    public class NotificationSettingViewModel
+    {
+        public int UserNotiId { get; set; }
+        public bool Formal { get; set; }
+        public bool Informal { get; set; }
+        public bool Education { get; set; }
+        public bool Research { get; set; }
+    }
 }
