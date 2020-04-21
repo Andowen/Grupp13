@@ -26,10 +26,9 @@
                 <br />
             </div>
             <div class="blogButtons">
-                @*@if (item.fileName != null)
-                    {
-                        <a href="~/FormalBlogPostUploads/@item.fileName" download>@item.fileName</a>
-                    }*@
+                @if (item.fileName != null) {
+                    <a href="~/ResearchBlogPostUploads/@item.fileName" download>@item.fileName</a>
+                }
                 @if (item.creator.Equals(User.Identity.Name)) {
 
                     <p>

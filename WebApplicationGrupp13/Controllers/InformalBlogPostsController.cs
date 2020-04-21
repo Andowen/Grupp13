@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -96,7 +97,7 @@ namespace WebApplicationGrupp13.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,postText,title,creator,dateTime,category")] InformalBlogPost informalBlogPost)
+        public ActionResult Create([Bind(Include = "id,postText,title,creator,dateTime,category,fileName")] InformalBlogPost informalBlogPost, HttpPostedFileBase file)
         {
 
             var categories = db.InformalBlogPostCategories.ToList();
@@ -108,10 +109,16 @@ namespace WebApplicationGrupp13.Controllers
             ViewBag.CategoryList = categorylist;
             
             var test = informalBlogPost.category;
-
-
             informalBlogPost.creator = User.Identity.Name;
             informalBlogPost.dateTime = DateTime.Now;
+
+            if (file != null) {
+                string fileName = Path.GetFileName(file.FileName);
+                string fileToSave = Path.Combine(Server.MapPath("~/FormalBlogPostUploads"), fileName);
+                file.SaveAs(fileToSave);
+                informalBlogPost.fileName = fileName;
+            }
+
             db.InformalBlogPosts.Add(informalBlogPost);
             db.SaveChanges();
             return RedirectToAction("Index");

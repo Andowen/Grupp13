@@ -484,6 +484,18 @@
     <Compile Include="Migrations\202004210714126_somanycomments.Designer.cs">
       <DependentUpon>202004210714126_somanycomments.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004210843061_efterpull.cs" />
+    <Compile Include="Migrations\202004210843061_efterpull.Designer.cs">
+      <DependentUpon>202004210843061_efterpull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004210901255_filuppladdning_informel_utbildning.cs" />
+    <Compile Include="Migrations\202004210901255_filuppladdning_informel_utbildning.Designer.cs">
+      <DependentUpon>202004210901255_filuppladdning_informel_utbildning.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004211026031_fil_research.cs" />
+    <Compile Include="Migrations\202004211026031_fil_research.Designer.cs">
+      <DependentUpon>202004211026031_fil_research.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
@@ -615,8 +627,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="FormalBlogPostUploads\" />
-    <Folder Include="Views\EducationalBlogPostComments\" />
     <Folder Include="Image\" />
+    <Folder Include="Views\EducationalBlogPostComments\" />
     <Folder Include="Views\EduPosts\" />
     <Folder Include="Views\InformalBlogPostComments\" />
     <Folder Include="Views\ResearchBlogPostComments\" />
@@ -803,6 +815,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004201214388_profilbildTest.resx">
       <DependentUpon>202004201214388_profilbildTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004210843061_efterpull.resx">
+      <DependentUpon>202004210843061_efterpull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004210901255_filuppladdning_informel_utbildning.resx">
+      <DependentUpon>202004210901255_filuppladdning_informel_utbildning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004211026031_fil_research.resx">
+      <DependentUpon>202004211026031_fil_research.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
