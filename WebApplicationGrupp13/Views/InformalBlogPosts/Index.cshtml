@@ -4,17 +4,18 @@
     ViewBag.Title = "Index";
 }
 @using WebApplicationGrupp13.Controllers
-@if (Request.IsAuthenticated)
-{
+
+@if (Request.IsAuthenticated) {
     <h2>Anslagstavla</h2>
     <p>
         @Html.ActionLink("Skapa nytt blogginlägg", "Create")
     </p>
     var Model1 = Model.OrderByDescending(c => c.id);
-    foreach (var item in Model1)
-    {
+    int counter = 1;
+    foreach (var item in Model1) {
 
-        <div class="formalBlogPost">
+        <div class="formalBlogPost" id="@item.id">
+            @{counter = counter + 1;}
             <div class="formalBlogPostContent">
                 @{
                     var time = FormalBlogPostsController.GetDateFromDateTime(item.dateTime);
@@ -26,11 +27,10 @@
             </div>
             <div class="blogButtons">
                 @*@if (item.fileName != null)
-                {
-                    <a href="~/FormalBlogPostUploads/@item.fileName" download>@item.fileName</a>
-                }*@
-                @if (item.creator.Equals(User.Identity.Name))
-                {
+                    {
+                        <a href="~/FormalBlogPostUploads/@item.fileName" download>@item.fileName</a>
+                    }*@
+                @if (item.creator.Equals(User.Identity.Name)) {
 
                     <p>
                         @Html.ActionLink("Se inlägg", "Details", new { id = item.id }) | @Html.ActionLink("Redigera", "Edit", new { id = item.id }) | @Html.ActionLink("Ta bort", "Delete", new { id = item.id })
@@ -38,20 +38,74 @@
                             @Html.DisplayFor(modelItem => item.creator)
                         </span>
                     </p>
-                }
-                else
-                {
+                } else {
                     <p>
                         @Html.ActionLink("Se inlägg", "Details", new { id = item.id })
                     </p>
                 }
+                @{
+                    InformalBlogPostCommentsController commentsController = new InformalBlogPostCommentsController();
+                }
+
             </div>
+            @foreach (var comment in commentsController.GetComments(item.id, "Informal")) {
+                var commentTime = FormalBlogPostsController.GetDateFromDateTime(comment.dateTime);
+                <div class="formalBlogPostComment" id="@counter">
+
+
+                    <p>@comment.commentText</p>
+                    <p class="formalBlogPostCommentAuthor">@comment.author | @commentTime</p>
+                </div>
+
+            }
+
+            @{ int id = item.id;
+                int textBoxId = id + 999;
+                string textBoxIdString = textBoxId.ToString();}
+            @Html.TextArea(textBoxIdString, null, new { placeholder = "Skriv en kommentar", id = textBoxIdString, rows = "3", cols = "1000" })
+
+
+            <button id="@item.id" onClick="reply_click(this.id)">Skicka</button>
         </div>
+        <script src="~/Scripts/jquery-3.4.1.js"></script>
+
+        <script>
+       var urlpath = '@Url.Action("CreateComment", "InformalBlogPostComments")';
+
+        </script>
+        <script type="text/javascript">
+
+            $(function () {
+
+
+
+                $('#btnStart').on('click', function () {
+                    console.log(x);
+            });
+            });
+            function reply_click(clicked_id) {
+                var clicked_id_int = parseInt(clicked_id);
+                var commentId = clicked_id_int += @textBoxId - 1;
+                console.log(commentId)
+                var commentTxt = document.getElementById(commentId).value;
+
+
+                console.log(clicked_id);
+                $.ajax({
+                    type: 'POST',
+                    url: urlpath,
+                    data: JSON.stringify({ blogPostId: clicked_id, blogPostType: "Informal", commentText: commentTxt }),
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                })
+
+
+                location.reload();
+            }
+        </script>
     }
 
     @*</table>*@
-}
-else
-{
+} else {
     <h1>Du måste logga in för att komma åt denna sida!</h1>
 }

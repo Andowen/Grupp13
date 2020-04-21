@@ -10,15 +10,14 @@ using WebApplicationGrupp13.Models;
 
 namespace WebApplicationGrupp13.Controllers
 {
-    public class FormalBlogPostCommentsController : Controller
+    public class ResearchBlogPostCommentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
-        public List<FormalBlogPostComment> GetComments (int blogPostId, string blogPostType){
-            var listOfAllComments = db.FormalBlogPostComments.ToList();
-            var listOfMatchingComments = new List<FormalBlogPostComment>();
-            foreach (FormalBlogPostComment comment in listOfAllComments) {
-                if(comment.blogPostId.Equals(blogPostId)){
+        public List<ResearchBlogPostComment> GetComments(int blogPostId, string blogPostType) {
+            var listOfAllComments = db.ResearchBlogPostComments.ToList();
+            var listOfMatchingComments = new List<ResearchBlogPostComment>();
+            foreach (ResearchBlogPostComment comment in listOfAllComments) {
+                if (comment.blogPostId.Equals(blogPostId)) {
                     if (comment.blogPostType.Equals(blogPostType)) {
                         listOfMatchingComments.Add(comment);
                     }
@@ -30,150 +29,123 @@ namespace WebApplicationGrupp13.Controllers
 
         }
 
+
         [HttpPost]
         public void CreateComment(int blogPostId, string blogPostType, string commentText) {
-            
-            FormalBlogPostComment comment = new FormalBlogPostComment();
+
+            ResearchBlogPostComment comment = new ResearchBlogPostComment();
             comment.author = User.Identity.Name;
             comment.dateTime = DateTime.Now;
             comment.blogPostId = blogPostId;
             comment.blogPostType = blogPostType;
             comment.commentText = commentText;
-           
 
-                db.FormalBlogPostComments.Add(comment);
-                db.SaveChanges();
-         
 
-       
+            db.ResearchBlogPostComments.Add(comment);
+            db.SaveChanges();
+
+
+
 
         }
-        public bool DoesCommentExist(string blogPostType, string commentText, string author) {
 
-            bool exists = true;
-            var listOfallComments = db.FormalBlogPostComments.ToList();
-            foreach(FormalBlogPostComment comment in listOfallComments) {
-                if(comment.blogPostType.Equals(blogPostType) && comment.commentText.Equals(commentText) && comment.author.Equals(author)) {
-
-                    exists = false;
-                }
-
-
-            }
-
-
-
-            return exists;
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-        // GET: Comments
+        // GET: ResearchBlogPostComments
         public ActionResult Index()
         {
-            return View(db.FormalBlogPostComments.ToList());
+            return View(db.ResearchBlogPostComments.ToList());
         }
 
-        // GET: Comments/Details/5
+        // GET: ResearchBlogPostComments/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            FormalBlogPostComment comment = db.FormalBlogPostComments.Find(id);
-            if (comment == null)
+            ResearchBlogPostComment researchBlogPostComment = db.ResearchBlogPostComments.Find(id);
+            if (researchBlogPostComment == null)
             {
                 return HttpNotFound();
             }
-            return View(comment);
+            return View(researchBlogPostComment);
         }
 
-        // GET: Comments/Create
+        // GET: ResearchBlogPostComments/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Comments/Create
+        // POST: ResearchBlogPostComments/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,author,commentText,dateTime,blogPostId,blogPostType")] FormalBlogPostComment comment)
+        public ActionResult Create([Bind(Include = "id,author,commentText,dateTime,blogPostId,blogPostType")] ResearchBlogPostComment researchBlogPostComment)
         {
             if (ModelState.IsValid)
             {
-                db.FormalBlogPostComments.Add(comment);
+                db.ResearchBlogPostComments.Add(researchBlogPostComment);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(comment);
+            return View(researchBlogPostComment);
         }
 
-        // GET: Comments/Edit/5
+        // GET: ResearchBlogPostComments/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            FormalBlogPostComment comment = db.FormalBlogPostComments.Find(id);
-            if (comment == null)
+            ResearchBlogPostComment researchBlogPostComment = db.ResearchBlogPostComments.Find(id);
+            if (researchBlogPostComment == null)
             {
                 return HttpNotFound();
             }
-            return View(comment);
+            return View(researchBlogPostComment);
         }
 
-        // POST: Comments/Edit/5
+        // POST: ResearchBlogPostComments/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,author,commentText,dateTime,blogPostId,blogPostType")] FormalBlogPostComment comment)
+        public ActionResult Edit([Bind(Include = "id,author,commentText,dateTime,blogPostId,blogPostType")] ResearchBlogPostComment researchBlogPostComment)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(comment).State = EntityState.Modified;
+                db.Entry(researchBlogPostComment).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(comment);
+            return View(researchBlogPostComment);
         }
 
-        // GET: Comments/Delete/5
+        // GET: ResearchBlogPostComments/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            FormalBlogPostComment comment = db.FormalBlogPostComments.Find(id);
-            if (comment == null)
+            ResearchBlogPostComment researchBlogPostComment = db.ResearchBlogPostComments.Find(id);
+            if (researchBlogPostComment == null)
             {
                 return HttpNotFound();
             }
-            return View(comment);
+            return View(researchBlogPostComment);
         }
 
-        // POST: Comments/Delete/5
+        // POST: ResearchBlogPostComments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            FormalBlogPostComment comment = db.FormalBlogPostComments.Find(id);
-            db.FormalBlogPostComments.Remove(comment);
+            ResearchBlogPostComment researchBlogPostComment = db.ResearchBlogPostComments.Find(id);
+            db.ResearchBlogPostComments.Remove(researchBlogPostComment);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

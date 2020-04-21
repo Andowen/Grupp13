@@ -146,6 +146,7 @@ namespace WebApplicationGrupp13.Controllers
             edit.Firstname = account.Firstname;
             edit.Lastname = account.Lastname;
             edit.Mobilenumber = account.Mobilenumber;
+            edit.Img = account.Img;
 
 
 

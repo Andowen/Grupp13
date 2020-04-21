@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 
 namespace WebApplicationGrupp13.Models {
-    public class FormalBlogPostComment {
+    public class ResearchBlogPostComment {
         [Key]
         public int id { get; set; }
         public string author { get; set; }
@@ -13,8 +13,5 @@ namespace WebApplicationGrupp13.Models {
         public DateTime dateTime { get; set; }
         public int blogPostId { get; set; }
         public string blogPostType { get; set; }
-
-        
     }
-  
 }
