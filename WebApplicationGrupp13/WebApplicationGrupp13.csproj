@@ -616,6 +616,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="FormalBlogPostUploads\" />
     <Folder Include="Views\EducationalBlogPostComments\" />
+    <Folder Include="Image\" />
     <Folder Include="Views\EduPosts\" />
     <Folder Include="Views\InformalBlogPostComments\" />
     <Folder Include="Views\ResearchBlogPostComments\" />
@@ -799,6 +800,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004210714126_somanycomments.resx">
       <DependentUpon>202004210714126_somanycomments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004201214388_profilbildTest.resx">
+      <DependentUpon>202004201214388_profilbildTest.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

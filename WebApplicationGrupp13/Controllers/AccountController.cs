@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -147,11 +148,26 @@ namespace WebApplicationGrupp13.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model, HttpPostedFileBase imageFile)
         {
-            if (ModelState.IsValid)
+            var filename = Path.GetFileName(imageFile.FileName);
+            var filePath = Path.Combine(Server.MapPath("~/FormalBlogPostUploads"), filename);
+            imageFile.SaveAs(filePath);
+
+            using (var db = new ApplicationDbContext())
+
+                if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Firstname = model.Firstname, Lastname = model.Lastname, Mobilenumber = model.Mobilenumber };
+                var user = new ApplicationUser 
+                { 
+                    UserName = model.Email, 
+                    Email = model.Email, 
+                    Firstname = model.Firstname, 
+                    Lastname = model.Lastname, 
+                    Mobilenumber = model.Mobilenumber,
+                    Img = filename
+                };
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

@@ -5,7 +5,7 @@
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <h4>Skapa ett nytt konto</h4>
@@ -47,6 +47,14 @@
             @Html.TextBoxFor(m => m.Mobilenumber, new { @class = "form-control" })
         </div>
     </div>
+
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.LabelFor(m => m.Img, htmlAttributes: new { @class = "control-label col-md-2" })
+            <input type="file" id="imageFile" name="imageFile" class="form-control" required />
+        </div>
+    </div>
+
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" class="btn btn-default" value="Registrera" />
