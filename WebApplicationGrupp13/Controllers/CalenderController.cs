@@ -5,13 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using WebApplicationGrupp13.Models;
 
-namespace WebApplicationGrupp13.Controllers
-{
-    public class CalenderController : NotificationControllerBase
-    {
+namespace WebApplicationGrupp13.Controllers {
+    public class CalenderController : NotificationControllerBase {
         // GET: Calender
-        public ActionResult Index()
-        {
+        public ActionResult Index() {
             return View();
         }
         public JsonResult GetEvents() {
@@ -20,14 +17,16 @@ namespace WebApplicationGrupp13.Controllers
                 return new JsonResult { Data = events, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
-
+     
         [HttpPost]
         public JsonResult SaveEvent(CalenderViewModel e) {
             var status = false;
             using (ApplicationDbContext dc = new ApplicationDbContext()) {
+
                 if (e.EventId > 0) {
                     //spara/uppdatera händelse  
                     var v = dc.Calender.Where(a => a.EventId == e.EventId).FirstOrDefault();
+
                     if (v != null) {
                         v.Subject = e.Subject;
                         v.Start = e.Start;
@@ -56,5 +55,6 @@ namespace WebApplicationGrupp13.Controllers
             }
             return new JsonResult { Data = new { status = status } };
         }
+       
     }
 }
