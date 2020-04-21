@@ -22,10 +22,10 @@
                 <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-                <li>@Html.ActionLink("Boka möte", "Contact", "Home")</li>
+                <li>@Html.ActionLink("Möten", "Index", "Meetings")</li>
                 <li>@Html.ActionLink("Mina inlägg", "Contact", "Home")</li>
                 <li>
-                    @Html.ActionLink("Redigera kontoinformation", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Redigera kontoinformation" })
+                    @Html.ActionLink("Redigera kontoinformation", "EditUserInformation", "Manage", routeValues: null, htmlAttributes: new { title = "Redigera kontoinformation" })
                 </li>
                 <li class="divider"></li>
                 <li><a href="javascript:document.getElementById('logoutForm').submit()">Logga ut</a></li>

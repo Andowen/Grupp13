@@ -3,55 +3,111 @@
 @{
     ViewBag.Title = "Index";
 }
+@using WebApplicationGrupp13.Controllers
+@if (Request.IsAuthenticated) {
+    <h2>Forskningsblogg</h2>
 
-<h2>Index</h2>
+    <p>
+        @Html.ActionLink("Skapa nytt inlägg", "Create")
+    </p>
+    var Model1 = Model.OrderByDescending(c => c.id);
+    int counter = 1;
+    foreach (var item in Model1) {
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.postText)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.creator)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dateTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.category)
-        </th>
-        <th></th>
-    </tr>
+        <div class="formalBlogPost" id="@item.id">
+            @{counter = counter + 1;}
+            <div class="formalBlogPostContent">
+                @{
+                    var time = FormalBlogPostsController.GetDateFromDateTime(item.dateTime);
+                }
+                <h3>@Html.DisplayFor(modelItem => item.title)<span class="authorTime">@time</span></h3>
+                <h6>@Html.DisplayFor(modelItem => item.category)</h6>
+                <p>@Html.DisplayFor(modelItem => item.postText)</p>
+                <br />
+            </div>
+            <div class="blogButtons">
+                @if (item.fileName != null) {
+                    <a href="~/ResearchBlogPostUploads/@item.fileName" download>@item.fileName</a>
+                }
+                @if (item.creator.Equals(User.Identity.Name)) {
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.postText)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.creator)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dateTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.category)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
+                    <p>
+                        @Html.ActionLink("Se inlägg", "Details", new { id = item.id }) | @Html.ActionLink("Redigera", "Edit", new { id = item.id }) | @Html.ActionLink("Ta bort", "Delete", new { id = item.id })
+                        <span class="authorTime">
+                            @Html.DisplayFor(modelItem => item.creator)
+                        </span>
+                    </p>
+                } else {
+                    <p>
+                        @Html.ActionLink("Se inlägg", "Details", new { id = item.id })
+                    </p>
+                }
+                @{
+                    ResearchBlogPostCommentsController commentsController = new ResearchBlogPostCommentsController();
+                }
+
+            </div>
+
+
+            @foreach (var comment in commentsController.GetComments(item.id, "Research")) {
+                var commentTime = FormalBlogPostsController.GetDateFromDateTime(comment.dateTime);
+                <div class="formalBlogPostComment" id="@counter">
+
+
+                    <p>@comment.commentText</p>
+                    <p class="formalBlogPostCommentAuthor">@comment.author | @commentTime</p>
+            
+                </div>
+
+            }
+
+            @{ int id = item.id;
+                int textBoxId = id + 999;
+                string textBoxIdString = textBoxId.ToString();}
+            @Html.TextArea(textBoxIdString, null, new { placeholder = "Skriv en kommentar", id = textBoxIdString, rows = "3", cols = "1000" })
+
+
+            <button id="@item.id" onClick="reply_click(this.id)">Skicka</button>
+        </div>
+        <script src="~/Scripts/jquery-3.4.1.js"></script>
+
+        <script>
+       var urlpath = '@Url.Action("CreateComment", "ResearchBlogPostComments")';
+
+        </script>
+        <script type="text/javascript">
+
+            $(function () {
+
+
+
+                $('#btnStart').on('click', function () {
+                    console.log(x);
+            });
+            });
+            function reply_click(clicked_id) {
+                var clicked_id_int = parseInt(clicked_id);
+                var commentId = clicked_id_int += @textBoxId - 2;
+                console.log(commentId)
+                var commentTxt = document.getElementById(commentId).value;
+
+
+                console.log(clicked_id);
+                $.ajax({
+                    type: 'POST',
+                    url: urlpath,
+                    data: JSON.stringify({ blogPostId: clicked_id, blogPostType: "Research", commentText: commentTxt }),
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                })
+
+                location.reload();
+            }
+        </script>
+    }
+
+    @*</table>*@
+} else {
+    <h1>Du måste logga in för att komma åt denna sida!</h1>
 }
 
-</table>

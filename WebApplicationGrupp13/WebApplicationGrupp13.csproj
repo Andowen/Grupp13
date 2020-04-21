@@ -238,7 +238,12 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CalenderController.cs" />
+    <Compile Include="Controllers\EducationalBlogPostCommentsController.cs" />
+    <Compile Include="Controllers\FormalBlogPostCommentsController.cs" />
+    <Compile Include="Controllers\InformalBlogPostCommentsController.cs" />
+    <Compile Include="Controllers\ResearchBlogPostCommentsController.cs" />
     <Compile Include="Controllers\EducationalBlogPostsController.cs" />
+    <Compile Include="Controllers\EducationalPostCategoriesController.cs" />
     <Compile Include="Controllers\FormalBlogPostCategoriesController.cs" />
     <Compile Include="Controllers\FormalBlogPostsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -247,9 +252,16 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\NotificationControllerBase.cs" />
+    <Compile Include="Controllers\ResearchBlogPostCategoriesController.cs" />
     <Compile Include="Controllers\ResearchBlogPostsController.cs" />
     <Compile Include="Enums\NotificationType.cs" />
     <Compile Include="Enums\PostType.cs" />
+    <Compile Include="Extensions\CalenderViewModelExtensions.cs" />
+    <Compile Include="Extensions\EducationalPostExtensions.cs" />
+    <Compile Include="Extensions\FormalBlogPostExtensions.cs" />
+    <Compile Include="Extensions\InformalBlogPostExtensions.cs" />
+    <Compile Include="Extensions\NotificationSettingViewModelExtension.cs" />
+    <Compile Include="Extensions\ResearchBlogPostExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -393,6 +405,10 @@
     <Compile Include="Migrations\202004151450288_updatedViewedNotifications.Designer.cs">
       <DependentUpon>202004151450288_updatedViewedNotifications.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004161430287_educational_formal_post_change.cs" />
+    <Compile Include="Migrations\202004161430287_educational_formal_post_change.Designer.cs">
+      <DependentUpon>202004161430287_educational_formal_post_change.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202004161110090_updatedID_UserNotifications.cs" />
     <Compile Include="Migrations\202004161110090_updatedID_UserNotifications.Designer.cs">
       <DependentUpon>202004161110090_updatedID_UserNotifications.cs</DependentUpon>
@@ -409,22 +425,107 @@
     <Compile Include="Migrations\202004161126450_updatedID_UserNotifications2.Designer.cs">
       <DependentUpon>202004161126450_updatedID_UserNotifications2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004161440014_vadfan.cs" />
+    <Compile Include="Migrations\202004161440014_vadfan.Designer.cs">
+      <DependentUpon>202004161440014_vadfan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004161538561_giulia.cs" />
+    <Compile Include="Migrations\202004161538561_giulia.Designer.cs">
+      <DependentUpon>202004161538561_giulia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004161643489_hwello.cs" />
+    <Compile Include="Migrations\202004161643489_hwello.Designer.cs">
+      <DependentUpon>202004161643489_hwello.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004161258436_updatedID_ViewedNotifications3.cs" />
+    <Compile Include="Migrations\202004161258436_updatedID_ViewedNotifications3.Designer.cs">
+      <DependentUpon>202004161258436_updatedID_ViewedNotifications3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004170906004_1105max.cs" />
+    <Compile Include="Migrations\202004170906004_1105max.Designer.cs">
+      <DependentUpon>202004170906004_1105max.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004170923260_educationalpostcategories.cs" />
+    <Compile Include="Migrations\202004170923260_educationalpostcategories.Designer.cs">
+      <DependentUpon>202004170923260_educationalpostcategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004170845287_test3.cs" />
+    <Compile Include="Migrations\202004170845287_test3.Designer.cs">
+      <DependentUpon>202004170845287_test3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004171219448_agnesTestar.cs" />
+    <Compile Include="Migrations\202004171219448_agnesTestar.Designer.cs">
+      <DependentUpon>202004171219448_agnesTestar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004200842108_EditInfoViewModel.cs" />
+    <Compile Include="Migrations\202004200842108_EditInfoViewModel.Designer.cs">
+      <DependentUpon>202004200842108_EditInfoViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004201324116_formalblogpostcomments.cs" />
+    <Compile Include="Migrations\202004201324116_formalblogpostcomments.Designer.cs">
+      <DependentUpon>202004201324116_formalblogpostcomments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004201325166_comments.cs" />
+    <Compile Include="Migrations\202004201325166_comments.Designer.cs">
+      <DependentUpon>202004201325166_comments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004201334180_comment.cs" />
+    <Compile Include="Migrations\202004201334180_comment.Designer.cs">
+      <DependentUpon>202004201334180_comment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004201353356_editedComment.cs" />
+    <Compile Include="Migrations\202004201353356_editedComment.Designer.cs">
+      <DependentUpon>202004201353356_editedComment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004201627157_anothercommentrename.cs" />
+    <Compile Include="Migrations\202004201627157_anothercommentrename.Designer.cs">
+      <DependentUpon>202004201627157_anothercommentrename.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004210714126_somanycomments.cs" />
+    <Compile Include="Migrations\202004210714126_somanycomments.Designer.cs">
+      <DependentUpon>202004210714126_somanycomments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004210843061_efterpull.cs" />
+    <Compile Include="Migrations\202004210843061_efterpull.Designer.cs">
+      <DependentUpon>202004210843061_efterpull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004210901255_filuppladdning_informel_utbildning.cs" />
+    <Compile Include="Migrations\202004210901255_filuppladdning_informel_utbildning.Designer.cs">
+      <DependentUpon>202004210901255_filuppladdning_informel_utbildning.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004211026031_fil_research.cs" />
+    <Compile Include="Migrations\202004211026031_fil_research.Designer.cs">
+      <DependentUpon>202004211026031_fil_research.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004210900587_profilBild.cs" />
+    <Compile Include="Migrations\202004210900587_profilBild.Designer.cs">
+      <DependentUpon>202004210900587_profilBild.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
+    <Compile Include="Models\EducationalBlogPostComment.cs" />
+    <Compile Include="Models\FormalBlogPostComment.cs" />
+    <Compile Include="Models\EditInformationViewModel.cs" />
     <Compile Include="Models\EducationalPost.cs" />
+    <Compile Include="Models\EducationalPostCategory.cs" />
     <Compile Include="Models\FormalBlogPost.cs" />
     <Compile Include="Models\FormalBlogPostCategory.cs" />
+    <Compile Include="Models\FormalBlogPostViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\InformalBlogPost.cs" />
     <Compile Include="Models\InformalBlogPostCategory.cs" />
+    <Compile Include="Models\InformalBlogPostComment.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Meetings.cs" />
     <Compile Include="Models\NotificationViewModel.cs" />
     <Compile Include="Models\ResearchBlogPost.cs" />
     <Compile Include="Models\ResearchBlogPostCategory.cs" />
+    <Compile Include="Models\ResearchBlogPostComment.cs" />
     <Compile Include="Models\UserNotifications.cs" />
     <Compile Include="Models\ViewedNotifications.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\NotificationService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -432,6 +533,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\notification-style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -515,11 +617,27 @@
     <Content Include="Views\EducationalBlogPosts\Edit.cshtml" />
     <Content Include="Views\EducationalBlogPosts\Index.cshtml" />
     <Content Include="Views\Notification\Index.cshtml" />
+    <Content Include="Views\ResearchBlogPostCategories\Create.cshtml" />
+    <Content Include="Views\ResearchBlogPostCategories\Delete.cshtml" />
+    <Content Include="Views\ResearchBlogPostCategories\Details.cshtml" />
+    <Content Include="Views\ResearchBlogPostCategories\Edit.cshtml" />
+    <Content Include="Views\ResearchBlogPostCategories\Index.cshtml" />
+    <Content Include="Views\EducationalPostCategories\Create.cshtml" />
+    <Content Include="Views\EducationalPostCategories\Delete.cshtml" />
+    <Content Include="Views\EducationalPostCategories\Details.cshtml" />
+    <Content Include="Views\EducationalPostCategories\Edit.cshtml" />
+    <Content Include="Views\EducationalPostCategories\Index.cshtml" />
+    <Content Include="Views\Manage\EditUserInformation.cshtml" />
+    <Content Include="Views\Notification\NotificationSettings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="FormalBlogPostUploads\" />
+    <Folder Include="Image\" />
+    <Folder Include="Views\EducationalBlogPostComments\" />
     <Folder Include="Views\EduPosts\" />
+    <Folder Include="Views\InformalBlogPostComments\" />
+    <Folder Include="Views\ResearchBlogPostComments\" />
     <Folder Include="Views\Research\" />
   </ItemGroup>
   <ItemGroup>
@@ -641,6 +759,9 @@
     <EmbeddedResource Include="Migrations\202004151450288_updatedViewedNotifications.resx">
       <DependentUpon>202004151450288_updatedViewedNotifications.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004161430287_educational_formal_post_change.resx">
+      <DependentUpon>202004161430287_educational_formal_post_change.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004161110090_updatedID_UserNotifications.resx">
       <DependentUpon>202004161110090_updatedID_UserNotifications.cs</DependentUpon>
     </EmbeddedResource>
@@ -652,6 +773,66 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004161126450_updatedID_UserNotifications2.resx">
       <DependentUpon>202004161126450_updatedID_UserNotifications2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004161440014_vadfan.resx">
+      <DependentUpon>202004161440014_vadfan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004161258436_updatedID_ViewedNotifications3.resx">
+      <DependentUpon>202004161258436_updatedID_ViewedNotifications3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004161538561_giulia.resx">
+      <DependentUpon>202004161538561_giulia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004161643489_hwello.resx">
+      <DependentUpon>202004161643489_hwello.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004170906004_1105max.resx">
+      <DependentUpon>202004170906004_1105max.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004170923260_educationalpostcategories.resx">
+      <DependentUpon>202004170923260_educationalpostcategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004170845287_test3.resx">
+      <DependentUpon>202004170845287_test3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004171219448_agnesTestar.resx">
+      <DependentUpon>202004171219448_agnesTestar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004200842108_EditInfoViewModel.resx">
+      <DependentUpon>202004200842108_EditInfoViewModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004201324116_formalblogpostcomments.resx">
+      <DependentUpon>202004201324116_formalblogpostcomments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004201325166_comments.resx">
+      <DependentUpon>202004201325166_comments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004201334180_comment.resx">
+      <DependentUpon>202004201334180_comment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004201353356_editedComment.resx">
+      <DependentUpon>202004201353356_editedComment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004201627157_anothercommentrename.resx">
+      <DependentUpon>202004201627157_anothercommentrename.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004210714126_somanycomments.resx">
+      <DependentUpon>202004210714126_somanycomments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004201214388_profilbildTest.resx">
+      <DependentUpon>202004201214388_profilbildTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004210900587_profilBild.resx">
+      <DependentUpon>202004210900587_profilBild.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004210843061_efterpull.resx">
+      <DependentUpon>202004210843061_efterpull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004210901255_filuppladdning_informel_utbildning.resx">
+      <DependentUpon>202004210901255_filuppladdning_informel_utbildning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004211026031_fil_research.resx">
+      <DependentUpon>202004211026031_fil_research.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

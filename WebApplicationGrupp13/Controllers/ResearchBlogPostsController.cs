@@ -1,11 +1,14 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WebApplicationGrupp13.Enums;
 using WebApplicationGrupp13.Models;
 
 namespace WebApplicationGrupp13.Controllers
@@ -27,6 +30,38 @@ namespace WebApplicationGrupp13.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            else
+            {
+                try
+                {
+                    using (var context = new ApplicationDbContext())
+                    {
+                        var currentUser = User.Identity.GetUserId();
+                        var postId = id.Value;
+                        var postType = PostType.Research;
+                        var exists = context.ViewedNotifications
+                            .Any(x => x.PostId == postId &&
+                                      x.PostType == postType &&
+                                      x.UserId == currentUser);
+                        if (!exists)
+                        {
+                            var viewedNotification = new ViewedNotifications
+                            {
+                                PostId = postId,
+                                UserId = currentUser,
+                                PostType = postType,
+                                TimeStamp = DateTime.Now
+                            };
+                            context.ViewedNotifications.Add(viewedNotification);
+                            context.SaveChanges();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
             ResearchBlogPost researchBlogPost = db.ResearchBlogPosts.Find(id);
             if (researchBlogPost == null)
             {
@@ -38,6 +73,13 @@ namespace WebApplicationGrupp13.Controllers
         // GET: ResearchBlogPosts/Create
         public ActionResult Create()
         {
+            var categories = db.ResearchBlogPostCategories.ToList();
+            List<string> categorylist = new List<string>();
+            foreach (ResearchBlogPostCategory ct in categories)
+            {
+                categorylist.Add(ct.name);
+            }
+            ViewBag.CategoryList = categorylist;
             return View();
         }
 
@@ -46,16 +88,31 @@ namespace WebApplicationGrupp13.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,postText,title,creator,dateTime,category")] ResearchBlogPost researchBlogPost)
+        public ActionResult Create([Bind(Include = "id,postText,title,creator,dateTime,category,fileName")] ResearchBlogPost researchBlogPost, HttpPostedFileBase file)
         {
-            if (ModelState.IsValid)
+            var categories = db.ResearchBlogPostCategories.ToList();
+            List<string> categorylist = new List<string>();
+            foreach (ResearchBlogPostCategory ct in categories)
             {
-                db.ResearchBlogPosts.Add(researchBlogPost);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                categorylist.Add(ct.name);
             }
+            ViewBag.CategoryList = categorylist;
 
-            return View(researchBlogPost);
+            var test = researchBlogPost.category;
+            researchBlogPost.creator = User.Identity.Name;
+            researchBlogPost.dateTime = DateTime.Now;
+
+            if (file != null) {
+                string fileName = Path.GetFileName(file.FileName);
+                string fileToSave = Path.Combine(Server.MapPath("~/FormalBlogPostUploads"), fileName);
+                file.SaveAs(fileToSave);
+                researchBlogPost.fileName = fileName;
+
+            }
+            db.ResearchBlogPosts.Add(researchBlogPost);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
         }
 
         // GET: ResearchBlogPosts/Edit/5
@@ -78,8 +135,11 @@ namespace WebApplicationGrupp13.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,postText,title,creator,dateTime,category")] ResearchBlogPost researchBlogPost)
+        public ActionResult Edit([Bind(Include = "id,postText,title,category")] ResearchBlogPost researchBlogPost)
         {
+            researchBlogPost.creator = User.Identity.Name;
+            researchBlogPost.dateTime = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 db.Entry(researchBlogPost).State = EntityState.Modified;

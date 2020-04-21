@@ -22,13 +22,44 @@ select,
 textarea {
     max-width: 280px;
 }
-.formalBlogPost{
+.formalBlogPost {
     width: 80%;
+    border-style: solid;
+    border-color: rgba(109, 109, 109, 0.3);
+    box-shadow: rgba(128, 128, 128, 0.2) 2px 2px;
+    border-radius: 10px;
+    border-width: 1px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 6px;
+    margin-bottom: 30px;
 }
 .formalBlogPostContent{
     
-    height: 200px;
+    height: auto;
+    padding-bottom: 40px;
+
    
+}
+.formalBlogPostComment{
+    height: auto;
+    margin-bottom: 10px;
+    box-shadow: rgba(128, 128, 128, 0.2) 5px 5px;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: rgba(109, 109, 109, 0.3);
+}
+.formalBlogPostCommentAuthor {
+   
+    color: lightslategray;
+    font-size: 80%;
 }
 .authorTime{
     float: right;
@@ -38,8 +69,19 @@ textarea {
     float: right;
 }
 .blogButtons {
-    border-bottom-style: dotted;
-    border-bottom-color: lightslategrey;
-    border-bottom-width: 1px;
+    
+}
+#bakgrund {
+    background-image: url("https://static-cdn.sr.se/sida/images/159/3593021_2048_1152.jpg?preset=1200x675");
+    height: 500px;
+}
+#bakgrundstext {
+    color: lightgray;
+    margin: 0 auto;
+    width: 50%;
+    height: 40%;
+}
+#bakgrundstext h1 {
+    text-align: center;
 }
 

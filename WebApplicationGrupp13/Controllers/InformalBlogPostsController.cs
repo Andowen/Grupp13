@@ -1,11 +1,14 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WebApplicationGrupp13.Enums;
 using WebApplicationGrupp13.Models;
 
 namespace WebApplicationGrupp13.Controllers
@@ -36,6 +39,38 @@ namespace WebApplicationGrupp13.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            else
+            {
+                try
+                {
+                    using (var context = new ApplicationDbContext())
+                    {
+                        var currentUser = User.Identity.GetUserId();
+                        var postId = id.Value;
+                        var postType = PostType.Informal;
+                        var exists = context.ViewedNotifications
+                            .Any(x => x.PostId == postId &&
+                                      x.PostType == postType &&
+                                      x.UserId == currentUser);
+                        if (!exists)
+                        {
+                            var viewedNotification = new ViewedNotifications
+                            {
+                                PostId = postId,
+                                UserId = currentUser,
+                                PostType = postType,
+                                TimeStamp = DateTime.Now
+                            };
+                            context.ViewedNotifications.Add(viewedNotification);
+                            context.SaveChanges();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
             InformalBlogPost informalBlogPost = db.InformalBlogPosts.Find(id);
             if (informalBlogPost == null)
             {
@@ -62,7 +97,7 @@ namespace WebApplicationGrupp13.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,postText,title,creator,dateTime,category")] InformalBlogPost informalBlogPost)
+        public ActionResult Create([Bind(Include = "id,postText,title,creator,dateTime,category,fileName")] InformalBlogPost informalBlogPost, HttpPostedFileBase file)
         {
 
             var categories = db.InformalBlogPostCategories.ToList();
@@ -74,10 +109,16 @@ namespace WebApplicationGrupp13.Controllers
             ViewBag.CategoryList = categorylist;
             
             var test = informalBlogPost.category;
-
-
             informalBlogPost.creator = User.Identity.Name;
             informalBlogPost.dateTime = DateTime.Now;
+
+            if (file != null) {
+                string fileName = Path.GetFileName(file.FileName);
+                string fileToSave = Path.Combine(Server.MapPath("~/FormalBlogPostUploads"), fileName);
+                file.SaveAs(fileToSave);
+                informalBlogPost.fileName = fileName;
+            }
+
             db.InformalBlogPosts.Add(informalBlogPost);
             db.SaveChanges();
             return RedirectToAction("Index");

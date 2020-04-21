@@ -1,4 +1,5 @@
-﻿    using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WebApplicationGrupp13.Enums;
 using WebApplicationGrupp13.Models;
 
 namespace WebApplicationGrupp13.Controllers
@@ -20,6 +22,10 @@ namespace WebApplicationGrupp13.Controllers
 
        public FormalBlogPostsController() {
 
+        }
+        public static FormalBlogPost GetBlogPostFromId(int id) {
+            ApplicationDbContext dbContext = new ApplicationDbContext();
+            return dbContext.BlogPosts.Find(id);
         }
 
         public static string GetDateFromDateTime(DateTime dateTime) {
@@ -102,15 +108,16 @@ namespace WebApplicationGrupp13.Controllers
         }
         public ActionResult Index()
         {
-            
+
             List<string> ct = new List<string>();
-            foreach (FormalBlogPostCategory category in db.FormalBlogPostCategories) {
+            foreach (FormalBlogPostCategory category in db.FormalBlogPostCategories)
+            {
                 ct.Add(category.name);
             }
 
-          
+
             ViewBag.CategoryList = ct;
-           
+
             return View(db.BlogPosts.ToList());
         }
 
@@ -121,11 +128,44 @@ namespace WebApplicationGrupp13.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            else
+            {
+                try
+                {
+                    using (var context = new ApplicationDbContext())
+                    {
+                        var currentUser = User.Identity.GetUserId();
+                        var postId = id.Value;
+                        var postType = PostType.Formal;
+                        var exists = context.ViewedNotifications
+                            .Any(x => x.PostId == postId &&
+                                      x.PostType == postType &&
+                                      x.UserId == currentUser);
+                        if(!exists)
+                        {
+                            var viewedNotification = new ViewedNotifications
+                            {
+                                PostId = postId,
+                                UserId = currentUser,
+                                PostType = postType,
+                                TimeStamp = DateTime.Now
+                            };
+                            context.ViewedNotifications.Add(viewedNotification);
+                            context.SaveChanges();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
             FormalBlogPost formalBlogPost = db.BlogPosts.Find(id);
             if (formalBlogPost == null)
             {
                 return HttpNotFound();
             }
+
             return View(formalBlogPost);
         }
 
@@ -145,38 +185,40 @@ namespace WebApplicationGrupp13.Controllers
         // POST: FormalBlogPosts/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "id,postText,title,category")] FormalBlogPost formalBlogPost) {
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include = "id,postText,title,category")] FormalBlogPost formalBlogPost)
+        //{
         //    var categories = db.FormalBlogPostCategories.ToList();
         //    List<string> categorylist = new List<string>();
-        //    foreach (FormalBlogPostCategory ct in categories) {
+        //    foreach (FormalBlogPostCategory ct in categories)
+        //    {
         //        categorylist.Add(ct.name);
         //    }
         //    ViewBag.CategoryList = categorylist;
-        //    //  if (ModelState.IsValid)
-        //    //   {
-        //    var test = formalBlogPost.category;
+        //    if (ModelState.IsValid)
+        //    {
+        //        var test = formalBlogPost.category;
 
 
-        //    formalBlogPost.creator = User.Identity.Name;
-        //    formalBlogPost.dateTime = DateTime.Now;
+        //        formalBlogPost.creator = User.Identity.Name;
+        //        formalBlogPost.dateTime = DateTime.Now;
 
-        //    db.BlogPosts.Add(formalBlogPost);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //    //  }
+        //        db.BlogPosts.Add(formalBlogPost);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
 
-        //    //   return View(formalBlogPost);
-        //}
+        //           //   return View(formalBlogPost);
+        //        }
 
-        //GET: FormalBlogPosts/Edit/5
-
-
+            //GET: FormalBlogPosts/Edit/5
 
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
         // Endast om en fil tas med i uppladdningen
         public ActionResult Create([Bind(Include = "id,postText,title,category,fileName")] FormalBlogPost formalBlogPost, HttpPostedFileBase file) {
             var categories = db.FormalBlogPostCategories.ToList();
@@ -223,8 +265,11 @@ namespace WebApplicationGrupp13.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,postText,title")] FormalBlogPost formalBlogPost)
+        public ActionResult Edit([Bind(Include = "id,postText,title,creator,category,fileName")] FormalBlogPost formalBlogPost)
         {
+            formalBlogPost.creator = User.Identity.Name;
+            formalBlogPost.dateTime = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 db.Entry(formalBlogPost).State = EntityState.Modified;
