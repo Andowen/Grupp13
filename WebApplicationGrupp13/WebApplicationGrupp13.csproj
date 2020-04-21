@@ -260,6 +260,7 @@
     <Compile Include="Extensions\EducationalPostExtensions.cs" />
     <Compile Include="Extensions\FormalBlogPostExtensions.cs" />
     <Compile Include="Extensions\InformalBlogPostExtensions.cs" />
+    <Compile Include="Extensions\NotificationSettingViewModelExtension.cs" />
     <Compile Include="Extensions\ResearchBlogPostExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -496,6 +497,10 @@
     <Compile Include="Migrations\202004211026031_fil_research.Designer.cs">
       <DependentUpon>202004211026031_fil_research.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004210900587_profilBild.cs" />
+    <Compile Include="Migrations\202004210900587_profilBild.Designer.cs">
+      <DependentUpon>202004210900587_profilBild.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
@@ -623,6 +628,7 @@
     <Content Include="Views\EducationalPostCategories\Edit.cshtml" />
     <Content Include="Views\EducationalPostCategories\Index.cshtml" />
     <Content Include="Views\Manage\EditUserInformation.cshtml" />
+    <Content Include="Views\Notification\NotificationSettings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -815,6 +821,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004201214388_profilbildTest.resx">
       <DependentUpon>202004201214388_profilbildTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004210900587_profilBild.resx">
+      <DependentUpon>202004210900587_profilBild.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004210843061_efterpull.resx">
       <DependentUpon>202004210843061_efterpull.cs</DependentUpon>
