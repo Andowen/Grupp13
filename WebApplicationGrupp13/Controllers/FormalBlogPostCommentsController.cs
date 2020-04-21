@@ -10,150 +10,181 @@ using WebApplicationGrupp13.Models;
 
 namespace WebApplicationGrupp13.Controllers
 {
-   public class FormalBlogPostCommentsController : Controller
- {
-       private ApplicationDbContext db = new ApplicationDbContext();
+    public class FormalBlogPostCommentsController : Controller
+    {
+        private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: FormalBlogPostComments
-        //public List<FormalBlogPostComment>GetAllCommentsFromId(int id) {
-        //    var listOfAllComments = db.FormalBlogPostComments.ToList();
-        //    var listOfMatchingComments = new List<FormalBlogPostComment>();
-        //    foreach(FormalBlogPostComment comment in listOfAllComments) {
-        //        if (comment.formalBlogPost.id.Equals(id)) {
-        //            listOfMatchingComments.Add(comment);
-        //        }
-        //    }
-        //    return listOfMatchingComments;
-        //}
-        //public ActionResult Index()
-        //{
-        //    return View(db.FormalBlogPostComments.ToList());
-        //}
+        public List<FormalBlogPostComment> GetComments (int blogPostId, string blogPostType){
+            var listOfAllComments = db.FormalBlogPostComments.ToList();
+            var listOfMatchingComments = new List<FormalBlogPostComment>();
+            foreach (FormalBlogPostComment comment in listOfAllComments) {
+                if(comment.blogPostId.Equals(blogPostId)){
+                    if (comment.blogPostType.Equals(blogPostType)) {
+                        listOfMatchingComments.Add(comment);
+                    }
 
-        // GET: FormalBlogPostComments/Details/5
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    FormalBlogPostComment formalBlogPostComment = db.FormalBlogPostComments.Find(id);
-        //    if (formalBlogPostComment == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(formalBlogPostComment);
-        //}
-
-        // GET: FormalBlogPostComments/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
-
-        // POST: FormalBlogPostComments/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-      //[HttpPost]
-      //  public void CreateComment(int formalBlogPostId, string comment) {
+                }
+            }
+            return listOfMatchingComments;
 
 
-      //      FormalBlogPost fbp = FormalBlogPostsController.GetBlogPostFromId(formalBlogPostId);
-      //      FormalBlogPostComment formalBlogPostComment = new FormalBlogPostComment();
-      //      formalBlogPostComment.author = User.Identity.Name;
-      //      formalBlogPostComment.dateTime = DateTime.Now;
-      //      formalBlogPostComment.formalBlogPost = fbp;
-      //      formalBlogPostComment.comment = comment;
+        }
+
+        [HttpPost]
+        public void CreateComment(int blogPostId, string blogPostType, string commentText) {
             
+            FormalBlogPostComment comment = new FormalBlogPostComment();
+            comment.author = User.Identity.Name;
+            comment.dateTime = DateTime.Now;
+            comment.blogPostId = blogPostId;
+            comment.blogPostType = blogPostType;
+            comment.commentText = commentText;
+           
+
+                db.FormalBlogPostComments.Add(comment);
+                db.SaveChanges();
          
 
-      //      db.FormalBlogPostComments.Add(formalBlogPostComment);
-      //      db.SaveChanges();
-
-      //  }
        
-        //[ValidateAntiForgeryToken]
-        
-        //public ActionResult Create([Bind(Include = "id,comment,author,dateTime")] FormalBlogPostComment formalBlogPostComment)
-        //{
-        //    formalBlogPostComment.author = User.Identity.Name;
-        //    formalBlogPostComment.dateTime = DateTime.Now;
-           
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.FormalBlogPostComments.Add(formalBlogPostComment);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
 
-        //    return View(formalBlogPostComment);
-        //}
+        }
+        public bool DoesCommentExist(string blogPostType, string commentText, string author) {
 
-        // GET: FormalBlogPostComments/Edit/5
-        //public ActionResult Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    FormalBlogPostComment formalBlogPostComment = db.FormalBlogPostComments.Find(id);
-        //    if (formalBlogPostComment == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(formalBlogPostComment);
-        //}
+            bool exists = true;
+            var listOfallComments = db.FormalBlogPostComments.ToList();
+            foreach(FormalBlogPostComment comment in listOfallComments) {
+                if(comment.blogPostType.Equals(blogPostType) && comment.commentText.Equals(commentText) && comment.author.Equals(author)) {
 
-        // POST: FormalBlogPostComments/Edit/5
+                    exists = false;
+                }
+
+
+            }
+
+
+
+            return exists;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        // GET: Comments
+        public ActionResult Index()
+        {
+            return View(db.FormalBlogPostComments.ToList());
+        }
+
+        // GET: Comments/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            FormalBlogPostComment comment = db.FormalBlogPostComments.Find(id);
+            if (comment == null)
+            {
+                return HttpNotFound();
+            }
+            return View(comment);
+        }
+
+        // GET: Comments/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Comments/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit([Bind(Include = "id,comment,author,dateTime")] FormalBlogPostComment formalBlogPostComment)
-        //{
-           
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Entry(formalBlogPostComment).State = EntityState.Modified;
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(formalBlogPostComment);
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "id,author,commentText,dateTime,blogPostId,blogPostType")] FormalBlogPostComment comment)
+        {
+            if (ModelState.IsValid)
+            {
+                db.FormalBlogPostComments.Add(comment);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
 
-        // GET: FormalBlogPostComments/Delete/5
-        //public ActionResult Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    FormalBlogPostComment formalBlogPostComment = db.FormalBlogPostComments.Find(id);
-        //    if (formalBlogPostComment == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(formalBlogPostComment);
-        //}
+            return View(comment);
+        }
 
-        // POST: FormalBlogPostComments/Delete/5
-//        [HttpPost, ActionName("Delete")]
-//        [ValidateAntiForgeryToken]
-//        public ActionResult DeleteConfirmed(int id)
-//        {
-//            FormalBlogPostComment formalBlogPostComment = db.FormalBlogPostComments.Find(id);
-//            db.FormalBlogPostComments.Remove(formalBlogPostComment);
-//            db.SaveChanges();
-//            return RedirectToAction("Index");
-//        }
+        // GET: Comments/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            FormalBlogPostComment comment = db.FormalBlogPostComments.Find(id);
+            if (comment == null)
+            {
+                return HttpNotFound();
+            }
+            return View(comment);
+        }
 
-//        protected override void Dispose(bool disposing)
-//        {
-//            if (disposing)
-//            {
-//                db.Dispose();
-//            }
-//            base.Dispose(disposing);
-//        }
-  }
+        // POST: Comments/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "id,author,commentText,dateTime,blogPostId,blogPostType")] FormalBlogPostComment comment)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(comment).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(comment);
+        }
+
+        // GET: Comments/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            FormalBlogPostComment comment = db.FormalBlogPostComments.Find(id);
+            if (comment == null)
+            {
+                return HttpNotFound();
+            }
+            return View(comment);
+        }
+
+        // POST: Comments/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            FormalBlogPostComment comment = db.FormalBlogPostComments.Find(id);
+            db.FormalBlogPostComments.Remove(comment);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+    }
 }

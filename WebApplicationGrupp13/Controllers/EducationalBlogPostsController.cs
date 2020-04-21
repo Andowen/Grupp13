@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -174,7 +175,7 @@ namespace WebApplicationGrupp13.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,postText,title,category")] EducationalPost educationalPost)
+        public ActionResult Create([Bind(Include = "id,postText,title,category,fileName")] EducationalPost educationalPost, HttpPostedFileBase file)
         {
             var categories = db.EducationalPostCategories.ToList();
             List<string> categorylist = new List<string>();
@@ -184,7 +185,12 @@ namespace WebApplicationGrupp13.Controllers
             ViewBag.CategoryList = categorylist;
             educationalPost.creator = User.Identity.Name;
             educationalPost.dateTime = DateTime.Now;
-
+            if (file != null) {
+                string fileName = Path.GetFileName(file.FileName);
+                string fileToSave = Path.Combine(Server.MapPath("~/FormalBlogPostUploads"), fileName);
+                file.SaveAs(fileToSave);
+                educationalPost.fileName = fileName;
+            }
             db.EduPosts.Add(educationalPost);
             db.SaveChanges();
             return RedirectToAction("Index");
