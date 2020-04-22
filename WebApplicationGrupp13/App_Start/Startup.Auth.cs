@@ -22,7 +22,7 @@ namespace WebApplicationGrupp13
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 
             CreateRoles();
-            //CreateAdmin();
+            CreateAdmin();
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
             // Configure the sign in cookie
@@ -111,6 +111,7 @@ namespace WebApplicationGrupp13
                         Firstname = "Super",
                         Lastname = "Admin",
                         Mobilenumber = "000000000",
+                        Img = "default_picture.jpg"
 
                     };
                     userManager.Create(admin, "1Admin!");

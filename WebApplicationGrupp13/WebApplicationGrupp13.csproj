@@ -824,9 +824,6 @@
     <EmbeddedResource Include="Migrations\202004210714126_somanycomments.resx">
       <DependentUpon>202004210714126_somanycomments.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004201214388_profilbildTest.resx">
-      <DependentUpon>202004201214388_profilbildTest.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004210900587_profilBild.resx">
       <DependentUpon>202004210900587_profilBild.cs</DependentUpon>
     </EmbeddedResource>
