@@ -5,38 +5,33 @@
     {
         @Html.AntiForgeryToken()
 
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                <a href=' @Url.Action("Index", "Notification", new { userId = @User.Identity.GetUserId() }) ' class="notification">
-                    <span class="noti glyphicon glyphicon-bell" title="Notiser" style="font-size: 20px"></span>
-                    @if (ViewBag.Notifications > 0)
-                    {
-                        <span class="badge" style="background-color: red; margin-left: -5px">@ViewBag.Notifications</span>
-                    }
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a href=' @Url.Action("Index", "Notification", new { userId = @User.Identity.GetUserId() }) ' class="notification">
+                <span class="noti glyphicon glyphicon-bell" title="Notiser" style="font-size: 20px"></span>
+                @if (ViewBag.Notifications > 0)
+                {
+                    <span class="badge" style="background-color: red; margin-left: -5px">@ViewBag.Notifications</span>
+                }
 
-                </a>
-            </li>
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    Hej @User.Identity.GetUserName()
-                    <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li>@Html.ActionLink("Möten", "Index", "MeetingsNew")</li>
-                    <li>@Html.ActionLink("Mina inlägg", "Contact", "Home")</li>
-                    <li>
-                        @Html.ActionLink("Redigera kontoinformation", "EditUserInformation", "Manage", routeValues: null, htmlAttributes: new { title = "Redigera kontoinformation" })
-                    </li>
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <li class="divider"></li>
-                        <li>@Html.ActionLink("Redigera adminbehörighet", "Index", "Admin")</li>
-                    }
-                    <li class="divider"></li>
-                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Logga ut</a></li>
-                </ul>
-            </li>
-        </ul>
+            </a>
+        </li>
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Hej @User.Identity.GetUserName()
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li>@Html.ActionLink("Mina möten", "Index", "NewMeetings")</li>
+                <li>@Html.ActionLink("Mina inlägg", "Contact", "Home")</li>
+                <li>
+                    @Html.ActionLink("Redigera kontoinformation", "EditUserInformation", "Manage", routeValues: null, htmlAttributes: new { title = "Redigera kontoinformation" })
+                </li>
+                <li class="divider"></li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Logga ut</a></li>
+            </ul>
+        </li>
+    </ul>
 
     }
 }
