@@ -7,12 +7,10 @@ namespace WebApplicationGrupp13.Migrations
     {
         public override void Up()
         {
-            
         }
         
         public override void Down()
         {
-           
         }
     }
 }

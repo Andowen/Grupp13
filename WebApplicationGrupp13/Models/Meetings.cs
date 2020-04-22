@@ -9,7 +9,7 @@ namespace WebApplicationGrupp13.Models
     public class Meetings
     {
         [Key]
-        public string id { get; set; }
+        public int id { get; set; }
         public string meetingName { get; set; }
         public DateTime date1 { get; set; }
 

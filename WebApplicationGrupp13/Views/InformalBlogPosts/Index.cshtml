@@ -25,12 +25,14 @@
                 <h3>@Html.DisplayFor(modelItem => item.title)<span class="authorTime">@time</span></h3>
                 <h6>@Html.DisplayFor(modelItem => item.category)</h6>
                 <p>@Html.DisplayFor(modelItem => item.postText)</p>
-                <img src="~/Image/@imageSrc" />
+                <span class=" authorTime"><img src="~/Image/@imageSrc" style="height:70px; width:auto;"></span>
                 <br />
             </div>
             <div class="blogButtons">
                 @if (item.fileName != null) {
-                    <a href="~/InformalBlogPostUploads/@item.fileName" download>@item.fileName</a>
+                <div class="uploadedImg" width="100%" height="100%">
+                    <img src="/InformalBlogPostImages/@item.fileName" width="100%" height="100%">
+                </div>
                 }
                 @if (item.creator.Equals(User.Identity.Name)) {
 

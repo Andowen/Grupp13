@@ -19,10 +19,12 @@
             <div class="formalBlogPostContent">
                 @{
                     var time = FormalBlogPostsController.GetDateFromDateTime(item.dateTime);
+                    var imageSrc = FormalBlogPostsController.GetProfilePictureFromUsername(item.creator);
                 }
                 <h3>@Html.DisplayFor(modelItem => item.title)<span class="authorTime">@time</span></h3>
                 <h6>@Html.DisplayFor(modelItem => item.category)</h6>
                 <p>@Html.DisplayFor(modelItem => item.postText)</p>
+                <span class=" authorTime"><img src="~/Image/@imageSrc" style="height:70px; width:auto;"></span>
                 <br />
             </div>
             <div class="blogButtons">

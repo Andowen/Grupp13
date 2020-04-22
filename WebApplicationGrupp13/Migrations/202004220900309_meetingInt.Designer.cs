@@ -7,13 +7,13 @@ namespace WebApplicationGrupp13.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class profilbildTest : IMigrationMetadata
+    public sealed partial class meetingInt : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(profilbildTest));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(meetingInt));
         
         string IMigrationMetadata.Id
         {
-            get { return "202004201214388_profilbildTest"; }
+            get { return "202004220900309_meetingInt"; }
         }
         
         string IMigrationMetadata.Source
