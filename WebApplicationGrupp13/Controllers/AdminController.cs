@@ -10,11 +10,14 @@ using System.Web;
 using System.Web.Mvc;
 using WebApplicationGrupp13.Extensions;
 using WebApplicationGrupp13.Models;
+using WebApplicationGrupp13.Services;
 
 namespace WebApplicationGrupp13.Controllers
 {
     public class AdminController : NotificationControllerBase
     {
+        private AdminService service = new AdminService();
+        
         // GET: Admin
         [CustomAuthorize(Roles ="Admin")]
         public ActionResult Index()
@@ -22,34 +25,27 @@ namespace WebApplicationGrupp13.Controllers
             using (var context = new ApplicationDbContext())
             {
                 var currentUser = User.Identity.GetUserId();
-                var roleId = context.Roles.FirstOrDefault(r => r.Name == "Admin").Id;
-                var role = "User";
-                var userAdminList = new List<AdminViewModel>();
-                var users = context.Users
-                    .Where(x => x.Id != currentUser && x.UserName != "admin@admin.com")
-                    .ToList();
+                var roleType = "Admin";
+                var roleId = context.Roles.FirstOrDefault(r => r.Name == roleType).Id;
 
-                foreach (var item in users)
-                {
-                    if (item.Roles.Any(r => r.RoleId == roleId))
-                    {
-                        role = "Admin";
-                    }
-                    else
-                    {
-                        role = "User";
-                    }
-                    var userAdmin = new AdminViewModel
-                    {
-                        UserId = item.Id,
-                        Name = $"{item.Firstname} {item.Lastname}",
-                        Email = item.UserName,
-                        Role = role,
-                        Image = item.Img
+                var userAdminList = service.GetUsers(currentUser, roleId, roleType);    
 
-                    };
-                    userAdminList.Add(userAdmin);
-                }
+                return View(userAdminList);
+            }
+
+        }
+
+        [CustomAuthorize(Roles = "Admin")]
+        public ActionResult UserAuthorization()
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var currentUser = User.Identity.GetUserId();
+                var roleType = "AuthorizedUser";
+                var roleId = context.Roles.FirstOrDefault(r => r.Name == roleType).Id;
+
+                var userAdminList = service.GetUsers(currentUser, roleId, roleType);
+
                 return View(userAdminList);
             }
 
@@ -61,9 +57,9 @@ namespace WebApplicationGrupp13.Controllers
             return userAdminList.Count(x => x.Role == "Admin");
         }
 
-        public int CountUsers(IEnumerable<AdminViewModel> userAdminList)
+        public int CountAuthorizedUsers(IEnumerable<AdminViewModel> userAdminList)
         {
-            return userAdminList.Count(x => x.Role == "User");
+            return userAdminList.Count(x => x.Role == "AuthorizedUser");
         }
 
         [CustomAuthorize(Roles = "Admin")]
