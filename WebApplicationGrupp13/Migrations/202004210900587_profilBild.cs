@@ -7,12 +7,10 @@ namespace WebApplicationGrupp13.Migrations
     {
         public override void Up()
         {
-            AddColumn("dbo.AspNetUsers", "Img", c => c.String());
         }
         
         public override void Down()
         {
-            DropColumn("dbo.AspNetUsers", "Img");
         }
     }
 }

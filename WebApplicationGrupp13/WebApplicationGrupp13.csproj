@@ -485,10 +485,6 @@
     <Compile Include="Migrations\202004210714126_somanycomments.Designer.cs">
       <DependentUpon>202004210714126_somanycomments.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202004210843061_efterpull.cs" />
-    <Compile Include="Migrations\202004210843061_efterpull.Designer.cs">
-      <DependentUpon>202004210843061_efterpull.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202004210901255_filuppladdning_informel_utbildning.cs" />
     <Compile Include="Migrations\202004210901255_filuppladdning_informel_utbildning.Designer.cs">
       <DependentUpon>202004210901255_filuppladdning_informel_utbildning.cs</DependentUpon>
@@ -824,9 +820,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004210900587_profilBild.resx">
       <DependentUpon>202004210900587_profilBild.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004210843061_efterpull.resx">
-      <DependentUpon>202004210843061_efterpull.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004210901255_filuppladdning_informel_utbildning.resx">
       <DependentUpon>202004210901255_filuppladdning_informel_utbildning.cs</DependentUpon>
