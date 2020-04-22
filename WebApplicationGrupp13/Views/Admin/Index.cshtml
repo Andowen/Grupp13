@@ -1,0 +1,40 @@
+﻿@model IEnumerable<WebApplicationGrupp13.Models.AdminViewModel>
+@using WebApplicationGrupp13.Controllers
+
+@{
+    ViewBag.Title = "Admin";
+}
+
+<h2>Redigera administratörsbehörighet</h2>
+@{
+    var adminControl = new AdminController();
+    var adminCount = adminControl.CountAdmins(Model);
+    var userCount = adminControl.CountUsers(Model);
+}
+
+@if (adminCount > 0)
+{
+    @Html.Partial("_AdminPartial")
+
+}
+<h3>Användare</h3>
+
+@foreach (var item in Model)
+{
+    if (item.Role.Equals("User"))
+    {
+        <div class="row">
+            <div class="col-md-3">
+                <p style="font-weight:bold;">@item.Name</p>
+                <p>@item.Email</p>
+            </div>
+            <div class="col-md-9">
+                <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("MakeAdmin", "Admin", new { userId = item.UserId})'">Ge adminbehörighet</button>
+            </div>
+        </div>
+        <hr />
+    }
+
+}
+
+
