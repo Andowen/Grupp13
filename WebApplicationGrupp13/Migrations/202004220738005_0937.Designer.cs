@@ -7,13 +7,13 @@ namespace WebApplicationGrupp13.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class efterpull : IMigrationMetadata
+    public sealed partial class _0937 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(efterpull));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_0937));
         
         string IMigrationMetadata.Id
         {
-            get { return "202004210843061_efterpull"; }
+            get { return "202004220738005_0937"; }
         }
         
         string IMigrationMetadata.Source

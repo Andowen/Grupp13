@@ -112,11 +112,15 @@ namespace WebApplicationGrupp13.Controllers
             informalBlogPost.creator = User.Identity.Name;
             informalBlogPost.dateTime = DateTime.Now;
 
-            if (file != null) {
-                string fileName = Path.GetFileName(file.FileName);
-                string fileToSave = Path.Combine(Server.MapPath("~/FormalBlogPostUploads"), fileName);
-                file.SaveAs(fileToSave);
-                informalBlogPost.fileName = fileName;
+            FileInfo fi = new FileInfo(file.FileName);
+
+            if (fi.Extension == ".jpg" || fi.Extension == ".jpeg" || fi.Extension == ".png") {
+                if (file != null) {
+                    string fileName = Path.GetFileName(file.FileName);
+                    string fileToSave = Path.Combine(Server.MapPath("~/InformalBlogPostImages"), fileName);
+                    file.SaveAs(fileToSave);
+                    informalBlogPost.fileName = fileName;
+                }
             }
 
             db.InformalBlogPosts.Add(informalBlogPost);
