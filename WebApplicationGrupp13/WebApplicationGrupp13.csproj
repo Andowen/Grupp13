@@ -237,6 +237,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CalenderController.cs" />
     <Compile Include="Controllers\EducationalBlogPostCommentsController.cs" />
     <Compile Include="Controllers\FormalBlogPostCommentsController.cs" />
@@ -257,6 +258,7 @@
     <Compile Include="Controllers\ResearchBlogPostsController.cs" />
     <Compile Include="Enums\NotificationType.cs" />
     <Compile Include="Enums\PostType.cs" />
+    <Compile Include="ErrorHandling\ErrorMessageHandler.cs" />
     <Compile Include="Extensions\CalenderViewModelExtensions.cs" />
     <Compile Include="Extensions\EducationalPostExtensions.cs" />
     <Compile Include="Extensions\FormalBlogPostExtensions.cs" />
@@ -504,6 +506,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
     <Compile Include="Models\EducationalBlogPostComment.cs" />
     <Compile Include="Models\FormalBlogPostComment.cs" />
@@ -635,6 +638,8 @@
     <Content Include="Views\NewMeetings\Details.cshtml" />
     <Content Include="Views\NewMeetings\Edit.cshtml" />
     <Content Include="Views\NewMeetings\Index.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\_AdminPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -824,9 +829,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004210714126_somanycomments.resx">
       <DependentUpon>202004210714126_somanycomments.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004201214388_profilbildTest.resx">
-      <DependentUpon>202004201214388_profilbildTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004210900587_profilBild.resx">
       <DependentUpon>202004210900587_profilBild.cs</DependentUpon>
