@@ -17,6 +17,7 @@ namespace WebApplicationGrupp13.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Admin
+        [Authorize(Roles ="Admin")]
         public ActionResult Index()
         {
             using (var context = new ApplicationDbContext())
@@ -26,7 +27,7 @@ namespace WebApplicationGrupp13.Controllers
                 var role = "User";
                 var userAdminList = new List<AdminViewModel>();
                 var users = context.Users
-                    .Where(x => x.Id != currentUser)
+                    .Where(x => x.Id != currentUser && x.UserName != "admin@admin.com")
                     .ToList();
 
                 foreach (var item in users)
@@ -65,6 +66,7 @@ namespace WebApplicationGrupp13.Controllers
             return userAdminList.Count(x => x.Role == "User");
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult MakeAdmin(string userId)
         {
             using(var context = new ApplicationDbContext())
@@ -86,6 +88,7 @@ namespace WebApplicationGrupp13.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult RemoveAdmin(string userId)
         {
             using (var context = new ApplicationDbContext())
