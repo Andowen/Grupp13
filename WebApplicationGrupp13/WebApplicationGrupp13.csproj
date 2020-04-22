@@ -237,6 +237,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CalenderController.cs" />
     <Compile Include="Controllers\EducationalBlogPostCommentsController.cs" />
     <Compile Include="Controllers\FormalBlogPostCommentsController.cs" />
@@ -504,6 +505,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
     <Compile Include="Models\EducationalBlogPostComment.cs" />
     <Compile Include="Models\FormalBlogPostComment.cs" />
@@ -597,10 +599,6 @@
     <Content Include="Views\FormalBlogPostCategories\Details.cshtml" />
     <Content Include="Views\FormalBlogPostCategories\Edit.cshtml" />
     <Content Include="Views\FormalBlogPostCategories\Index.cshtml" />
-    <Content Include="Views\InformalBlogPosts\Create.cshtml" />
-    <Content Include="Views\InformalBlogPosts\Delete.cshtml" />
-    <Content Include="Views\InformalBlogPosts\Details.cshtml" />
-    <Content Include="Views\InformalBlogPosts\Edit.cshtml" />
     <Content Include="Views\InformalBlogPosts\Index.cshtml" />
     <Content Include="Views\InformalBlogPostCategories\Create.cshtml" />
     <Content Include="Views\InformalBlogPostCategories\Delete.cshtml" />
@@ -630,6 +628,12 @@
     <Content Include="Views\EducationalPostCategories\Index.cshtml" />
     <Content Include="Views\Manage\EditUserInformation.cshtml" />
     <Content Include="Views\Notification\NotificationSettings.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\InformalBlogPosts\Edit.cshtml" />
+    <Content Include="Views\InformalBlogPosts\Details.cshtml" />
+    <Content Include="Views\InformalBlogPosts\Delete.cshtml" />
+    <Content Include="Views\InformalBlogPosts\Create.cshtml" />
+    <Content Include="Views\Admin\_AdminPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -819,9 +823,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004210714126_somanycomments.resx">
       <DependentUpon>202004210714126_somanycomments.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004201214388_profilbildTest.resx">
-      <DependentUpon>202004201214388_profilbildTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004210900587_profilBild.resx">
       <DependentUpon>202004210900587_profilBild.cs</DependentUpon>

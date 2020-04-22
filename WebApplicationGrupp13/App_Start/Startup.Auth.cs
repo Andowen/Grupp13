@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Web;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
@@ -19,6 +21,8 @@ namespace WebApplicationGrupp13
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 
+            CreateRoles();
+            CreateAdmin();
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
             // Configure the sign in cookie
@@ -34,7 +38,7 @@ namespace WebApplicationGrupp13
                         validateInterval: TimeSpan.FromMinutes(30),
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
-            });            
+            });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             // Enables the application to temporarily store user information when they are verifying the second factor in the two-factor authentication process.
@@ -63,6 +67,68 @@ namespace WebApplicationGrupp13
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+        }
+
+        private void CreateRoles()
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+                if (!roleManager.RoleExists("User"))
+                {
+                    var role = new IdentityRole();
+                    role.Name = "User";
+                    roleManager.Create(role);
+                }
+                if (!roleManager.RoleExists("Admin"))
+                {
+                    var role = new IdentityRole();
+                    role.Name = "Admin";
+                    roleManager.Create(role);
+                }
+                if (!roleManager.RoleExists("AuthUser"))
+                {
+                    var role = new IdentityRole();
+                    role.Name = "AuthUser";
+                    roleManager.Create(role);
+                }
+            }
+
+        }
+
+        private void CreateAdmin()
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(context));
+
+                if (userManager.FindByEmail("admin@admin.com") == null)
+                {
+                    var admin = new ApplicationUser
+                    {
+                        UserName = "admin@admin.com",
+                        Email = "admin@admin.com",
+                        Firstname = "Super",
+                        Lastname = "Admin",
+                        Mobilenumber = "000000000",
+                        Img = "default_picture.jpg"
+
+                    };
+                    userManager.Create(admin, "1Admin!");
+                    
+                    userManager.AddToRole(admin.Id, "Admin");
+                    
+                    var userNotifications = new UserNotifications
+                    {
+                        UserId = admin.Id,
+                        SelectedNotification = Enums.NotificationType.None,
+                        UpdatedDate = DateTime.Now
+                    };
+                    context.UserNotifications.Add(userNotifications);
+                    context.SaveChanges();
+                }
+
+            }
         }
     }
 }
