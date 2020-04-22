@@ -1,0 +1,41 @@
+﻿.profile-thumbnail span {
+    background: #ffffff;
+    display: inline;
+    float: left;
+    margin: 10px 10px 10px 10px;
+    padding: 7px 7px 7px;
+    text-align: center;
+    text-decoration: none;
+    -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+    -moz-box-shadow: 0 4px 6px rgba(0,0,0,.3);
+    box-shadow: 0 4px 6px rgba(0,0,0,.3);
+    -webkit-transition: all .20s linear;
+    -moz-transition: all .20s linear;
+    transition: all .20s linear;
+    z-index: 0;
+    position: relative;
+}
+
+.profile-thumbnail img {
+    display: block;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.userName {
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.btn-admin {
+    margin-top: 30px;
+}
+
+.eMail {
+    padding: 0 0 0;
+    font-size: 12px;
+}
+

@@ -260,6 +260,7 @@
     <Compile Include="Enums\PostType.cs" />
     <Compile Include="ErrorHandling\ErrorMessageHandler.cs" />
     <Compile Include="Extensions\CalenderViewModelExtensions.cs" />
+    <Compile Include="Extensions\CustomAuthorize.cs" />
     <Compile Include="Extensions\EducationalPostExtensions.cs" />
     <Compile Include="Extensions\FormalBlogPostExtensions.cs" />
     <Compile Include="Extensions\InformalBlogPostExtensions.cs" />
@@ -541,6 +542,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\list-view.css" />
     <Content Include="Content\notification-style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -644,6 +646,7 @@
     <Content Include="Views\NewMeetings\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\_AdminPartial.cshtml" />
+    <Content Include="Views\Admin\UnAuthorized.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
