@@ -237,10 +237,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CalenderController.cs" />
     <Compile Include="Controllers\EducationalBlogPostCommentsController.cs" />
     <Compile Include="Controllers\FormalBlogPostCommentsController.cs" />
     <Compile Include="Controllers\InformalBlogPostCommentsController.cs" />
+    <Compile Include="Controllers\NewMeetingsController.cs" />
     <Compile Include="Controllers\ResearchBlogPostCommentsController.cs" />
     <Compile Include="Controllers\EducationalBlogPostsController.cs" />
     <Compile Include="Controllers\EducationalPostCategoriesController.cs" />
@@ -256,6 +258,7 @@
     <Compile Include="Controllers\ResearchBlogPostsController.cs" />
     <Compile Include="Enums\NotificationType.cs" />
     <Compile Include="Enums\PostType.cs" />
+    <Compile Include="ErrorHandling\ErrorMessageHandler.cs" />
     <Compile Include="Extensions\CalenderViewModelExtensions.cs" />
     <Compile Include="Extensions\EducationalPostExtensions.cs" />
     <Compile Include="Extensions\FormalBlogPostExtensions.cs" />
@@ -485,10 +488,6 @@
     <Compile Include="Migrations\202004210714126_somanycomments.Designer.cs">
       <DependentUpon>202004210714126_somanycomments.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202004210843061_efterpull.cs" />
-    <Compile Include="Migrations\202004210843061_efterpull.Designer.cs">
-      <DependentUpon>202004210843061_efterpull.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202004210901255_filuppladdning_informel_utbildning.cs" />
     <Compile Include="Migrations\202004210901255_filuppladdning_informel_utbildning.Designer.cs">
       <DependentUpon>202004210901255_filuppladdning_informel_utbildning.cs</DependentUpon>
@@ -501,12 +500,17 @@
     <Compile Include="Migrations\202004210900587_profilBild.Designer.cs">
       <DependentUpon>202004210900587_profilBild.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004220900309_meetingInt.cs" />
+    <Compile Include="Migrations\202004220900309_meetingInt.Designer.cs">
+      <DependentUpon>202004220900309_meetingInt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202004220738005_0937.cs" />
     <Compile Include="Migrations\202004220738005_0937.Designer.cs">
       <DependentUpon>202004220738005_0937.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\CalenderViewModel.cs" />
     <Compile Include="Models\EducationalBlogPostComment.cs" />
     <Compile Include="Models\FormalBlogPostComment.cs" />
@@ -633,6 +637,13 @@
     <Content Include="Views\EducationalPostCategories\Index.cshtml" />
     <Content Include="Views\Manage\EditUserInformation.cshtml" />
     <Content Include="Views\Notification\NotificationSettings.cshtml" />
+    <Content Include="Views\NewMeetings\Create.cshtml" />
+    <Content Include="Views\NewMeetings\Delete.cshtml" />
+    <Content Include="Views\NewMeetings\Details.cshtml" />
+    <Content Include="Views\NewMeetings\Edit.cshtml" />
+    <Content Include="Views\NewMeetings\Index.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\_AdminPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -824,20 +835,17 @@
     <EmbeddedResource Include="Migrations\202004210714126_somanycomments.resx">
       <DependentUpon>202004210714126_somanycomments.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004201214388_profilbildTest.resx">
-      <DependentUpon>202004201214388_profilbildTest.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004210900587_profilBild.resx">
       <DependentUpon>202004210900587_profilBild.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004210843061_efterpull.resx">
-      <DependentUpon>202004210843061_efterpull.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004210901255_filuppladdning_informel_utbildning.resx">
       <DependentUpon>202004210901255_filuppladdning_informel_utbildning.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004211026031_fil_research.resx">
       <DependentUpon>202004211026031_fil_research.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004220900309_meetingInt.resx">
+      <DependentUpon>202004220900309_meetingInt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004220738005_0937.resx">
       <DependentUpon>202004220738005_0937.cs</DependentUpon>
