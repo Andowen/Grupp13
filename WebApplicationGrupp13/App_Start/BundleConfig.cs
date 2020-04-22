@@ -25,7 +25,8 @@ namespace WebApplicationGrupp13
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Content/notification-style.css"));
+                      "~/Content/notification-style.css",
+                      "~/Content/list-view.css"));
         }
     }
 }

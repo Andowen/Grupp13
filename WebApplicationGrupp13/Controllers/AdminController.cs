@@ -8,16 +8,15 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WebApplicationGrupp13.Extensions;
 using WebApplicationGrupp13.Models;
 
 namespace WebApplicationGrupp13.Controllers
 {
-    public class AdminController : Controller
+    public class AdminController : NotificationControllerBase
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-
         // GET: Admin
-        [Authorize(Roles ="Admin")]
+        [CustomAuthorize(Roles ="Admin")]
         public ActionResult Index()
         {
             using (var context = new ApplicationDbContext())
@@ -45,7 +44,8 @@ namespace WebApplicationGrupp13.Controllers
                         UserId = item.Id,
                         Name = $"{item.Firstname} {item.Lastname}",
                         Email = item.UserName,
-                        Role = role
+                        Role = role,
+                        Image = item.Img
 
                     };
                     userAdminList.Add(userAdmin);
@@ -66,7 +66,7 @@ namespace WebApplicationGrupp13.Controllers
             return userAdminList.Count(x => x.Role == "User");
         }
 
-        [Authorize(Roles = "Admin")]
+        [CustomAuthorize(Roles = "Admin")]
         public ActionResult MakeAdmin(string userId)
         {
             using(var context = new ApplicationDbContext())
@@ -88,7 +88,7 @@ namespace WebApplicationGrupp13.Controllers
             return RedirectToAction("Index");
         }
 
-        [Authorize(Roles = "Admin")]
+        [CustomAuthorize(Roles = "Admin")]
         public ActionResult RemoveAdmin(string userId)
         {
             using (var context = new ApplicationDbContext())
@@ -108,6 +108,11 @@ namespace WebApplicationGrupp13.Controllers
                 context.SaveChanges();
             }
             return RedirectToAction("Index");
+        }
+
+        public ActionResult UnAuthorized()
+        {
+            return View();
         }
     }
 }
