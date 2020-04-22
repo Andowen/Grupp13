@@ -1,8 +1,9 @@
 ﻿@model WebApplicationGrupp13.Models.EditInformationViewModel
 
 @{
-    ViewBag.Title = "Redigera din profil";
+    ViewBag.Title = "Redigera dina uppgifter";
 }
+    <h2>@ViewBag.Title</h2>
 
 @using (Html.BeginForm("EditInfoNew", "Manage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
 
@@ -33,8 +34,6 @@
                 @Html.ValidationMessageFor(model => model.Mobilenumber, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        <img src="~/Image/@Url.Content(Model.Img)" style="height:70px; width:auto;" alt="profileimage" />
 
         <div class="form-group">
             <div class="col-md-10">
