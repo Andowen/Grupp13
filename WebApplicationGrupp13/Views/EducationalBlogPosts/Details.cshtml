@@ -32,6 +32,16 @@
         <dd>
             @Html.DisplayFor(model => model.category)
         </dd>
+        <dt>
+            <p style="text-decoration-style: solid">Uppladdad fil</p>
+        </dt>
+
+        <dd>
+            @if (Model.fileName != null) {
+                <a href="~/FormalBlogPostUploads/@Model.fileName" download>@Model.fileName</a>
+            }
+        </dd>
+
 
     </dl>
 </div>

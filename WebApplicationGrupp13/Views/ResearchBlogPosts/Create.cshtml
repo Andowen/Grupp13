@@ -7,7 +7,7 @@
 <h2>Skapa nytt inlägg</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "ResearchBlogPosts", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -35,6 +35,9 @@
         <div class="col-md-10">
             @Html.EditorFor(model => model.postText, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.postText, "", new { @class = "text-danger" })
+
+            <input type="file" id="file" name="file">
+
         </div>
     </div>
 
