@@ -10,6 +10,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplicationGrupp13.Enums;
+using WebApplicationGrupp13.ErrorHandling;
 using WebApplicationGrupp13.Models;
 
 namespace WebApplicationGrupp13.Controllers
@@ -25,8 +26,30 @@ namespace WebApplicationGrupp13.Controllers
         }
         public static FormalBlogPost GetBlogPostFromId(int id) {
             ApplicationDbContext dbContext = new ApplicationDbContext();
-            return dbContext.BlogPosts.Find(id);
+          
+                return dbContext.BlogPosts.Find(id);
+          
         }
+
+
+        public static string GetProfilePictureFromUsername(string userName) {
+            string image="";
+            ApplicationDbContext dbContext = new ApplicationDbContext();
+            foreach (ApplicationUser user in dbContext.Users.ToList()) {
+
+                if (user.UserName.Equals(userName)) {
+                    image = user.Img;
+                }
+            }
+            return image;
+
+        }
+
+
+
+
+
+
 
         public static string GetDateFromDateTime(DateTime dateTime) {
 

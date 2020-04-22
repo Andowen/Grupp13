@@ -256,6 +256,7 @@
     <Compile Include="Controllers\ResearchBlogPostsController.cs" />
     <Compile Include="Enums\NotificationType.cs" />
     <Compile Include="Enums\PostType.cs" />
+    <Compile Include="ErrorHandling\ErrorMessageHandler.cs" />
     <Compile Include="Extensions\CalenderViewModelExtensions.cs" />
     <Compile Include="Extensions\EducationalPostExtensions.cs" />
     <Compile Include="Extensions\FormalBlogPostExtensions.cs" />
