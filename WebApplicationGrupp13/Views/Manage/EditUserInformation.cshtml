@@ -4,7 +4,8 @@
     ViewBag.Title = "Redigera din profil";
 }
 
-@using (Html.BeginForm("EditInfoNew", "Manage", new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+@using (Html.BeginForm("EditInfoNew", "Manage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+
 {
 
     @Html.AntiForgeryToken()
@@ -33,7 +34,14 @@
             </div>
         </div>
 
-        <img src="~/Image/@Url.Content(Model.Img)" alt="profileimage" />
+        <img src="~/Image/@Url.Content(Model.Img)" style="height:70px; width:auto;" alt="profileimage" />
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.LabelFor(m => m.Img, htmlAttributes: new { @class = "control-label col-md-2" })
+                <input type="file" id="imageFile" name="imageFile" class="form-control" />
+            </div>
+        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

@@ -18,5 +18,6 @@ namespace WebApplicationGrupp13.Models
         [Display(Name = "Telefonnummer")]
         public string Mobilenumber { get; set; }
         public string Img { get; set; }
+        public HttpPostedFileBase ImageFile { get; set; }
     }
 }

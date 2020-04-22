@@ -18,7 +18,7 @@ namespace WebApplicationGrupp13.Models {
         public DateTime dateTime { get; set; }
         [Display(Name = "Kategori")]
         public string category { get; set; }
-        [Display(Name = "Fil")]
+        [Display(Name = "Bild")]
         public string fileName { get; set; }
 
     }

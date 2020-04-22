@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -76,11 +77,30 @@ namespace WebApplicationGrupp13.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditInfoNew(EditInformationViewModel model)
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditInfoNew(EditInformationViewModel model, HttpPostedFileBase imageFile)
         {
+            
             var ctx = new ApplicationDbContext();
             var user = User.Identity.GetUserId();
             var account = ctx.Users.FirstOrDefault(a => a.Id == user);
+            
+            var filename = "";
+
+            if(imageFile == null)
+            {
+                filename = account.Img;
+            }
+
+
+            else {
+                filename = imageFile.FileName;
+                var filePath = Path.Combine(Server.MapPath("~/Image"), filename);
+                imageFile.SaveAs(filePath);
+            }
+
+            account.Img = filename;
 
             if (!model.Firstname.Equals(account.Firstname))
             {
@@ -100,7 +120,7 @@ namespace WebApplicationGrupp13.Controllers
 
             ctx.SaveChanges();
 
-            //return View("EditUserInformation");
+
             return RedirectToAction("Index");
 
         }
@@ -132,6 +152,11 @@ namespace WebApplicationGrupp13.Controllers
         //
         // GET: /Manage/AddPhoneNumber
         public ActionResult AddPhoneNumber()
+        {
+            return View();
+        }
+
+        public ActionResult EditProfileImage()
         {
             return View();
         }
