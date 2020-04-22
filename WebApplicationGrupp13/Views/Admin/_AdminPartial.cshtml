@@ -1,0 +1,23 @@
+﻿@model IEnumerable<WebApplicationGrupp13.Models.AdminViewModel>
+<h3>Administratörer</h3>
+
+    @foreach (var item in Model)
+    {
+        if (item.Role.Equals("Admin"))
+        {
+            <div class="row">
+                <div class="col-md-3">
+                    <p style="font-weight:bold;">@item.Name</p>
+                    <p>@item.Email</p>
+                </div>
+                <div class="col-md-9">
+                    <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("RemoveAdmin", "Admin", new { userId = item.UserId})'">Ta bort adminbehörighet</button>
+                </div>
+            </div>
+            <hr />
+        }
+
+    }
+
+
+

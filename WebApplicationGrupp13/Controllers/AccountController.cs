@@ -150,9 +150,22 @@ namespace WebApplicationGrupp13.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model, HttpPostedFileBase imageFile)
         {
-            var filename = Path.GetFileName(imageFile.FileName);
-            var filePath = Path.Combine(Server.MapPath("~/FormalBlogPostUploads"), filename);
-            imageFile.SaveAs(filePath);
+            var filename = "";
+
+
+            if (imageFile == null) {
+
+                filename = "profilbild.png";
+                  //  Path.GetFileName(imageFile.FileName);
+             
+            } else {
+                filename = imageFile.FileName;
+                var filePath = Path.Combine(Server.MapPath("~/Image"), filename);
+
+
+                imageFile.SaveAs(filePath);
+            }
+          
 
             using (var db = new ApplicationDbContext())
 
@@ -171,7 +184,8 @@ namespace WebApplicationGrupp13.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                        UserManager.AddToRole(user.Id, "User");
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     try
                     {
