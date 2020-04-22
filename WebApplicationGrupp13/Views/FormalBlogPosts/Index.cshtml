@@ -13,11 +13,11 @@
     </p>
 
     var Model1 = Model.OrderByDescending(c => c.id);
-    int counter = 1;
+   
     foreach (var BlogPost in Model1) {
+        var blogPostIdString = BlogPost.id.ToString();
+<div class="formalBlogPost" id=@blogPostIdString>
 
-<div class="formalBlogPost" id="@BlogPost.id">
-    @{counter = counter + 1;}
     <div class="formalBlogPostContent">
         @{
             var time = FormalBlogPostsController.GetDateFromDateTime(BlogPost.dateTime);
@@ -51,11 +51,12 @@
         }
 
     </div>
-    
+
 
     @foreach (var comment in commentsController.GetComments(BlogPost.id, "Formal")) {
         var commentTime = FormalBlogPostsController.GetDateFromDateTime(comment.dateTime);
-        <div class="formalBlogPostComment" id="@counter">
+
+        <div class="formalBlogPostComment">
 
 
             <p>@comment.commentText</p>
@@ -63,51 +64,9 @@
         </div>
 
     }
-
-    @{ int id = BlogPost.id;
-            int textBoxId = id + 999;
-        string textBoxIdString = textBoxId.ToString();}  
-    @Html.TextArea(textBoxIdString, null, new { placeholder = "Skriv en kommentar", id = textBoxIdString, rows="3", cols="1000" })
- 
-
-    <button id="@BlogPost.id" onClick="reply_click(this.id)">Skicka</button>
+    
 </div>
-        <script src="~/Scripts/jquery-3.4.1.js"></script>
-
-        <script>
-       var urlpath = '@Url.Action("CreateComment", "FormalBlogPostComments")';
-
-        </script>
-        <script type="text/javascript">
-
-            $(function () {
-
-
-
-                $('#btnStart').on('click', function () {
-                    console.log(x);
-            });
-            });
-            function reply_click(clicked_id) {
-                var clicked_id_int = parseInt(clicked_id);
-                var commentId = clicked_id_int += @textBoxId - 2;
-                console.log(commentId)
-                var commentTxt = document.getElementById(commentId).value;
-                
-
-                console.log(clicked_id);
-                $.ajax({
-                    type: 'POST',
-                    url: urlpath,
-                    data: JSON.stringify({ blogPostId: clicked_id, blogPostType: "Formal", commentText: commentTxt }),
-                    dataType: 'json',
-                    contentType: 'application/json; charset=utf-8',
-                })
-
-                location.reload();
-            }
-        </script>
-
+       
 
     }
 
