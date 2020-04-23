@@ -21,7 +21,7 @@ namespace WebApplicationGrupp13.Services
                 var users = context.Users
                     .Where(x =>
                         (x.Id != currentUser && x.UserName != "admin@admin.com") &&
-                        (roleType == "Admin") || (x.Roles.Any(r => r.RoleId != AdminId))
+                        (roleType == "Admin") || (!x.Roles.Any(r => r.RoleId == AdminId))
                         )
                     .ToList();
 
