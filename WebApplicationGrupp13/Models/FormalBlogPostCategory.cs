@@ -7,6 +7,7 @@ using System.Web;
 namespace WebApplicationGrupp13.Models {
     public class FormalBlogPostCategory {
         [Key]
+        [Display(Name = "Kategori")]
         public string name { get; set; }
 
     }
