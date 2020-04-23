@@ -35,9 +35,18 @@ namespace WebApplicationGrupp13.Controllers
             return View(meetings);
         }
 
+        
+
         // GET: NewMeetings/Create
         public ActionResult Create()
         {
+
+            //var users = db.Users.ToList();
+            //List<string> usersList = new List<string>();
+            //foreach (ApplicationUser au in users) {
+            //    usersList.Add(au.Firstname);
+            //}
+            //ViewBag.UserList = usersList;
             return View();
         }
 
@@ -52,11 +61,6 @@ namespace WebApplicationGrupp13.Controllers
 
             if (ModelState.IsValid)
             {
-                //DateTime dateEtt = DateTime.Parse(meetings.date1);
-
-                //string iDate = meetings.date1;
-                //DateTime oDate = Convert.ToDateTime(iDate);
-
                 meetings.creator = User.Identity.Name;
                 db.Meeting.Add(meetings);
                 db.SaveChanges();
@@ -131,5 +135,22 @@ namespace WebApplicationGrupp13.Controllers
             }
             base.Dispose(disposing);
         }
+
+        //public ActionResult InviteUsers() {
+        //    List<SelectListItem> usersSelectListItems = new List<SelectListItem>();
+        //    foreach (ApplicationUser user in db.Users.ToList()) {
+        //        SelectListItem selectedList = new SelectListItem() {
+        //            Text = user.Firstname + " " + user.Lastname,
+        //            Value = user.Id.ToString(),
+        //            //Selected = user.IsSelected
+        //        };
+        //        usersSelectListItems.Add(selectedList);
+        //    }
+        //    ApplicationUser selectedUser = new ApplicationUser() 
+        //    {
+        //        InvitedUsers = usersSelectListItems
+        //    };
+        //    return View(selectedUser);
+        //}
     }
 }

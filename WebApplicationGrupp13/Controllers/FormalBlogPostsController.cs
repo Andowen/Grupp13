@@ -45,7 +45,26 @@ namespace WebApplicationGrupp13.Controllers
 
         }
 
+        public static string GetNameFromUsername(string userName)
+        {
+            string name = "";
+            string firstname = "";
+            string lastname = "";
 
+            ApplicationDbContext dbContext = new ApplicationDbContext();
+            foreach (ApplicationUser user in dbContext.Users.ToList())
+            {
+
+                if (user.UserName.Equals(userName))
+                {
+                    firstname = user.Firstname;
+                    lastname = user.Lastname;
+                    name = firstname + " " + lastname;
+                }
+            }
+            return name;
+
+        }
 
 
 

@@ -1,17 +1,277 @@
 ﻿@{
-    ViewBag.Title = "Contact";
+    ViewBag.Title = "Dina inlägg";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+@using WebApplicationGrupp13.Controllers
+@using WebApplicationGrupp13.Models
+<h2>Dina blogginlägg</h2>
+<br />
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+@{
+    AllBlogPostsController allBlogPostsController = new AllBlogPostsController();
+    string currentlyLoggedIn = User.Identity.Name;
+}
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+
+
+
+@{ int numberOfFormalBlogPosts = 0;}
+@foreach (FormalBlogPost BlogPost in allBlogPostsController.GetAllFormalBlogPostFromAuthor(currentlyLoggedIn)) {
+    numberOfFormalBlogPosts = numberOfFormalBlogPosts + 1;
+}
+<h3>Formella blogginlägg (@numberOfFormalBlogPosts.ToString())</h3>
+@foreach (FormalBlogPost BlogPost in allBlogPostsController.GetAllFormalBlogPostFromAuthor(currentlyLoggedIn)) {
+
+    var blogPostIdString = BlogPost.id.ToString();
+    <div class="formalBlogPost" id=@blogPostIdString>
+
+        <div class="formalBlogPostContent">
+            @{
+                var time = FormalBlogPostsController.GetDateFromDateTime(BlogPost.dateTime);
+                var imageSrc = FormalBlogPostsController.GetProfilePictureFromUsername(BlogPost.creator);
+            }
+            <h3>@Html.DisplayFor(modelItem => BlogPost.title)<span class="authorTime">@time</span></h3>
+            <h6>@Html.DisplayFor(modelItem => BlogPost.category)</h6>
+            <p>@Html.DisplayFor(modelItem => BlogPost.postText)</p>
+            <span class=" authorTime"><img src="~/Image/@imageSrc" style="height:70px; width:auto;"></span>
+            <br />
+        </div>
+        <div class="blogButtons">
+            @if (BlogPost.fileName != null) {
+                <a href="~/FormalBlogPostUploads/@BlogPost.fileName" download>@BlogPost.fileName</a>
+            }
+            @if (BlogPost.creator.Equals(User.Identity.Name)) {
+
+                <p>
+                    @Html.ActionLink("Se inlägg", "Details", "FormalBlogPosts", new { id = BlogPost.id }, null) | @Html.ActionLink("Redigera", "Edit", "FormalBlogPosts", new { id = BlogPost.id }, null) | @Html.ActionLink("Ta bort", "Delete", "FormalBlogPosts", new { id = BlogPost.id }, null)
+                    <span class="authorTime">
+                        @Html.DisplayFor(modelBlogPost => BlogPost.creator)
+                    </span>
+                </p>
+            } else {
+                <p>
+                    @Html.ActionLink("Se inlägg", "Details", new { id = BlogPost.id })
+                </p>
+            }
+            @{
+                FormalBlogPostCommentsController commentsController = new FormalBlogPostCommentsController();
+            }
+
+        </div>
+
+
+        @foreach (var comment in commentsController.GetComments(BlogPost.id, "Formal")) {
+            var commentTime = FormalBlogPostsController.GetDateFromDateTime(comment.dateTime);
+
+            <div class="formalBlogPostComment">
+
+
+                <p>@comment.commentText</p>
+                <p class="formalBlogPostCommentAuthor">@comment.author | @commentTime</p>
+            </div>
+
+        }
+
+    </div>
+
+}
+
+
+
+
+
+@{ int numberOfInformalBlogPosts = 0;}
+@foreach (InformalBlogPost BlogPost in allBlogPostsController.GetAllInformalBlogPostFromAuthor(currentlyLoggedIn)) {
+    numberOfInformalBlogPosts = numberOfInformalBlogPosts + 1;
+}
+<h3>Informella blogginlägg (@numberOfInformalBlogPosts.ToString())</h3>
+@foreach (InformalBlogPost BlogPost in allBlogPostsController.GetAllInformalBlogPostFromAuthor(currentlyLoggedIn)) {
+
+    var blogPostIdString = BlogPost.id.ToString();
+    <div class="formalBlogPost" id=@blogPostIdString>
+
+        <div class="formalBlogPostContent">
+            @{
+                var time = FormalBlogPostsController.GetDateFromDateTime(BlogPost.dateTime);
+                var imageSrc = FormalBlogPostsController.GetProfilePictureFromUsername(BlogPost.creator);
+            }
+            <h3>@Html.DisplayFor(modelItem => BlogPost.title)<span class="authorTime">@time</span></h3>
+            <h6>@Html.DisplayFor(modelItem => BlogPost.category)</h6>
+            <p>@Html.DisplayFor(modelItem => BlogPost.postText)</p>
+            <span class=" authorTime"><img src="~/Image/@imageSrc" style="height:70px; width:auto;"></span>
+            <br />
+        </div>
+        <div class="blogButtons">
+            @if (BlogPost.fileName != null) {
+                <div class="uploadedImg" width="100%" height="100%">
+                    <img src="/InformalBlogPostImages/@BlogPost.fileName" width="100%" height="100%">
+                </div>
+            }
+            @if (BlogPost.creator.Equals(User.Identity.Name)) {
+
+                <p>
+                    @Html.ActionLink("Se inlägg", "Details", "InformalBlogPosts", new { id = BlogPost.id }, null) | @Html.ActionLink("Redigera", "Edit", "InformalBlogPosts", new { id = BlogPost.id }, null) | @Html.ActionLink("Ta bort", "Delete", "InformalBlogPosts", new { id = BlogPost.id }, null)
+                    <span class="authorTime">
+                        @Html.DisplayFor(modelBlogPost => BlogPost.creator)
+                    </span>
+                </p>
+            } else {
+                <p>
+                    @Html.ActionLink("Se inlägg", "Details", new { id = BlogPost.id })
+                </p>
+            }
+            @{
+                InformalBlogPostCommentsController commentsController = new InformalBlogPostCommentsController();
+            }
+
+        </div>
+
+
+        @foreach (var comment in commentsController.GetComments(BlogPost.id, "Informal")) {
+            var commentTime = FormalBlogPostsController.GetDateFromDateTime(comment.dateTime);
+
+            <div class="formalBlogPostComment">
+
+
+                <p>@comment.commentText</p>
+                <p class="formalBlogPostCommentAuthor">@comment.author | @commentTime</p>
+            </div>
+
+        }
+
+    </div>
+
+}
+
+
+
+
+
+
+@{ int numberOfEduPosts = 0;}
+@foreach (EducationalPost BlogPost in allBlogPostsController.GetAllEducationalBlogPostFromAuthor(currentlyLoggedIn)) {
+    numberOfEduPosts = numberOfEduPosts + 1;
+}
+<h3>Utbildningsblogginlägg (@numberOfEduPosts.ToString())</h3>
+@foreach (EducationalPost BlogPost in allBlogPostsController.GetAllEducationalBlogPostFromAuthor(currentlyLoggedIn)) {
+
+    var blogPostIdString = BlogPost.id.ToString();
+    <div class="formalBlogPost" id=@blogPostIdString>
+
+        <div class="formalBlogPostContent">
+            @{
+                var time = FormalBlogPostsController.GetDateFromDateTime(BlogPost.dateTime);
+                var imageSrc = FormalBlogPostsController.GetProfilePictureFromUsername(BlogPost.creator);
+            }
+            <h3>@Html.DisplayFor(modelItem => BlogPost.title)<span class="authorTime">@time</span></h3>
+            <h6>@Html.DisplayFor(modelItem => BlogPost.category)</h6>
+            <p>@Html.DisplayFor(modelItem => BlogPost.postText)</p>
+            <span class=" authorTime"><img src="~/Image/@imageSrc" style="height:70px; width:auto;"></span>
+            <br />
+        </div>
+        <div class="blogButtons">
+            @if (BlogPost.fileName != null) {
+                <a href="~/FormalBlogPostUploads/@BlogPost.fileName" download>@BlogPost.fileName</a>
+            }
+            @if (BlogPost.creator.Equals(User.Identity.Name)) {
+
+                <p>
+                    @Html.ActionLink("Se inlägg", "Details", "EducationalBlogPosts", new { id = BlogPost.id }, null) | @Html.ActionLink("Redigera", "Edit", "EducationalBlogPosts", new { id = BlogPost.id }, null) | @Html.ActionLink("Ta bort", "Delete", "EducationalBlogPosts", new { id = BlogPost.id }, null)
+                    <span class="authorTime">
+                        @Html.DisplayFor(modelBlogPost => BlogPost.creator)
+                    </span>
+                </p>
+            } else {
+                <p>
+                    @Html.ActionLink("Se inlägg", "Details", new { id = BlogPost.id })
+                </p>
+            }
+            @{
+                EducationalBlogPostCommentsController commentsController = new EducationalBlogPostCommentsController();
+            }
+
+        </div>
+
+
+        @foreach (var comment in commentsController.GetComments(BlogPost.id, "Educational")) {
+            var commentTime = FormalBlogPostsController.GetDateFromDateTime(comment.dateTime);
+
+            <div class="formalBlogPostComment">
+
+
+                <p>@comment.commentText</p>
+                <p class="formalBlogPostCommentAuthor">@comment.author | @commentTime</p>
+            </div>
+
+        }
+
+    </div>
+
+}
+
+
+
+
+@{ int numberOfResearchPosts = 0;}
+@foreach (ResearchBlogPost BlogPost in allBlogPostsController.GetAllResearchBlogPostFromAuthor(currentlyLoggedIn)) {
+    numberOfResearchPosts = numberOfEduPosts + 1;
+}
+<h3>Forskningsblogginlägg (@numberOfResearchPosts.ToString())</h3>
+@foreach (ResearchBlogPost BlogPost in allBlogPostsController.GetAllResearchBlogPostFromAuthor(currentlyLoggedIn)) {
+    numberOfEduPosts = numberOfEduPosts + 1;
+    var blogPostIdString = BlogPost.id.ToString();
+    <div class="formalBlogPost" id=@blogPostIdString>
+
+        <div class="formalBlogPostContent">
+            @{
+                var time = FormalBlogPostsController.GetDateFromDateTime(BlogPost.dateTime);
+                var imageSrc = FormalBlogPostsController.GetProfilePictureFromUsername(BlogPost.creator);
+            }
+            <h3>@Html.DisplayFor(modelItem => BlogPost.title)<span class="authorTime">@time</span></h3>
+            <h6>@Html.DisplayFor(modelItem => BlogPost.category)</h6>
+            <p>@Html.DisplayFor(modelItem => BlogPost.postText)</p>
+            <span class=" authorTime"><img src="~/Image/@imageSrc" style="height:70px; width:auto;"></span>
+            <br />
+        </div>
+        <div class="blogButtons">
+            @if (BlogPost.fileName != null) {
+                <a href="~/FormalBlogPostUploads/@BlogPost.fileName" download>@BlogPost.fileName</a>
+            }
+            @if (BlogPost.creator.Equals(User.Identity.Name)) {
+
+                <p>
+                    @Html.ActionLink("Se inlägg", "Details", "ResearchBlogPosts", new { id = BlogPost.id }, null) | @Html.ActionLink("Redigera", "Edit", "ResearchBlogPosts", new { id = BlogPost.id }, null) | @Html.ActionLink("Ta bort", "Delete", "ResearchBlogPosts", new { id = BlogPost.id }, null)
+                    <span class="authorTime">
+                        @Html.DisplayFor(modelBlogPost => BlogPost.creator)
+                    </span>
+                </p>
+            } else {
+                <p>
+                    @Html.ActionLink("Se inlägg", "Details", new { id = BlogPost.id })
+                </p>
+            }
+            @{
+                ResearchBlogPostCommentsController commentsController = new ResearchBlogPostCommentsController();
+            }
+
+        </div>
+
+
+        @foreach (var comment in commentsController.GetComments(BlogPost.id, "Research")) {
+            var commentTime = FormalBlogPostsController.GetDateFromDateTime(comment.dateTime);
+
+            <div class="formalBlogPostComment">
+
+
+                <p>@comment.commentText</p>
+                <p class="formalBlogPostCommentAuthor">@comment.author | @commentTime</p>
+            </div>
+
+        }
+
+    </div>
+
+}
+
+
+
+
