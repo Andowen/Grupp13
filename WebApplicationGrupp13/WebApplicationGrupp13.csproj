@@ -510,6 +510,10 @@
     <Compile Include="Migrations\202004220738005_0937.Designer.cs">
       <DependentUpon>202004220738005_0937.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004230653269_bortmedpendings.cs" />
+    <Compile Include="Migrations\202004230653269_bortmedpendings.Designer.cs">
+      <DependentUpon>202004230653269_bortmedpendings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
@@ -854,6 +858,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004220738005_0937.resx">
       <DependentUpon>202004220738005_0937.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004230653269_bortmedpendings.resx">
+      <DependentUpon>202004230653269_bortmedpendings.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
