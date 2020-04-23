@@ -524,10 +524,6 @@
     <Compile Include="Migrations\202004230758347_test2.Designer.cs">
       <DependentUpon>202004230758347_test2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202004230653269_bortmedpendings.cs" />
-    <Compile Include="Migrations\202004230653269_bortmedpendings.Designer.cs">
-      <DependentUpon>202004230653269_bortmedpendings.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
