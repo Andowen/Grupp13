@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebApplicationGrupp13.Models.AdminViewModel>
+@using WebApplicationGrupp13.Controllers
+
+@{
+    ViewBag.Title = "Publiceringsbehörighet";
+}
+
+<h2>Redigera publiceringsbehörighet</h2>
+<p>Välj vilka användare som ska ha berörighet att publicera inlägg för Utbildning och Forskning</p>
+
+@{
+    var adminControl = new AdminController();
+    var authUserCount = adminControl.CountAuthorizedUsers(Model);
+}
+
+@if (authUserCount > 0)
+{
+    @Html.Partial("_UserAuthorizationPartial")
+
+}
+<h3>Obehöriga användare</h3>
+
+@foreach (var item in Model)
+{
+    if (item.Role == "User")
+    {
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="profile-thumbnail">
+                    <span>
+                        <img src="~/Image/@Url.Content(item.Image)" alt="ProfilBild" />
+                    </span>
+                </div>
+                <p class="userName">@item.Name</p>
+                <p class="eMail">@item.Email</p>
+            </div>
+            <div class="col-md-8">
+                <button type="button" class="btn btn-default btn-admin" onclick="location.href='@Url.Action("MakeAuthorizedUser", "Admin", new { userId = item.UserId})'">Ge publiceringsbehörighet</button>
+            </div>
+        </div>
+        <hr class="notificationDivider" />
+    }
+
+}
+

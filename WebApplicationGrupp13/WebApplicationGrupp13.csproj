@@ -238,6 +238,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AllBlogPostsController.cs" />
     <Compile Include="Controllers\CalenderController.cs" />
     <Compile Include="Controllers\EducationalBlogPostCommentsController.cs" />
     <Compile Include="Controllers\FormalBlogPostCommentsController.cs" />
@@ -664,12 +665,15 @@
     <Content Include="Views\Admin\_AdminPartial.cshtml" />
     <Content Include="Views\Admin\UnAuthorized.cshtml" />
     <Content Include="Views\InviteUsers\InviteUsers.cshtml" />
+    <Content Include="Views\Admin\UserAuthorization.cshtml" />
+    <Content Include="Views\Admin\_UserAuthorizationPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="FormalBlogPostUploads\" />
     <Folder Include="Image\" />
     <Folder Include="InformalBlogPostImages\" />
+    <Folder Include="Views\AllBlogPosts\" />
     <Folder Include="Views\EducationalBlogPostComments\" />
     <Folder Include="Views\EduPosts\" />
     <Folder Include="Views\InformalBlogPostComments\" />
@@ -869,15 +873,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004220738005_0937.resx">
       <DependentUpon>202004220738005_0937.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004230745566_namechange1.resx">
-      <DependentUpon>202004230745566_namechange1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004230752573_isSelected.resx">
-      <DependentUpon>202004230752573_isSelected.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004230758347_test2.resx">
-      <DependentUpon>202004230758347_test2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
