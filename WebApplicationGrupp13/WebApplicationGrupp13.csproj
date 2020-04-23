@@ -504,6 +504,10 @@
     <Compile Include="Migrations\202004220900309_meetingInt.Designer.cs">
       <DependentUpon>202004220900309_meetingInt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004230752573_isSelected.cs" />
+    <Compile Include="Migrations\202004230752573_isSelected.Designer.cs">
+      <DependentUpon>202004230752573_isSelected.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
@@ -640,6 +644,7 @@
     <Content Include="Views\NewMeetings\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\_AdminPartial.cshtml" />
+    <Content Include="Views\NewMeetings\InviteUsers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -841,6 +846,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004220900309_meetingInt.resx">
       <DependentUpon>202004220900309_meetingInt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004230752573_isSelected.resx">
+      <DependentUpon>202004230752573_isSelected.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
