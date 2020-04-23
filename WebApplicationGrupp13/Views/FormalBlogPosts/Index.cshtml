@@ -35,16 +35,25 @@
         <br />
     </div>
     <div class="blogButtons">
-        @if (BlogPost.fileName != null) {
+        @if (BlogPost.fileName != null)
+        {
             <a href="~/FormalBlogPostUploads/@BlogPost.fileName" download>@BlogPost.fileName</a>
         }
-        @if (BlogPost.creator.Equals(User.Identity.Name)) {
+        @if (BlogPost.creator.Equals(User.Identity.Name))
+        {
 
-    <p>
-        @Html.ActionLink("Se inlägg", "Details", new { id = BlogPost.id }) | @Html.ActionLink("Redigera", "Edit", new { id = BlogPost.id }) | @Html.ActionLink("Ta bort", "Delete", new { id = BlogPost.id })
-        
-    </p>
-        } else {
+            <p>
+                @Html.ActionLink("Se inlägg", "Details", new { id = BlogPost.id }) | @Html.ActionLink("Redigera", "Edit", new { id = BlogPost.id }) | @Html.ActionLink("Ta bort", "Delete", new { id = BlogPost.id })
+            </p>
+        }
+        else if (!BlogPost.creator.Equals(User.Identity.Name) && User.IsInRole("Admin"))
+        {
+            <p>
+                @Html.ActionLink("Se inlägg", "Details", new { id = BlogPost.id }) | @Html.ActionLink("Ta bort", "Delete", new { id = BlogPost.id })
+            </p>
+        }
+        else
+        {
             <p>
                 @Html.ActionLink("Se inlägg", "Details", new { id = BlogPost.id })
             </p>

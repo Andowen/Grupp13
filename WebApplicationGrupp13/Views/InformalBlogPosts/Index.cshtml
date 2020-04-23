@@ -32,17 +32,27 @@
                 <br />
             </div>
             <div class="blogButtons">
-                @if (BlogPost.fileName != null) {
-                <div class="uploadedImg" width="100%" height="100%">
-                    <img src="/InformalBlogPostImages/@BlogPost.fileName" width="100%" height="100%">
-                </div>
+                @if (BlogPost.fileName != null)
+                {
+                    <div class="uploadedImg" width="100%" height="100%">
+                        <img src="/InformalBlogPostImages/@BlogPost.fileName" width="100%" height="100%">
+                    </div>
                 }
-                @if (BlogPost.creator.Equals(User.Identity.Name)) {
+                @if (BlogPost.creator.Equals(User.Identity.Name))
+                {
 
                     <p>
                         @Html.ActionLink("Se inlägg", "Details", new { id = BlogPost.id }) | @Html.ActionLink("Redigera", "Edit", new { id = BlogPost.id }) | @Html.ActionLink("Ta bort", "Delete", new { id = BlogPost.id })
                     </p>
-                } else {
+                }
+                else if (!BlogPost.creator.Equals(User.Identity.Name) && User.IsInRole("Admin"))
+                {
+                    <p>
+                        @Html.ActionLink("Se inlägg", "Details", new { id = BlogPost.id }) | @Html.ActionLink("Ta bort", "Delete", new { id = BlogPost.id })
+                    </p>
+                }
+                else
+                {
                     <p>
                         @Html.ActionLink("Se inlägg", "Details", new { id = BlogPost.id })
                     </p>

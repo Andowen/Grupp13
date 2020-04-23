@@ -23,22 +23,34 @@
 
     </div>
     <div class="blogButtons">
-        @if (Model.fileName != null) {
+        @if (Model.fileName != null)
+        {
             <a href="~/FormalBlogPostUploads/@Model.fileName" download>@Model.fileName</a>
             <br />
         }
-        @if (Model.creator.Equals(User.Identity.Name)) {
+        @if (Model.creator.Equals(User.Identity.Name))
+        {
 
             <p>
-                @Html.ActionLink("Redigera", "Edit", new { id = Model.id }) | @Html.ActionLink("Ta bort", "Delete", new { id = Model.id })    
+                @Html.ActionLink("Redigera", "Edit", new { id = Model.id }) | @Html.ActionLink("Ta bort", "Delete", new { id = Model.id })
             </p>
-        } else {
+        }
+        else if (!Model.creator.Equals(User.Identity.Name) && User.IsInRole("Admin"))
+        {
+
+            <p>
+                @Html.ActionLink("Ta bort", "Delete", new { id = Model.id })
+            </p>
+        }
+        else
+        {
             <br />
         }
         @{
             FormalBlogPostCommentsController commentsController = new FormalBlogPostCommentsController();
         }
-        @foreach (var comment in commentsController.GetComments(Model.id, "Formal")) {
+        @foreach (var comment in commentsController.GetComments(Model.id, "Formal"))
+        {
             var commentTime = FormalBlogPostsController.GetDateFromDateTime(comment.dateTime);
             <div class="formalBlogPostComment" id="@Model.id">
 
