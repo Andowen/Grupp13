@@ -664,9 +664,9 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\_AdminPartial.cshtml" />
     <Content Include="Views\Admin\UnAuthorized.cshtml" />
+    <Content Include="Views\InviteUsers\InviteUsers.cshtml" />
     <Content Include="Views\Admin\UserAuthorization.cshtml" />
     <Content Include="Views\Admin\_UserAuthorizationPartial.cshtml" />
-    <Content Include="Views\InviteUsers\InviteUsers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
