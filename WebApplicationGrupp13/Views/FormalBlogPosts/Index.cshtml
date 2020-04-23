@@ -9,7 +9,7 @@
 @if (Request.IsAuthenticated) {
     <h2>Formell blogg</h2>
     <p>
-        @Html.ActionLink("Skapa nytt blogginlägg", "Create")
+        @Html.ActionLink("Skapa nytt inlägg", "Create")
     </p>
 
     var Model1 = Model.OrderByDescending(c => c.id);

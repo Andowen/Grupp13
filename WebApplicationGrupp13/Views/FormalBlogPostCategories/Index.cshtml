@@ -1,27 +1,31 @@
 ﻿@model IEnumerable<WebApplicationGrupp13.Models.FormalBlogPostCategory>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Kategorier";
 }
 
-<h2>Index</h2>
+<h2>Kategorier för information</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Lägg till ny kategori", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th></th>
-    </tr>
+  
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.name }) |
-            @Html.ActionLink("Details", "Details", new { id=item.name }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.name })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+
+                @Html.ActionLink("Ta bort", "Delete", new { id = item.name })
+            </td>
+        </tr>
+    }
 
 </table>
+<div>
+    @Html.ActionLink("Tillbaka till skapa inlägg", "Create", "FormalBlogPosts")
+</div>
+
