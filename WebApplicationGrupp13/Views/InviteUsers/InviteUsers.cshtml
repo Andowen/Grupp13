@@ -8,7 +8,7 @@
 
 <div>
     @using (Html.BeginForm()) {
-        @Html.ListBoxFor(m => m.SelectedUsers, Model.InvitedUsers, new { size = 5 })
+        @Html.ListBoxFor(m => m.SelectedUsers, Model.AllUsers, new { size = 5 })
         <br />
         <input type="submit" value="Submit" />
     }

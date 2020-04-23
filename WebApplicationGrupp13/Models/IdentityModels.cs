@@ -21,8 +21,7 @@ namespace WebApplicationGrupp13.Models
         [Display(Name = "Profilbild")]
         public string Img { get; set; }
   
-        public bool IsSelected { get; set; }
-
+      
 
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)

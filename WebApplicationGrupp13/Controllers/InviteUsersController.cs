@@ -21,28 +21,46 @@ namespace WebApplicationGrupp13.Controllers
             foreach (ApplicationUser user in db.Users.ToList()) {
                 SelectListItem selectList = new SelectListItem() {
                     Text = user.Firstname + " " + user.Lastname,
-                    Value = user.Id.ToString(),
-                    Selected = user.IsSelected
+                    Value = user.Id.ToString()
+                    //Selected = user.IsSelected
                 };
                 listSelectListItems.Add(selectList);
             }
 
             InviteUserModel inteviteUserModel = new InviteUserModel() {
-                InvitedUsers = listSelectListItems
+                AllUsers = listSelectListItems
             };
 
             return View(inteviteUserModel);
         }
         [HttpPost]
-        public string InviteUsers(IEnumerable<string> selectedUsers) {
-            if (selectedUsers == null) {
-                return "Ingen användare är vald.";
-            } else {
-                StringBuilder sb = new StringBuilder();
-                sb.Append("You selected – " + string.Join(",", selectedUsers));
-                return sb.ToString();
+        public List<ApplicationUser> AddInvitedUsersToList(IEnumerable<string> selectedUsers) {
+            
+            List<ApplicationUser>mySelectedUsers = new List<ApplicationUser>();
+            ApplicationDbContext db = new ApplicationDbContext();
+            var allUsersInDb = db.Users.ToList();
+            //var firstname = "";
+
+
+            foreach (string value in selectedUsers) {
+                foreach (ApplicationUser user in allUsersInDb)
+                    if (user.Id.Equals(value)) {
+                        mySelectedUsers.Add(user);
+                    }
             }
+            //foreach (ApplicationUser user in mySelectedUsers) {
+            //    return (user.Firstname);
+            //}
+            //if (selectedUsers == null) {
+            //} else {
+               
+            //    //StringBuilder sb = new StringBuilder();
+            //    //sb.Append("You selected – " + string.Join(",", selectedUsers));
+            //    //return sb.ToString();
+            //}
+            return mySelectedUsers;
         }
+
 
     }
 }
