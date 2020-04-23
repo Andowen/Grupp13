@@ -514,6 +514,10 @@
     <Compile Include="Migrations\202004230745566_namechange1.Designer.cs">
       <DependentUpon>202004230745566_namechange1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004230752573_isSelected.cs" />
+    <Compile Include="Migrations\202004230752573_isSelected.Designer.cs">
+      <DependentUpon>202004230752573_isSelected.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
@@ -653,6 +657,7 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\_AdminPartial.cshtml" />
     <Content Include="Views\Admin\UnAuthorized.cshtml" />
+    <Content Include="Views\NewMeetings\InviteUsers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -861,6 +866,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004230745566_namechange1.resx">
       <DependentUpon>202004230745566_namechange1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004230752573_isSelected.resx">
+      <DependentUpon>202004230752573_isSelected.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
