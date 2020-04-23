@@ -1,0 +1,15 @@
+﻿@model WebApplicationGrupp13.Models.InviteUserModel
+
+@{
+    ViewBag.Title = "InviteUsers";
+}
+
+<h2>Bjud in mötesdeltagare</h2>
+
+<div>
+    @using (Html.BeginForm()) {
+        @Html.ListBoxFor(m => m.SelectedUsers, Model.InvitedUsers, new { size = 5 })
+        <br />
+        <input type="submit" value="Submit" />
+    }
+</div>
