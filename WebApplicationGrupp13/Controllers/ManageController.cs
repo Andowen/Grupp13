@@ -121,7 +121,7 @@ namespace WebApplicationGrupp13.Controllers
             ctx.SaveChanges();
 
 
-            return RedirectToAction("Index");
+            return RedirectToAction("EditUserInformation");
 
         }
 
@@ -311,7 +311,7 @@ namespace WebApplicationGrupp13.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
-                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+                return RedirectToAction("ChangePassword", new { Message = ManageMessageId.ChangePasswordSuccess });
             }
             AddErrors(result);
             return View(model);
