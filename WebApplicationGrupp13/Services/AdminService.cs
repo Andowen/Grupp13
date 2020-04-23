@@ -11,7 +11,7 @@ namespace WebApplicationGrupp13.Services
 {
     public class AdminService
     {
-        public IEnumerable<AdminViewModel> GetUsers(string currentUser, string roleId, string roleType)
+        public IEnumerable<AdminViewModel> GetUsers(string currentUser, string roleType)
         {
             using (var context = new ApplicationDbContext())
             {

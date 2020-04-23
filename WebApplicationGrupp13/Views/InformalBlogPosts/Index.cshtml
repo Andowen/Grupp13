@@ -8,7 +8,7 @@
 @if (Request.IsAuthenticated) {
     <h2>Anslagstavla</h2>
     <p>
-        @Html.ActionLink("Skapa nytt blogginlägg", "Create")
+        @Html.ActionLink("Skapa nytt inlägg", "Create")
     </p>
     var Model1 = Model.OrderByDescending(c => c.id);
 
@@ -19,13 +19,16 @@
             <div class="formalBlogPostContent">
                 @{
                     var time = FormalBlogPostsController.GetDateFromDateTime(BlogPost.dateTime);
-
                     var imageSrc = FormalBlogPostsController.GetProfilePictureFromUsername(BlogPost.creator);
+                    var Name = FormalBlogPostsController.GetNameFromUsername(BlogPost.creator);
                 }
                 <h3>@Html.DisplayFor(modelItem => BlogPost.title)<span class="authorTime">@time</span></h3>
+                <h4><span class="authorTime">@Name</span></h4>
                 <h6>@Html.DisplayFor(modelItem => BlogPost.category)</h6>
+                <div class="profile-thumbnail" style="float:right;">
+                    <span><img src="~/Image/@imageSrc" style="height:70px; width:auto;"></span>
+                </div>
                 <p>@Html.DisplayFor(modelItem => BlogPost.postText)</p>
-                <span class=" authorTime"><img src="~/Image/@imageSrc" style="height:70px; width:auto;"></span>
                 <br />
             </div>
             <div class="blogButtons">
@@ -38,9 +41,6 @@
 
                     <p>
                         @Html.ActionLink("Se inlägg", "Details", new { id = BlogPost.id }) | @Html.ActionLink("Redigera", "Edit", new { id = BlogPost.id }) | @Html.ActionLink("Ta bort", "Delete", new { id = BlogPost.id })
-                        <span class="authorTime">
-                            @Html.DisplayFor(modelItem => BlogPost.creator)
-                        </span>
                     </p>
                 } else {
                     <p>

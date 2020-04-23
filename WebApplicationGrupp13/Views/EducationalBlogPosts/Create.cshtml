@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 @if (Request.IsAuthenticated) {
-    <h2>Create</h2>
+    <h2>Skapa nytt blogginlägg</h2>
 
 
     using (Html.BeginForm("Create", "EducationalBlogPosts", FormMethod.Post, new { enctype = "multipart/form-data" })) {
@@ -33,7 +33,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.postText, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.TextAreaFor(model => model.postText, new { htmlAttributes = new { @class = "form-control-custom", style = "width: 100%; max-width: 100%;" } })
+            @Html.TextAreaFor(model => model.postText, 10, 60, null)
             @Html.ValidationMessageFor(model => model.postText, "", new { @class = "text-danger" })
 
             <input type="file" id="file" name="file">
@@ -49,7 +49,7 @@
     }
 
     <div>
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Tillbaka till inlägg", "Index")
     </div>
 
     @section Scripts {

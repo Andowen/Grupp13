@@ -25,12 +25,17 @@
                     <li>@Html.ActionLink("Möten", "Index", "NewMeetings")</li>
                     <li>@Html.ActionLink("Mina inlägg", "Contact", "Home")</li>
                     <li>
-                        @Html.ActionLink("Redigera kontoinformation", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Redigera kontoinformation" })
+                        @Html.ActionLink("Redigera användarinformation", "EditUserInformation", "Manage", routeValues: null, htmlAttributes: new { title = "Redigera kontoinformation" })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Byt lösenord", "ChangePassword", "Manage", routeValues: null, htmlAttributes: new { title = "Redigera kontoinformation" })
                     </li>
                     @if (User.IsInRole("Admin"))
                     {
                         <li class="divider"></li>
+                        <li>&nbsp&nbsp Administratörsfunktioner &nbsp<span class="glyphicon glyphicon-triangle-bottom" style="font-size: 7px; top: 0px;"></span></li>
                         <li>@Html.ActionLink("Redigera adminbehörighet", "Index", "Admin")</li>
+                        <li>@Html.ActionLink("Redigera publiceringsbehörighet", "UserAuthorization", "Admin")</li>
                     }
                     <li class="divider"></li>
                     <li><a href="javascript:document.getElementById('logoutForm').submit()">Logga ut</a></li>

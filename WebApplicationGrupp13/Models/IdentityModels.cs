@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace WebApplicationGrupp13.Models
 {
@@ -18,6 +20,11 @@ namespace WebApplicationGrupp13.Models
         public string Mobilenumber { get; set; }
         [Display(Name = "Profilbild")]
         public string Img { get; set; }
+  
+        public bool IsSelected { get; set; }
+
+
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
