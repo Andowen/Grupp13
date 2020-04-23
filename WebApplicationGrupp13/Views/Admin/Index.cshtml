@@ -2,14 +2,14 @@
 @using WebApplicationGrupp13.Controllers
 
 @{
-    ViewBag.Title = "Admin";
+    ViewBag.Title = "Administratörsbehörighet";
 }
 
 <h2>Redigera administratörsbehörighet</h2>
+<p>Välj vilka användare som ska ha administratörsberhörighet</p>
 @{
     var adminControl = new AdminController();
     var adminCount = adminControl.CountAdmins(Model);
-    var userCount = adminControl.CountUsers(Model);
 }
 
 @if (adminCount > 0)
@@ -21,18 +21,24 @@
 
 @foreach (var item in Model)
 {
-    if (item.Role.Equals("User"))
+    if (item.Role.Contains("User"))
     {
         <div class="row">
-            <div class="col-md-3">
-                <p style="font-weight:bold;">@item.Name</p>
-                <p>@item.Email</p>
+
+            <div class="col-md-4">
+                <div class="profile-thumbnail">
+                    <span>
+                        <img src="~/Image/@Url.Content(item.Image)" alt="ProfilBild" />
+                    </span>
+                </div>
+                <p class="userName">@item.Name</p>
+                <p class="eMail">@item.Email</p>
             </div>
-            <div class="col-md-9">
-                <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("MakeAdmin", "Admin", new { userId = item.UserId})'">Ge adminbehörighet</button>
+            <div class="col-md-8">
+                <button type="button" class="btn btn-default btn-admin" onclick="location.href='@Url.Action("MakeAdmin", "Admin", new { userId = item.UserId})'">Ge adminbehörighet</button>
             </div>
         </div>
-        <hr />
+        <hr class="notificationDivider" />
     }
 
 }

@@ -25,7 +25,7 @@
                     <li>@Html.ActionLink("Möten", "Index", "NewMeetings")</li>
                     <li>@Html.ActionLink("Mina inlägg", "Contact", "Home")</li>
                     <li>
-                        @Html.ActionLink("Redigera kontoinformation", "EditUserInformation", "Manage", routeValues: null, htmlAttributes: new { title = "Redigera kontoinformation" })
+                        @Html.ActionLink("Redigera kontoinformation", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Redigera kontoinformation" })
                     </li>
                     @if (User.IsInRole("Admin"))
                     {
