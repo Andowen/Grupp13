@@ -238,6 +238,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AllBlogPostsController.cs" />
     <Compile Include="Controllers\CalenderController.cs" />
     <Compile Include="Controllers\EducationalBlogPostCommentsController.cs" />
     <Compile Include="Controllers\FormalBlogPostCommentsController.cs" />
@@ -670,6 +671,7 @@
     <Folder Include="FormalBlogPostUploads\" />
     <Folder Include="Image\" />
     <Folder Include="InformalBlogPostImages\" />
+    <Folder Include="Views\AllBlogPosts\" />
     <Folder Include="Views\EducationalBlogPostComments\" />
     <Folder Include="Views\EduPosts\" />
     <Folder Include="Views\InformalBlogPostComments\" />
