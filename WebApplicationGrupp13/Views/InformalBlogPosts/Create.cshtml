@@ -5,7 +5,7 @@
 }
 @if (Request.IsAuthenticated)
 {
-    <h2>Skapa nytt inlägg</h2>
+    <h2>Skapa nytt blogginlägg</h2>
 
     using (Html.BeginForm("Create", "InformalBlogPosts", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
@@ -34,7 +34,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.postText, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.TextAreaFor(model => model.postText, new { htmlAttributes = new { @class = "form-control", rows = "3", cols = "1000" } })
+            @Html.TextAreaFor(model => model.postText, 10, 60, null)
             @Html.ValidationMessageFor(model => model.postText, "", new { @class = "text-danger" })
 
         </div>
@@ -56,7 +56,7 @@
     }
 
     <div>
-        @Html.ActionLink("Visa inlägg", "Index")
+        @Html.ActionLink("Tillbaka till inlägg", "Index")
     </div>
 
     @section Scripts {

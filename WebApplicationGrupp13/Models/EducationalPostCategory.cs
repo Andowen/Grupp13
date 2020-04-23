@@ -7,6 +7,7 @@ using System.Web;
 namespace WebApplicationGrupp13.Models {
     public class EducationalPostCategory {
         [Key]
+        [Display(Name = "Kategori")]
         public string category { get; set; }
     }
 }

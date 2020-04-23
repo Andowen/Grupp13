@@ -511,6 +511,10 @@
     <Compile Include="Migrations\202004220738005_0937.Designer.cs">
       <DependentUpon>202004220738005_0937.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004230745566_namechange1.cs" />
+    <Compile Include="Migrations\202004230745566_namechange1.Designer.cs">
+      <DependentUpon>202004230745566_namechange1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202004230752573_isSelected.cs" />
     <Compile Include="Migrations\202004230752573_isSelected.Designer.cs">
       <DependentUpon>202004230752573_isSelected.cs</DependentUpon>
@@ -865,6 +869,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004220738005_0937.resx">
       <DependentUpon>202004220738005_0937.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004230745566_namechange1.resx">
+      <DependentUpon>202004230745566_namechange1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004230752573_isSelected.resx">
       <DependentUpon>202004230752573_isSelected.cs</DependentUpon>
