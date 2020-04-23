@@ -3,7 +3,7 @@
 
 @foreach (var item in Model)
 {
-    if (item.Role.Equals("Admin"))
+    if (item.Role.Contains("Admin"))
     {
         <div class="row">
 
