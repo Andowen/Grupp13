@@ -1,0 +1,76 @@
+﻿@model IEnumerable<WebApplicationGrupp13.Models.Meetings>
+@{
+    ViewBag.Title = "CreatedMeetings";
+}
+
+<html>
+<head>
+    <title>Möten</title>
+</head>
+<body>
+    <h2>Dina skapade mötesinbjudningar</h2>
+
+    @using (Html.BeginForm()) {
+        <table class="table">
+            <tr>
+                <th>
+                    Mötesnamn
+                </th>
+                <th>
+                    Förslag 1
+                </th>
+                <th>
+                    Antal röster
+                </th>
+                <th>
+                    Förslag 2
+                </th>
+                <th>
+                    Antal röster
+                </th>
+                <th>
+                    Förslag 3
+                </th>
+                <th>
+                    Antal röster
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model) {
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.meetingName)
+                    </td>
+                    <td>
+                        @*@Html.RadioButton("RadioButton1", objectValue, true)*@
+                        @Html.DisplayFor(modelItem => item.date1)
+                    </td>
+                    <td>
+                        @*@Html.RadioButton("RadioButton1", objectValue, true)*@
+                        @Html.DisplayFor(modelItem => item.vote1)
+                    </td>
+                    <td>
+                        @*@Html.RadioButton("RadioButton2", item.Id)*@
+                        @Html.DisplayFor(modelItem => item.date2)
+                    </td>
+                    <td>
+                        @*@Html.RadioButton("RadioButton2", item.Id)*@
+                        @Html.DisplayFor(modelItem => item.vote2)
+                    </td>
+                    <td>
+                        @*@Html.RadioButton("RadioButton3", item.Id)*@
+                        @Html.DisplayFor(modelItem => item.date3)
+                    </td>
+                    <td>
+                        @*@Html.RadioButton("RadioButton3", item.Id)*@
+                        @Html.DisplayFor(modelItem => item.vote3)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    }
+</body>
+</html>

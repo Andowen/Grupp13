@@ -19,18 +19,24 @@ namespace WebApplicationGrupp13.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: EducationalBlogPosts
-        public ActionResult Index()
-        {
-            List<string> ct = new List<string>();
-            foreach (EducationalPostCategory category in db.EducationalPostCategories) {
-                ct.Add(category.category);
+        [HttpPost]
+        public List<String> GetCategories() {
+            List<String> names = new List<string>();
+            foreach (EducationalPostCategory category in db.EducationalPostCategories.ToList()) {
+                names.Add(category.category);
             }
-
-
-            ViewBag.CategoryList = ct;
-
-            return View(db.EduPosts.ToList());
+            return names;
         }
+        public ActionResult Index(string searchString) {
+            var blogPosts = from s in db.EduPosts
+                            select s;
+            if (!String.IsNullOrEmpty(searchString)) {
+                blogPosts = blogPosts.Where(s => s.category.Equals(searchString));
+            }
+            return View(blogPosts);
+
+        }
+    
 
 
         public static string GetDateFromDateTime(DateTime dateTime) {

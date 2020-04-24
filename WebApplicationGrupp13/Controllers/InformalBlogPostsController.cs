@@ -19,18 +19,22 @@ namespace WebApplicationGrupp13.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: InformalBlogPosts
-        public ActionResult Index()
-        {
-            List<string> ct = new List<string>();
-            foreach (InformalBlogPostCategory category in db.InformalBlogPostCategories)
-            {
-                ct.Add(category.name);
+        [HttpPost]
+        public List<String> GetCategories() {
+            List<String> names = new List<string>();
+            foreach (InformalBlogPostCategory category in db.InformalBlogPostCategories.ToList()) {
+                names.Add(category.name);
             }
+            return names;
+        }
+        public ActionResult Index(string searchString) {
+            var blogPosts = from s in db.InformalBlogPosts
+                            select s;
+            if (!String.IsNullOrEmpty(searchString)) {
+                blogPosts = blogPosts.Where(s => s.category.Equals(searchString));
+            }
+            return View(blogPosts);
 
-
-            ViewBag.CategoryList = ct;
-
-            return View(db.InformalBlogPosts.ToList());
         }
 
         // GET: InformalBlogPosts/Details/5
@@ -113,10 +117,9 @@ namespace WebApplicationGrupp13.Controllers
             informalBlogPost.creator = User.Identity.Name;
             informalBlogPost.dateTime = DateTime.Now;
 
-            FileInfo fi = new FileInfo(file.FileName);
-
 
             if (file != null) {
+                FileInfo fi = new FileInfo(file.FileName);
                 if (fi.Extension == ".jpg" || fi.Extension == ".jpeg" || fi.Extension == ".png") {
                     string fileName = Path.GetFileName(file.FileName);
                     string fileToSave = Path.Combine(Server.MapPath("~/InformalBlogPostImages"), fileName);

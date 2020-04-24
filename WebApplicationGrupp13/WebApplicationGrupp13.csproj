@@ -517,21 +517,9 @@
     <Compile Include="Migrations\202004231230585_ändra.Designer.cs">
       <DependentUpon>202004231230585_ändra.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202004231446195_removeIsSelectedFromUser.cs" />
-    <Compile Include="Migrations\202004231446195_removeIsSelectedFromUser.Designer.cs">
-      <DependentUpon>202004231446195_removeIsSelectedFromUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004240747424_NySambandstabellMeetings.cs" />
-    <Compile Include="Migrations\202004240747424_NySambandstabellMeetings.Designer.cs">
-      <DependentUpon>202004240747424_NySambandstabellMeetings.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004240752068_votes.cs" />
-    <Compile Include="Migrations\202004240752068_votes.Designer.cs">
-      <DependentUpon>202004240752068_votes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004240756041_hasVoted.cs" />
-    <Compile Include="Migrations\202004240756041_hasVoted.Designer.cs">
-      <DependentUpon>202004240756041_hasVoted.cs</DependentUpon>
+    <Compile Include="Migrations\202004241122554_tagitBortUserRole.cs" />
+    <Compile Include="Migrations\202004241122554_tagitBortUserRole.Designer.cs">
+      <DependentUpon>202004241122554_tagitBortUserRole.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202004241107238_togBortInnehållIÄndra.cs" />
     <Compile Include="Migrations\202004241107238_togBortInnehållIÄndra.Designer.cs">
@@ -683,6 +671,7 @@
     <Content Include="Views\Admin\UserAuthorization.cshtml" />
     <Content Include="Views\Admin\_UserAuthorizationPartial.cshtml" />
     <Content Include="Views\NewMeetings\MeetingVotes.cshtml" />
+    <Content Include="Views\NewMeetings\CreatedMeetings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -890,23 +879,14 @@
     <EmbeddedResource Include="Migrations\202004220738005_0937.resx">
       <DependentUpon>202004220738005_0937.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004231446195_removeIsSelectedFromUser.resx">
-      <DependentUpon>202004231446195_removeIsSelectedFromUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004240747424_NySambandstabellMeetings.resx">
-      <DependentUpon>202004240747424_NySambandstabellMeetings.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004240752068_votes.resx">
-      <DependentUpon>202004240752068_votes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004240756041_hasVoted.resx">
-      <DependentUpon>202004240756041_hasVoted.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004231230585_ändra.resx">
       <DependentUpon>202004231230585_ändra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004241107238_togBortInnehållIÄndra.resx">
       <DependentUpon>202004241107238_togBortInnehållIÄndra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004241122554_tagitBortUserRole.resx">
+      <DependentUpon>202004241122554_tagitBortUserRole.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
