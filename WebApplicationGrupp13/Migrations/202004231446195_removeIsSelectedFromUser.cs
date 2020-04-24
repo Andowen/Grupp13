@@ -7,12 +7,10 @@ namespace WebApplicationGrupp13.Migrations
     {
         public override void Up()
         {
-           DropColumn("dbo.AspNetUsers", "IsSelected");
         }
         
         public override void Down()
         {
-           AddColumn("dbo.AspNetUsers", "IsSelected", c => c.Boolean(nullable: false));
         }
     }
 }
