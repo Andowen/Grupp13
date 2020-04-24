@@ -40,7 +40,7 @@ namespace WebApplicationGrupp13.Controllers
             using (var context = new ApplicationDbContext())
             {
                 var currentUser = User.Identity.GetUserId();
-                var roleType = "AuthUser";
+                var roleType = "Authorized";
 
                 var userAdminList = service.GetUsers(currentUser, roleType);
 
@@ -57,7 +57,7 @@ namespace WebApplicationGrupp13.Controllers
 
         public int CountAuthorizedUsers(IEnumerable<AdminViewModel> userAdminList)
         {
-            return userAdminList.Count(x => x.Role.Contains("AuthUser"));
+            return userAdminList.Count(x => x.Role.Contains("Authorized"));
         }
 
         [CustomAuthorize(Roles = "Admin")]
@@ -111,7 +111,7 @@ namespace WebApplicationGrupp13.Controllers
             {
                 var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(context));
 
-                userManager.AddToRole(userId, "AuthUser");
+                userManager.AddToRole(userId, "Authorized");
 
                 context.SaveChanges();
             }
@@ -125,7 +125,7 @@ namespace WebApplicationGrupp13.Controllers
             {
                 var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(context));
 
-                userManager.RemoveFromRole(userId, "AuthUser");
+                userManager.RemoveFromRole(userId, "Authorized");
 
                 context.SaveChanges();
             }

@@ -86,10 +86,10 @@ namespace WebApplicationGrupp13
                     role.Name = "Admin";
                     roleManager.Create(role);
                 }
-                if (!roleManager.RoleExists("AuthUser"))
+                if (!roleManager.RoleExists("Authorized"))
                 {
                     var role = new IdentityRole();
-                    role.Name = "AuthUser";
+                    role.Name = "Authorized";
                     roleManager.Create(role);
                 }
             }
