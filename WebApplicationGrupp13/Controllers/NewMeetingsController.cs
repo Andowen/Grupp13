@@ -10,6 +10,7 @@ using WebApplicationGrupp13.Models;
 
 namespace WebApplicationGrupp13.Controllers
 {
+    [Authorize]
     public class NewMeetingsController : NotificationControllerBase
     {
         private ApplicationDbContext db = new ApplicationDbContext();

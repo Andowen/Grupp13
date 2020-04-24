@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 
 namespace WebApplicationGrupp13.Controllers
 {
+    [Authorize]
     public class InviteUsersController : NotificationControllerBase
     {
         // GET: InviteUsers
