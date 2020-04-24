@@ -26,6 +26,8 @@ namespace WebApplicationGrupp13.Models
 
         public int vote3 { get; set; }
 
+     
+
     } 
 
 public class MeetingsUsers
@@ -42,6 +44,8 @@ public class MeetingsUsers
         public string userId { get; set; }
 
         public ApplicationUser user { get; set; }
+
+        public bool hasVoted { get; set; }
 
     }
 }

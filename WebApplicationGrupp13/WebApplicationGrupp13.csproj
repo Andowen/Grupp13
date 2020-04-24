@@ -524,6 +524,10 @@
     <Compile Include="Migrations\202004240752068_votes.Designer.cs">
       <DependentUpon>202004240752068_votes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004240756041_hasVoted.cs" />
+    <Compile Include="Migrations\202004240756041_hasVoted.Designer.cs">
+      <DependentUpon>202004240756041_hasVoted.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
@@ -882,6 +886,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004240752068_votes.resx">
       <DependentUpon>202004240752068_votes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004240756041_hasVoted.resx">
+      <DependentUpon>202004240756041_hasVoted.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
