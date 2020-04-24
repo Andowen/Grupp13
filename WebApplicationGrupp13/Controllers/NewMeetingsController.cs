@@ -10,6 +10,7 @@ using WebApplicationGrupp13.Models;
 
 namespace WebApplicationGrupp13.Controllers
 {
+    [Authorize]
     public class NewMeetingsController : NotificationControllerBase
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -56,7 +57,7 @@ namespace WebApplicationGrupp13.Controllers
                 meetings.creator = User.Identity.Name;
                 db.Meeting.Add(meetings);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("InviteUsers", "InviteUsers", new { meetingId = meetings.id });
             }
 
             return View(meetings);
