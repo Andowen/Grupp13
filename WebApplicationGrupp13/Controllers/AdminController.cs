@@ -17,18 +17,17 @@ namespace WebApplicationGrupp13.Controllers
     public class AdminController : NotificationControllerBase
     {
         private AdminService service = new AdminService();
-        
+
         // GET: Admin
-        [CustomAuthorize(Roles ="Admin")]
+        [CustomAuthorize(Roles = "Admin")]
         public ActionResult Index()
         {
             using (var context = new ApplicationDbContext())
             {
                 var currentUser = User.Identity.GetUserId();
                 var roleType = "Admin";
-                var roleId = context.Roles.FirstOrDefault(r => r.Name == roleType).Id;
 
-                var userAdminList = service.GetUsers(currentUser, roleId, roleType);    
+                var userAdminList = service.GetUsers(currentUser, roleType);
 
                 return View(userAdminList);
             }
@@ -41,10 +40,9 @@ namespace WebApplicationGrupp13.Controllers
             using (var context = new ApplicationDbContext())
             {
                 var currentUser = User.Identity.GetUserId();
-                var roleType = "AuthorizedUser";
-                var roleId = context.Roles.FirstOrDefault(r => r.Name == roleType).Id;
+                var roleType = "Authorized";
 
-                var userAdminList = service.GetUsers(currentUser, roleId, roleType);
+                var userAdminList = service.GetUsers(currentUser, roleType);
 
                 return View(userAdminList);
             }
@@ -54,18 +52,18 @@ namespace WebApplicationGrupp13.Controllers
         // GET: Admin/Details/5
         public int CountAdmins(IEnumerable<AdminViewModel> userAdminList)
         {
-            return userAdminList.Count(x => x.Role == "Admin");
+            return userAdminList.Count(x => x.Role.Contains("Admin"));
         }
 
         public int CountAuthorizedUsers(IEnumerable<AdminViewModel> userAdminList)
         {
-            return userAdminList.Count(x => x.Role == "AuthorizedUser");
+            return userAdminList.Count(x => x.Role.Contains("Authorized"));
         }
 
         [CustomAuthorize(Roles = "Admin")]
         public ActionResult MakeAdmin(string userId)
         {
-            using(var context = new ApplicationDbContext())
+            using (var context = new ApplicationDbContext())
             {
                 var roleId = context.Roles.FirstOrDefault(r => r.Name == "User").Id;
                 var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(context));
@@ -106,6 +104,33 @@ namespace WebApplicationGrupp13.Controllers
             return RedirectToAction("Index");
         }
 
+        [CustomAuthorize(Roles = "Admin")]
+        public ActionResult MakeAuthorizedUser(string userId)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(context));
+
+                userManager.AddToRole(userId, "Authorized");
+
+                context.SaveChanges();
+            }
+            return RedirectToAction("UserAuthorization");
+        }
+
+        [CustomAuthorize(Roles = "Admin")]
+        public ActionResult RemoveAuthorizedUser(string userId)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(context));
+
+                userManager.RemoveFromRole(userId, "Authorized");
+
+                context.SaveChanges();
+            }
+            return RedirectToAction("UserAuthorization");
+        }
         public ActionResult UnAuthorized()
         {
             return View();

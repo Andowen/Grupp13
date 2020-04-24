@@ -11,7 +11,7 @@ namespace WebApplicationGrupp13.Services
 {
     public class AdminService
     {
-        public IEnumerable<AdminViewModel> GetUsers(string currentUser, string roleId, string roleType)
+        public IEnumerable<AdminViewModel> GetUsers(string currentUser, string roleType)
         {
             using (var context = new ApplicationDbContext())
             {
@@ -21,7 +21,7 @@ namespace WebApplicationGrupp13.Services
                 var users = context.Users
                     .Where(x =>
                         (x.Id != currentUser && x.UserName != "admin@admin.com") &&
-                        (roleType == "Admin") || (x.Roles.Any(r => r.RoleId != AdminId))
+                        (roleType == "Admin") || (!x.Roles.Any(r => r.RoleId == AdminId))
                         )
                     .ToList();
 

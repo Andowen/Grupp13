@@ -1,0 +1,26 @@
+﻿@model IEnumerable<WebApplicationGrupp13.Models.AdminViewModel>
+<h3>Behöriga användare</h3>
+
+@foreach (var item in Model)
+{
+    if (item.Role.Contains("Authorized"))
+    {
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="profile-thumbnail">
+                    <span>
+                        <img src="~/Image/@Url.Content(item.Image)" alt="ProfilBild" />
+                    </span>
+                </div>
+                <p class="userName">@item.Name</p>
+                <p class="eMail">@item.Email</p>
+            </div>
+            <div class="col-md-8">
+                <button type="button" class="btn btn-default btn-admin" onclick="location.href='@Url.Action("RemoveAuthorizedUser", "Admin", new { userId = item.UserId})'">Ta bort publiceringsbehörighet</button>
+            </div>
+        </div>
+        <hr class="notificationDivider" />
+    }
+
+}

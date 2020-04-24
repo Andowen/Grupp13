@@ -35,9 +35,12 @@ namespace WebApplicationGrupp13.Controllers
             return View(meetings);
         }
 
+        
+
         // GET: NewMeetings/Create
         public ActionResult Create()
         {
+
             return View();
         }
 
@@ -48,15 +51,8 @@ namespace WebApplicationGrupp13.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,meetingName,date1,date2,date3,creator")] Meetings meetings)
         {
-
-
             if (ModelState.IsValid)
             {
-                //DateTime dateEtt = DateTime.Parse(meetings.date1);
-
-                //string iDate = meetings.date1;
-                //DateTime oDate = Convert.ToDateTime(iDate);
-
                 meetings.creator = User.Identity.Name;
                 db.Meeting.Add(meetings);
                 db.SaveChanges();
@@ -131,5 +127,7 @@ namespace WebApplicationGrupp13.Controllers
             }
             base.Dispose(disposing);
         }
+
+        
     }
 }

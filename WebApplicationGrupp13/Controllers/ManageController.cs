@@ -56,7 +56,8 @@ namespace WebApplicationGrupp13.Controllers
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
+                message == ManageMessageId.ChangePasswordSuccess ? "Ditt lösenord är nu ändrat."
+                : message == ManageMessageId.ChangedAccountInfoSuccess ? "Dina ändringar är nu sparade."
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
                 : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
                 : message == ManageMessageId.Error ? "An error has occurred."
@@ -119,9 +120,10 @@ namespace WebApplicationGrupp13.Controllers
             }
 
             ctx.SaveChanges();
+            TempData["successMessage"] = "Dina ändringar är nu sparade!";
 
 
-            return RedirectToAction("Index");
+            return RedirectToAction("EditUserInformation");
 
         }
 
@@ -173,7 +175,11 @@ namespace WebApplicationGrupp13.Controllers
             edit.Mobilenumber = account.Mobilenumber;
             edit.Img = account.Img;
 
-
+            if (TempData["successMessage"] != null)
+            {
+                ViewBag.Success = TempData["successMessage"].ToString();
+                TempData.Remove("successMessage");
+            }
 
             return View(edit);
         }
@@ -290,6 +296,11 @@ namespace WebApplicationGrupp13.Controllers
         // GET: /Manage/ChangePassword
         public ActionResult ChangePassword()
         {
+            if (TempData["pwSuccessMessage"] != null)
+            {
+                ViewBag.PWSuccess = TempData["pwSuccessMessage"].ToString();
+                TempData.Remove("pwSuccessMessage");
+            }
             return View();
         }
 
@@ -311,7 +322,8 @@ namespace WebApplicationGrupp13.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
-                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+                TempData["pwSuccessMessage"] = "Ditt lösenord är nu ändrat";
+                return RedirectToAction("ChangePassword");
             }
             AddErrors(result);
             return View(model);
@@ -454,7 +466,8 @@ namespace WebApplicationGrupp13.Controllers
             SetPasswordSuccess,
             RemoveLoginSuccess,
             RemovePhoneSuccess,
-            Error
+            Error,
+            ChangedAccountInfoSuccess
         }
 
 #endregion
