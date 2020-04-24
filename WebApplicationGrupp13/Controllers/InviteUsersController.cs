@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebApplicationGrupp13.Models;
 using System.Text;
+using Microsoft.AspNet.Identity;
 
 namespace WebApplicationGrupp13.Controllers
 {
@@ -13,54 +14,58 @@ namespace WebApplicationGrupp13.Controllers
     {
         // GET: InviteUsers
         [HttpGet]
-        public ActionResult InviteUsers()
+        public ActionResult InviteUsers(int meetingId)
         {
-            ApplicationDbContext db = new ApplicationDbContext();
-            List<SelectListItem> listSelectListItems = new List<SelectListItem>();
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var currentUser = User.Identity.GetUserId();
+                var users = db.Users.Where(x => x.Id != currentUser && x.UserName != "admin@admin.com").ToList();
+                List<SelectListItem> listSelectListItems = new List<SelectListItem>();
 
+                foreach (ApplicationUser user in users)
+                {
+                    SelectListItem selectList = new SelectListItem()
+                    {
+                        Text = user.Firstname + " " + user.Lastname,
+                        Value = $"{user.Id.ToString()} , {meetingId}"
+                        //Selected = user.IsSelected
+                    };
+                    listSelectListItems.Add(selectList);
+                }
 
-            foreach (ApplicationUser user in db.Users.ToList()) {
-                SelectListItem selectList = new SelectListItem() {
-                    Text = user.Firstname + " " + user.Lastname,
-                    Value = user.Id.ToString()
-                    //Selected = user.IsSelected
+                InviteUserModel inteviteUserModel = new InviteUserModel()
+                {
+                    AllUsers = listSelectListItems,
+                   // MeetingId = meetingId
                 };
-                listSelectListItems.Add(selectList);
+
+                return View(inteviteUserModel);
             }
-
-            InviteUserModel inteviteUserModel = new InviteUserModel() {
-                AllUsers = listSelectListItems
-            };
-
-            return View(inteviteUserModel);
         }
+        [HttpPost]
+        public ActionResult AddInvitedUsersToList([Bind(Include = "id,meetingId,userId")]IEnumerable<string> selectedUsers)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                foreach (var user in selectedUsers)
+                {
+                    
+                    string [] splitArray = user.Split(',');
+                    var id = splitArray[0];
+                    var meetIdString = splitArray[1];
+                    var meetId = Int32.Parse(meetIdString);
 
-        public List<ApplicationUser> AddInvitedUsersToList(IEnumerable<string> selectedUsers) {
-            
-            List<ApplicationUser>mySelectedUsers = new List<ApplicationUser>();
-            ApplicationDbContext db = new ApplicationDbContext();
-            var allUsersInDb = db.Users.ToList();
-            //var firstname = "";
+                    var meetingUser = new MeetingsUsers
+                    {
+                        userId = id,
+                        meetingId = meetId
+                    };
+                    db.MeetingsUsers.Add(meetingUser);
+                    db.SaveChanges();
 
-
-            foreach (string value in selectedUsers) {
-                foreach (ApplicationUser user in allUsersInDb)
-                    if (user.Id.Equals(value)) {
-                        mySelectedUsers.Add(user);
-                    }
+                }
+                return RedirectToAction ("Index", "NewMeetings");
             }
-            //foreach (ApplicationUser user in mySelectedUsers) {
-            //    return (user.Firstname);
-            //}
-            //if (selectedUsers == null) {
-            //} else {
-
-            //    //StringBuilder sb = new StringBuilder();
-            //    //sb.Append("You selected – " + string.Join(",", selectedUsers));
-            //    //return sb.ToString();
-            //}
-          
-            return mySelectedUsers;
         }
         [HttpPost]
         public ActionResult ReturnToCreate()

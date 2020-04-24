@@ -7,10 +7,13 @@
 <h2>Bjud in mötesdeltagare</h2>
 
 <div>
-    @using (Html.BeginForm("ReturnToCreate", "InviteUsers", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("AddInvitedUsersToList", "InviteUsers", FormMethod.Post, new { meetId = Model.MeetingId }))
     {
-    @Html.ListBoxFor(m => m.SelectedUsers, Model.AllUsers, new { size = 5 })
-    <br />
-    <input type="submit" value="Bjud in" class="btn btn-default" />
+        @Html.HiddenFor(m => m.MeetingId)
+        @Html.ListBoxFor(m => m.SelectedUsers, Model.AllUsers, new { size = 5 })
+        <br />
+        <input type="submit" value="Bjud in" class="btn btn-default" />
     }
 </div>
+
+@* enctype = "multipart/form-data",*@ 
