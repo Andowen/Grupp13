@@ -7,6 +7,7 @@ using WebApplicationGrupp13.Models;
 
 namespace WebApplicationGrupp13.Controllers
 {
+    [Authorize]
     public  class AllBlogPostsController : Controller
     {
         // GET: AllBlogPosts

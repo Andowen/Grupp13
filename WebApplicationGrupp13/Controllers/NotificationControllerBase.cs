@@ -11,6 +11,7 @@ using WebApplicationGrupp13.Services;
 
 namespace WebApplicationGrupp13.Controllers
 {
+    [Authorize]
     public class NotificationControllerBase : Controller
     {
 

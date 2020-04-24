@@ -8,6 +8,7 @@ using System.Text;
 
 namespace WebApplicationGrupp13.Controllers
 {
+    [Authorize]
     public class InviteUsersController : NotificationControllerBase
     {
         // GET: InviteUsers
@@ -33,7 +34,7 @@ namespace WebApplicationGrupp13.Controllers
 
             return View(inteviteUserModel);
         }
-        [HttpPost]
+
         public List<ApplicationUser> AddInvitedUsersToList(IEnumerable<string> selectedUsers) {
             
             List<ApplicationUser>mySelectedUsers = new List<ApplicationUser>();
@@ -53,12 +54,18 @@ namespace WebApplicationGrupp13.Controllers
             //}
             //if (selectedUsers == null) {
             //} else {
-               
+
             //    //StringBuilder sb = new StringBuilder();
             //    //sb.Append("You selected – " + string.Join(",", selectedUsers));
             //    //return sb.ToString();
             //}
+          
             return mySelectedUsers;
+        }
+        [HttpPost]
+        public ActionResult ReturnToCreate()
+        {
+            return RedirectToAction("Create", "NewMeetings");
         }
 
 

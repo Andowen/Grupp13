@@ -7,7 +7,7 @@
 @using WebApplicationGrupp13.Controllers
 @if (Request.IsAuthenticated)
 {
-    <h2>Utbildningsinlägg</h2>
+    <h2>Utbildningsblogg</h2>
     if (User.IsInRole("AuthUser") || User.IsInRole("Admin"))
     {
         <p>
