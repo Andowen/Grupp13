@@ -114,14 +114,18 @@ namespace WebApplicationGrupp13.Controllers
 
             FileInfo fi = new FileInfo(file.FileName);
 
-            if (fi.Extension == ".jpg" || fi.Extension == ".jpeg" || fi.Extension == ".png") {
-                if (file != null) {
+
+            if (file != null) {
+                if (fi.Extension == ".jpg" || fi.Extension == ".jpeg" || fi.Extension == ".png") {
                     string fileName = Path.GetFileName(file.FileName);
                     string fileToSave = Path.Combine(Server.MapPath("~/InformalBlogPostImages"), fileName);
                     file.SaveAs(fileToSave);
                     informalBlogPost.fileName = fileName;
+                } else {
+
                 }
-            }
+                
+            } 
 
             db.InformalBlogPosts.Add(informalBlogPost);
             db.SaveChanges();
