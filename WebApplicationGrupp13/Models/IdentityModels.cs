@@ -76,5 +76,7 @@ namespace WebApplicationGrupp13.Models
         public DbSet<InformalBlogPostComment> InformalBlogPostComments { get; set; }
 
         public DbSet<ResearchBlogPostComment> ResearchBlogPostComments { get; set; }
+
+        public DbSet<MeetingsUsers> MeetingsUsers { get; set; }
     }
 }

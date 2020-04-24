@@ -516,6 +516,14 @@
     <Compile Include="Migrations\202004231446195_removeIsSelectedFromUser.Designer.cs">
       <DependentUpon>202004231446195_removeIsSelectedFromUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004240747424_NySambandstabellMeetings.cs" />
+    <Compile Include="Migrations\202004240747424_NySambandstabellMeetings.Designer.cs">
+      <DependentUpon>202004240747424_NySambandstabellMeetings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004240752068_votes.cs" />
+    <Compile Include="Migrations\202004240752068_votes.Designer.cs">
+      <DependentUpon>202004240752068_votes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
@@ -868,6 +876,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004231446195_removeIsSelectedFromUser.resx">
       <DependentUpon>202004231446195_removeIsSelectedFromUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004240747424_NySambandstabellMeetings.resx">
+      <DependentUpon>202004240747424_NySambandstabellMeetings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004240752068_votes.resx">
+      <DependentUpon>202004240752068_votes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
