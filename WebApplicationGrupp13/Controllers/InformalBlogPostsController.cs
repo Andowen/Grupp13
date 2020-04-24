@@ -113,10 +113,9 @@ namespace WebApplicationGrupp13.Controllers
             informalBlogPost.creator = User.Identity.Name;
             informalBlogPost.dateTime = DateTime.Now;
 
-            FileInfo fi = new FileInfo(file.FileName);
-
 
             if (file != null) {
+                FileInfo fi = new FileInfo(file.FileName);
                 if (fi.Extension == ".jpg" || fi.Extension == ".jpeg" || fi.Extension == ".png") {
                     string fileName = Path.GetFileName(file.FileName);
                     string fileToSave = Path.Combine(Server.MapPath("~/InformalBlogPostImages"), fileName);

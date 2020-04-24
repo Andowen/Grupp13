@@ -35,7 +35,7 @@
                 @if (BlogPost.fileName != null)
                 {
                     <div class="uploadedImg" width="100%" height="100%">
-                        <img src="/InformalBlogPostImages/@BlogPost.fileName" width="100%" height="100%">
+                        <img src="/InformalBlogPostImages/@BlogPost.fileName" style="border: solid white 40px;" width="100%" height="100%">
                     </div>
                 }
                 @if (BlogPost.creator.Equals(User.Identity.Name))

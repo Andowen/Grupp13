@@ -520,6 +520,10 @@
     <Compile Include="Migrations\202004241122554_tagitBortUserRole.Designer.cs">
       <DependentUpon>202004241122554_tagitBortUserRole.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004241107238_togBortInnehållIÄndra.cs" />
+    <Compile Include="Migrations\202004241107238_togBortInnehållIÄndra.Designer.cs">
+      <DependentUpon>202004241107238_togBortInnehållIÄndra.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
@@ -873,6 +877,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004231230585_ändra.resx">
       <DependentUpon>202004231230585_ändra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004241107238_togBortInnehållIÄndra.resx">
+      <DependentUpon>202004241107238_togBortInnehållIÄndra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004241122554_tagitBortUserRole.resx">
       <DependentUpon>202004241122554_tagitBortUserRole.cs</DependentUpon>
