@@ -512,9 +512,9 @@
     <Compile Include="Migrations\202004220738005_0937.Designer.cs">
       <DependentUpon>202004220738005_0937.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202004231346157_latillmigration.cs" />
-    <Compile Include="Migrations\202004231346157_latillmigration.Designer.cs">
-      <DependentUpon>202004231346157_latillmigration.cs</DependentUpon>
+    <Compile Include="Migrations\202004231446195_removeIsSelectedFromUser.cs" />
+    <Compile Include="Migrations\202004231446195_removeIsSelectedFromUser.Designer.cs">
+      <DependentUpon>202004231446195_removeIsSelectedFromUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -866,8 +866,8 @@
     <EmbeddedResource Include="Migrations\202004220738005_0937.resx">
       <DependentUpon>202004220738005_0937.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004231346157_latillmigration.resx">
-      <DependentUpon>202004231346157_latillmigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202004231446195_removeIsSelectedFromUser.resx">
+      <DependentUpon>202004231446195_removeIsSelectedFromUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

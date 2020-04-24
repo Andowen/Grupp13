@@ -1,63 +1,39 @@
 ﻿@model WebApplicationGrupp13.Models.ResearchBlogPost
+@using WebApplicationGrupp13.Controllers
+
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Radera";
+    var Name = FormalBlogPostsController.GetNameFromUsername(Model.creator);
 }
 
 <h2>Radera inlägg</h2>
 
+<div class="row">
+    <div class="col-md-8">
+        <h3>Är du säker på att du vill ta bort detta inlägg?</h3>
+    </div>
+    <div class="col-md-4">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.postText)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.postText)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.creator)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.creator)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.dateTime)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.dateTime)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.category)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.category)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Radera" class="btn btn-default" /> 
-            @Html.ActionLink("Tillbaka till forskningsbloggen", "Index")
-        </div>
-    }
+            <div class="form-actions no-color">
+                <input type="submit" value="Radera inlägg" class="btn btn-default" /> |
+                @Html.ActionLink("Tillbaka till Forskning", "Index")
+            </div>
+        }
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-sm-8">
+        <h4>@Html.DisplayFor(model => model.title)</h4>
+        <p>Publicerat av <span class="authorName">@Html.Raw(Model.creator.Equals(User.Identity.Name) ? "dig" : Name)</span> i Forskning @Html.DisplayFor(model => model.dateTime)</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-8">
+        @Html.DisplayFor(model => model.postText)
+    </div>
 </div>
