@@ -14,6 +14,7 @@ using WebApplicationGrupp13.Services;
 
 namespace WebApplicationGrupp13.Controllers
 {
+    [Authorize]
     public class AdminController : NotificationControllerBase
     {
         private AdminService service = new AdminService();

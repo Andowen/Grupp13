@@ -8,6 +8,7 @@ using System.Text;
 
 namespace WebApplicationGrupp13.Controllers
 {
+    [Authorize]
     public class InviteUsersController : NotificationControllerBase
     {
         // GET: InviteUsers
