@@ -21,7 +21,13 @@ namespace WebApplicationGrupp13.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: FormalBlogPosts
+       public static string selectedFilter { get; set; }
 
+        [HttpPost]
+       public ActionResult SetFilter(String filter) {
+            selectedFilter = filter;
+            return RedirectToAction("Index");
+        }
        public FormalBlogPostsController() {
 
         }
@@ -68,10 +74,15 @@ namespace WebApplicationGrupp13.Controllers
         }
 
 
-
-
-
-        public static string GetDateFromDateTime(DateTime dateTime) {
+        [HttpPost]
+        public List<String> GetCategories() {
+            List<String> names = new List<string>();
+            foreach (FormalBlogPostCategory category in db.FormalBlogPostCategories.ToList()) {
+                names.Add(category.name);
+            }
+            return names;
+        }
+            public static string GetDateFromDateTime(DateTime dateTime) {
 
             string year = dateTime.Year.ToString();
             string month = dateTime.Month.ToString() ;
@@ -149,19 +160,16 @@ namespace WebApplicationGrupp13.Controllers
 
             return fullDate;
         }
-        public ActionResult Index()
+
+        public ActionResult Index(string searchString)
         {
-
-            List<string> ct = new List<string>();
-            foreach (FormalBlogPostCategory category in db.FormalBlogPostCategories)
-            {
-                ct.Add(category.name);
+            var blogPosts = from s in db.BlogPosts
+                            select s;
+            if (!String.IsNullOrEmpty(searchString)) {
+                blogPosts = blogPosts.Where(s => s.category.Equals(searchString));
             }
+            return View(blogPosts);
 
-
-            ViewBag.CategoryList = ct;
-
-            return View(db.BlogPosts.ToList());
         }
 
         // GET: FormalBlogPosts/Details/5

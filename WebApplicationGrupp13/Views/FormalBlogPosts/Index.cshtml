@@ -13,72 +13,77 @@
     </p>
 
     var Model1 = Model.OrderByDescending(c => c.id);
-   
+
+    FormalBlogPostsController controller = new FormalBlogPostsController();
+
+    using (Html.BeginForm()) {
+<p>
+
+   Filtrera efter kategori: @Html.DropDownList("SearchString", new SelectList(controller.GetCategories()), new { @id = "9999" })
+
+    <input type="submit" value="Filtrera" class="btn btn-default" />
+</p>
+    }
+
     foreach (var BlogPost in Model1) {
         var blogPostIdString = BlogPost.id.ToString();
-<div class="formalBlogPost" id=@blogPostIdString>
+        <div class="formalBlogPost" id=@blogPostIdString>
 
-    <div class="formalBlogPostContent">
-        @{
-            var time = FormalBlogPostsController.GetDateFromDateTime(BlogPost.dateTime);
-            var imageSrc = FormalBlogPostsController.GetProfilePictureFromUsername(BlogPost.creator);
-            var Name = FormalBlogPostsController.GetNameFromUsername(BlogPost.creator);
-        }
-        <h3>@Html.DisplayFor(modelItem => BlogPost.title)<span class="authorTime">@time</span></h3>
-        <h4><span class="authorTime">@Name</span></h4>
-        <h6>@Html.DisplayFor(modelItem => BlogPost.category)</h6>
-        <div class="profile-thumbnail" style="float:right;">
-            <span><img src="~/Image/@imageSrc" style="height:70px; width:auto;"></span>
-        </div>
-        <p>@Html.DisplayFor(modelItem => BlogPost.postText)</p>
+            <div class="formalBlogPostContent">
+                @{
+                    var time = FormalBlogPostsController.GetDateFromDateTime(BlogPost.dateTime);
+                    var imageSrc = FormalBlogPostsController.GetProfilePictureFromUsername(BlogPost.creator);
+                    var Name = FormalBlogPostsController.GetNameFromUsername(BlogPost.creator);
+                }
+                <h3>@Html.DisplayFor(modelItem => BlogPost.title)<span class="authorTime">@time</span></h3>
+                <h4><span class="authorTime">@Name</span></h4>
+                <h6>@Html.DisplayFor(modelItem => BlogPost.category)</h6>
+                <div class="profile-thumbnail" style="float:right;">
+                    <span><img src="~/Image/@imageSrc" style="height:70px; width:auto;"></span>
+                </div>
+                <p>@Html.DisplayFor(modelItem => BlogPost.postText)</p>
 
-        <br />
-    </div>
-    <div class="blogButtons">
-        @if (BlogPost.fileName != null)
-        {
-            <a href="~/FormalBlogPostUploads/@BlogPost.fileName" download>@BlogPost.fileName</a>
-        }
-        @if (BlogPost.creator.Equals(User.Identity.Name))
-        {
+                <br />
+            </div>
+            <div class="blogButtons">
+                @if (BlogPost.fileName != null) {
+                    <a href="~/FormalBlogPostUploads/@BlogPost.fileName" download>@BlogPost.fileName</a>
+                }
+                @if (BlogPost.creator.Equals(User.Identity.Name)) {
 
-            <p>
-                @Html.ActionLink("Se inlägg", "Details", new { id = BlogPost.id }) | @Html.ActionLink("Redigera", "Edit", new { id = BlogPost.id }) | @Html.ActionLink("Ta bort", "Delete", new { id = BlogPost.id })
-            </p>
-        }
-        else if (!BlogPost.creator.Equals(User.Identity.Name) && User.IsInRole("Admin"))
-        {
-            <p>
-                @Html.ActionLink("Se inlägg", "Details", new { id = BlogPost.id }) | @Html.ActionLink("Ta bort", "Delete", new { id = BlogPost.id })
-            </p>
-        }
-        else
-        {
-            <p>
-                @Html.ActionLink("Se inlägg", "Details", new { id = BlogPost.id })
-            </p>
-        }
-        @{
-            FormalBlogPostCommentsController commentsController = new FormalBlogPostCommentsController();
-        }
+                    <p>
+                        @Html.ActionLink("Se inlägg", "Details", new { id = BlogPost.id }) | @Html.ActionLink("Redigera", "Edit", new { id = BlogPost.id }) | @Html.ActionLink("Ta bort", "Delete", new { id = BlogPost.id })
+                    </p>
+                } else if (!BlogPost.creator.Equals(User.Identity.Name) && User.IsInRole("Admin")) {
+                    <p>
+                        @Html.ActionLink("Se inlägg", "Details", new { id = BlogPost.id }) | @Html.ActionLink("Ta bort", "Delete", new { id = BlogPost.id })
+                    </p>
+                } else {
+                    <p>
+                        @Html.ActionLink("Se inlägg", "Details", new { id = BlogPost.id })
+                    </p>
+                }
+                @{
+                    FormalBlogPostCommentsController commentsController = new FormalBlogPostCommentsController();
+                }
 
-    </div>
+            </div>
 
 
-    @foreach (var comment in commentsController.GetComments(BlogPost.id, "Formal")) {
-        var commentTime = FormalBlogPostsController.GetDateFromDateTime(comment.dateTime);
+            @foreach (var comment in commentsController.GetComments(BlogPost.id, "Formal")) {
+                var commentTime = FormalBlogPostsController.GetDateFromDateTime(comment.dateTime);
 
-        <div class="formalBlogPostComment">
+                <div class="formalBlogPostComment">
 
 
-            <p>@comment.commentText</p>
-            <p class="formalBlogPostCommentAuthor">@comment.author | @commentTime</p>
+                    <p>@comment.commentText</p>
+                    <p class="formalBlogPostCommentAuthor">@comment.author | @commentTime</p>
+                </div>
+
+            }
+
         </div>
 
-    }
-    
-</div>
-       
 
     }
 
