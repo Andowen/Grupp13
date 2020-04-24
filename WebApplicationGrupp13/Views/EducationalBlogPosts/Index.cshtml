@@ -8,7 +8,7 @@
 @if (Request.IsAuthenticated)
 {
     <h2>Utbildningsblogg</h2>
-    if (User.IsInRole("AuthUser") || User.IsInRole("Admin"))
+    if (User.IsInRole("Authorized") || User.IsInRole("Admin"))
     {
         <p>
             @Html.ActionLink("Skapa nytt inlägg", "Create")

@@ -1,0 +1,45 @@
+﻿@model WebApplicationGrupp13.Models.MeetingVotesViewModel
+@using WebApplicationGrupp13.Controllers
+@{
+    ViewBag.Title = "Rösta på en mötestid";
+}
+
+<h2>Rösta</h2>
+<p>Välj den mötestid som passar dig bäst</p>
+
+@{
+    var Name = FormalBlogPostsController.GetNameFromUsername(Model.Creator);
+}
+@using (Html.BeginForm("VoteOnMeeting", "NewMeetings", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(modelItem => Model.MeetingId)
+    @Html.HiddenFor(modelItem => Model.UserId)
+    @Html.HiddenFor(modelItem => Model.Title)
+    @Html.HiddenFor(modelItem => Model.Creator)
+    @Html.HiddenFor(modelItem => Model.Date1)
+    @Html.HiddenFor(modelItem => Model.Date2)
+    @Html.HiddenFor(modelItem => Model.Date3)
+    @Html.HiddenFor(modelItem => Model.Votes1)
+    @Html.HiddenFor(modelItem => Model.Votes2)
+    @Html.HiddenFor(modelItem => Model.Votes3)
+    @Html.HiddenFor(modelItem => Model.HasVoted)
+    <div class="row meetings">
+        <div class="col-md-4">
+            <p>@Html.DisplayFor(modelItem => Model.Title)</p>
+        </div>
+        <div class="col-md-3">
+            <p>@Name</p>
+            <p class="eMail">@Html.DisplayFor(modelItem => Model.Creator)</p>
+        </div>
+        <div class="col-md-3">
+            <p>@Html.RadioButtonFor(modelItem => Model.VoteOn, 1) @Html.DisplayFor(modelItem => Model.Date1)</p>
+            <p>@Html.RadioButtonFor(modelItem => Model.VoteOn, 2) @Html.DisplayFor(modelItem => Model.Date2)</p>
+            <p>@Html.RadioButtonFor(modelItem => Model.VoteOn, 3) @Html.DisplayFor(modelItem => Model.Date3)</p>
+        </div>
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Rösta på mötestid" class="btn btn-default" />
+        </div>
+    </div>
+}
+
+

@@ -1,4 +1,7 @@
-﻿.profile-picture span {
+﻿.meetings {
+    margin-top: 10px;
+}
+.profile-picture span {
     background: #ffffff;
     display: inline;
     float: left;

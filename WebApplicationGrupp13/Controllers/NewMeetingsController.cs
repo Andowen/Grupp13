@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -7,36 +8,65 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplicationGrupp13.Models;
+using WebApplicationGrupp13.Services;
+using WebApplicationGrupp13.Extensions;
 
 namespace WebApplicationGrupp13.Controllers
 {
     [Authorize]
     public class NewMeetingsController : NotificationControllerBase
     {
+        public MeetingService service = new MeetingService();
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: NewMeetings
         public ActionResult Index()
         {
-            return View(db.Meeting.ToList());
+            var currentUser = User.Identity.GetUserId();
+            var meetings = service.GetMeetingInvites(currentUser);
+
+            return View(meetings);
         }
 
         // GET: NewMeetings/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Meetings meetings = db.Meeting.Find(id);
-            if (meetings == null)
-            {
-                return HttpNotFound();
-            }
-            return View(meetings);
+
+            var meeting = service.GetMeeting(id);
+
+            return View(meeting);
         }
 
-        
+        public ActionResult VoteOnMeeting(MeetingVotesViewModel model)
+        {
+
+            using (var context = new ApplicationDbContext())
+            {
+                var entity = model.ToEntity();
+
+                var dbEntity = context.Meeting
+                    .FirstOrDefault(x => x.id == entity.id);
+
+                dbEntity.vote1 = entity.vote1;
+                dbEntity.vote2 = entity.vote2;
+                dbEntity.vote3 = entity.vote3;
+
+                var meetUserEntity = context.MeetingsUsers
+                    .FirstOrDefault(x => x.meetingId == entity.id && x.userId == model.UserId);
+
+                meetUserEntity.hasVoted = true;
+
+                context.SaveChanges();
+            }
+
+            return RedirectToAction("Details", new { model.MeetingId });
+        }
+
+
 
         // GET: NewMeetings/Create
         public ActionResult Create()
@@ -63,8 +93,20 @@ namespace WebApplicationGrupp13.Controllers
             return View(meetings);
         }
 
+        public ActionResult MeetingVotes(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var meeting = service.GetMeeting(id);
+
+            return View(meeting);
+        }
+
         // GET: NewMeetings/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -95,7 +137,7 @@ namespace WebApplicationGrupp13.Controllers
         }
 
         // GET: NewMeetings/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -129,6 +171,6 @@ namespace WebApplicationGrupp13.Controllers
             base.Dispose(disposing);
         }
 
-        
+
     }
 }

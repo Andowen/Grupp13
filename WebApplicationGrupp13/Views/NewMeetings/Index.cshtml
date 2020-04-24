@@ -1,74 +1,62 @@
-﻿@model IEnumerable<WebApplicationGrupp13.Models.Meetings>
+﻿@model IEnumerable<WebApplicationGrupp13.Models.MeetingVotesViewModel>
+@using WebApplicationGrupp13.Controllers
 @{
     ViewBag.Title = "Index";
 }
 
-<!DOCTYPE html>
+<h2>Möten</h2>
+<p>Möten du är inbjuden till</p>
+<hr />
+@if (Model.Count() == 0)
+{
+    <p>Du har inga mötesinbjudningar just nu</p>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-4"><p class="authorName">Mötesnamn</p></div>
+        <div class="col-md-3"><p class="authorName">Mötesadministratör</p></div>
+        <div class="col-md-3"><p class="authorName">Valbara tider</p></div>
+        <div class="col-md-2"><p></p></div>
+    </div>
+    <hr class="notificationDivider" />
 
-<html>
-<head>
-    <title>Möten</title>
-</head>
-<body>
-    <p>
-        @Html.ActionLink("Skapa nytt möte", "Create")
-    </p>
 
-    @*@using (Html.BeginForm("Index", "NewMeetings", FormMethod.Post))*@
-    @using (Html.BeginForm())
+
+    foreach (var item in Model)
     {
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.meetingName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.date1)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.date2)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.date3)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.creator)
-                </th>
-                <th></th>
-            </tr>
-  
 
-            @foreach (var item in Model)
+        var Name = FormalBlogPostsController.GetNameFromUsername(item.Creator);
+
+        <div class="row meetings">
+            <div class="col-md-4">
+                <p>@Html.DisplayFor(modelItem => item.Title)</p>
+            </div>
+            <div class="col-md-3">
+                <p>@Name</p>
+                <p class="eMail">@Html.DisplayFor(modelItem => item.Creator)</p>
+            </div>
+            <div class="col-md-3">
+                <p>@Html.DisplayFor(modelItem => item.Date1)</p>
+                <p>@Html.DisplayFor(modelItem => item.Date2)</p>
+                <p>@Html.DisplayFor(modelItem => item.Date3)</p>
+            </div>
+            @if (!item.HasVoted)
             {
-
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.meetingName)
-                    </td>
-                    <td>
-                        @*@Html.RadioButton("RadioButton1", objectValue, true)*@
-                        @Html.DisplayFor(modelItem => item.date1)
-                    </td>
-                    <td>
-                        @*@Html.RadioButton("RadioButton2", item.Id)*@
-                        @Html.DisplayFor(modelItem => item.date2)
-                    </td>
-                    <td>
-                        @*@Html.RadioButton("RadioButton3", item.Id)*@
-                        @Html.DisplayFor(modelItem => item.date3)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.creator)
-                    </td>
-
-                </tr>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("MeetingVotes", "NewMeetings", new { id = item.MeetingId})'">Rösta på mötestid</button>
+                </div>
+            }
+            else
+            {
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("Details", "NewMeetings", new { id = item.MeetingId})'">Se mötesdetaljer</button>
+                </div>
             }
 
-        </table>
-        <input class="btn btn-default" type="submit" value="Rösta"
-               new { onclick="return confirm('Din röst är skickad')" } />
+        </div>
+        <hr class="notificationDivider" />
     }
+}
 
 
-</body>
-</html>

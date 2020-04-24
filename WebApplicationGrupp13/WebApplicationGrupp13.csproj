@@ -267,6 +267,7 @@
     <Compile Include="Extensions\EducationalPostExtensions.cs" />
     <Compile Include="Extensions\FormalBlogPostExtensions.cs" />
     <Compile Include="Extensions\InformalBlogPostExtensions.cs" />
+    <Compile Include="Extensions\MeetingVotesViewModelExtensions.cs" />
     <Compile Include="Extensions\NotificationSettingViewModelExtension.cs" />
     <Compile Include="Extensions\ResearchBlogPostExtensions.cs" />
     <Compile Include="Global.asax.cs">
@@ -555,6 +556,7 @@
     <Compile Include="Models\InviteUserModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Meetings.cs" />
+    <Compile Include="Models\MeetingVotesViewModel.cs" />
     <Compile Include="Models\NotificationViewModel.cs" />
     <Compile Include="Models\ResearchBlogPost.cs" />
     <Compile Include="Models\ResearchBlogPostCategory.cs" />
@@ -563,6 +565,7 @@
     <Compile Include="Models\ViewedNotifications.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AdminService.cs" />
+    <Compile Include="Services\MeetingService.cs" />
     <Compile Include="Services\NotificationService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -679,6 +682,7 @@
     <Content Include="Views\InviteUsers\InviteUsers.cshtml" />
     <Content Include="Views\Admin\UserAuthorization.cshtml" />
     <Content Include="Views\Admin\_UserAuthorizationPartial.cshtml" />
+    <Content Include="Views\NewMeetings\MeetingVotes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
