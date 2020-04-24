@@ -56,7 +56,7 @@ namespace WebApplicationGrupp13.Controllers
                 meetings.creator = User.Identity.Name;
                 db.Meeting.Add(meetings);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("InviteUsers", "InviteUsers", new { meetingId = meetings.id });
             }
 
             return View(meetings);
@@ -127,7 +127,22 @@ namespace WebApplicationGrupp13.Controllers
             }
             base.Dispose(disposing);
         }
+        [HttpGet]
+        public ActionResult CreatedMeetings() {
 
-        
+            var currentUser = User.Identity.Name;
+            //var createdMeetings = new Meetings();
+            var createdMeetingsList = new List<Meetings>();
+            var meetingList = db.Meeting.ToList();
+            foreach(var item in meetingList) {
+                if (currentUser.Equals(item.creator)) {
+                    //createdMeetings = db.Meeting.Add(item);
+                    createdMeetingsList.Add(item);
+
+                    
+                }
+            }
+            return View(createdMeetingsList);
+        }
     }
 }

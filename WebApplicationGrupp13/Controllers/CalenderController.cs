@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using WebApplicationGrupp13.Models;
 
 namespace WebApplicationGrupp13.Controllers {
+    [Authorize]
     public class CalenderController : NotificationControllerBase {
         // GET: Calender
         public ActionResult Index() {

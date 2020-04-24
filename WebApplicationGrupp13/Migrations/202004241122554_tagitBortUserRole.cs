@@ -3,7 +3,7 @@ namespace WebApplicationGrupp13.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class removeIsSelectedFromUser : DbMigration
+    public partial class tagitBortUserRole : DbMigration
     {
         public override void Up()
         {
@@ -12,7 +12,7 @@ namespace WebApplicationGrupp13.Migrations
         
         public override void Down()
         {
-           
+            
         }
     }
 }

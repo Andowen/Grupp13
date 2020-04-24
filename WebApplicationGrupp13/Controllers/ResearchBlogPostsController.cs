@@ -13,14 +13,28 @@ using WebApplicationGrupp13.Models;
 
 namespace WebApplicationGrupp13.Controllers
 {
+    [Authorize]
     public class ResearchBlogPostsController : NotificationControllerBase
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: ResearchBlogPosts
-        public ActionResult Index()
-        {
-            return View(db.ResearchBlogPosts.ToList());
+        [HttpPost]
+        public List<String> GetCategories() {
+            List<String> names = new List<string>();
+            foreach (ResearchBlogPostCategory category in db.ResearchBlogPostCategories.ToList()) {
+                names.Add(category.name);
+            }
+            return names;
+        }
+        public ActionResult Index(string searchString) {
+            var blogPosts = from s in db.ResearchBlogPosts
+                            select s;
+            if (!String.IsNullOrEmpty(searchString)) {
+                blogPosts = blogPosts.Where(s => s.category.Equals(searchString));
+            }
+            return View(blogPosts);
+
         }
 
         // GET: ResearchBlogPosts/Details/5
