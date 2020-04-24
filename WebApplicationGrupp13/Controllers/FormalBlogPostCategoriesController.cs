@@ -10,7 +10,7 @@ using WebApplicationGrupp13.Models;
 
 namespace WebApplicationGrupp13.Controllers
 {
-    [Authorize]
+    
     public class FormalBlogPostCategoriesController : NotificationControllerBase
     {
         private ApplicationDbContext db = new ApplicationDbContext();
