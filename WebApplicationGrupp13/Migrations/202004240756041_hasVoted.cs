@@ -3,16 +3,16 @@ namespace WebApplicationGrupp13.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class removeIsSelectedFromUser : DbMigration
+    public partial class hasVoted : DbMigration
     {
         public override void Up()
         {
-           DropColumn("dbo.AspNetUsers", "IsSelected");
+            AddColumn("dbo.MeetingsUsers", "hasVoted", c => c.Boolean(nullable: false));
         }
         
         public override void Down()
         {
-           AddColumn("dbo.AspNetUsers", "IsSelected", c => c.Boolean(nullable: false));
+            DropColumn("dbo.MeetingsUsers", "hasVoted");
         }
     }
 }
