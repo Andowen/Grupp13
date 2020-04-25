@@ -63,7 +63,7 @@ namespace WebApplicationGrupp13.Controllers
                     db.SaveChanges();
 
                 }
-                return RedirectToAction ("Index", "NewMeetings");
+                return RedirectToAction ("CreatedMeetings", "NewMeetings");
             }
         }
         [HttpPost]

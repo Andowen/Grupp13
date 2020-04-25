@@ -26,6 +26,7 @@ namespace WebApplicationGrupp13
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/notification-style.css",
+                      "~/Content/meetings-views.css",
                       "~/Content/list-view.css"));
         }
     }

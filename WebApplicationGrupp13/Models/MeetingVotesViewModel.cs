@@ -19,5 +19,6 @@ namespace WebApplicationGrupp13.Models
         public int Votes3 { get; set; }
         public int VoteOn { get; set; }
         public bool HasVoted { get; set; }
+        public int Selected { get; set; }
     }
 }

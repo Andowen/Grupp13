@@ -34,7 +34,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.postText, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.TextAreaFor(model => model.postText, 10, 60, null)
+            @Html.TextAreaFor(model => model.postText, 10, 60, htmlAttributes: new { style = "max-width: 600px; height: 200px;" })
             @Html.ValidationMessageFor(model => model.postText, "", new { @class = "text-danger" })
 
         </div>

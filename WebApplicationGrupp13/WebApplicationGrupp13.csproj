@@ -525,6 +525,10 @@
     <Compile Include="Migrations\202004241107238_togBortInnehållIÄndra.Designer.cs">
       <DependentUpon>202004241107238_togBortInnehållIÄndra.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004252244206_addedColumnToMeetingsUsers.cs" />
+    <Compile Include="Migrations\202004252244206_addedColumnToMeetingsUsers.Designer.cs">
+      <DependentUpon>202004252244206_addedColumnToMeetingsUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
@@ -563,6 +567,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\list-view.css" />
+    <Content Include="Content\meetings-views.css" />
     <Content Include="Content\notification-style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -887,6 +892,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004241122554_tagitBortUserRole.resx">
       <DependentUpon>202004241122554_tagitBortUserRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004252244206_addedColumnToMeetingsUsers.resx">
+      <DependentUpon>202004252244206_addedColumnToMeetingsUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

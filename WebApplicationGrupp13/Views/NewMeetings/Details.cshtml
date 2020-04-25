@@ -1,66 +1,119 @@
-﻿@model WebApplicationGrupp13.Models.Meetings
+﻿@model WebApplicationGrupp13.Models.MeetingVotesViewModel
+@using WebApplicationGrupp13.Controllers
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
 
 @{
-     ViewBag.Title = "Details";
+    ViewBag.Title = "Details";
 }
 
-<!DOCTYPE html>
+<h2>Mötesdetaljer</h2>
+<hr />
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <div>
-        <h4>Meetings</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.meetingName)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.meetingName)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.date1)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.date1)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.date2)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.date2)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.date3)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.date3)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.creator)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.creator)
-            </dd>
-    
-        </dl>
+@{
+    var Name = FormalBlogPostsController.GetNameFromUsername(Model.Creator);
+}
+
+
+
+<div class="container">
+    <div class="row meetings">
+
+        <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-12 frame">
+                <div class="row">
+                    <div class="col-md-12 title">
+                        <h1>@Html.DisplayFor(modelItem => Model.Title)</h1>
+                        <hr class="notificationDivider" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 creator">
+                        <br />
+                        <p>Mötesadministratör</p>
+                        <h2>@Name</h2>
+                        <p>@Html.DisplayFor(modelItem => Model.Creator)</p>
+                        <br />
+                        <hr class="notificationDivider" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 dateVotes">
+                        <div class="col-md-4 @Html.Raw(Model.Selected == 1 ? "selectedDate":"")">
+                            <h3>@Model.Date1.ToShortDateString()</h3>
+                            <h3>@Model.Date1.ToShortTimeString()</h3>
+                            <h1>@Html.DisplayFor(modelItem => Model.Votes1)</h1>
+                            <p>Röster</p>
+                            <br />
+                        </div>
+                        <div class="col-md-4 middle @Html.Raw(Model.Selected == 2 ? "selectedDate":"")">
+                            <h3>@Model.Date2.ToShortDateString()</h3>
+                            <h3>@Model.Date2.ToShortTimeString()</h3>
+                            <h1>@Html.DisplayFor(modelItem => Model.Votes2)</h1>
+                            <p>Röster</p>
+                            <br />
+                        </div>
+                        <div class="col-md-4 @Html.Raw(Model.Selected == 3 ? "selectedDate":"")">
+                            <h3>@Model.Date3.ToShortDateString()</h3>
+                            <h3>@Model.Date3.ToShortTimeString()</h3>
+                            <h1>@Html.DisplayFor(modelItem => Model.Votes3)</h1>
+                            <p>Röster</p>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+                @if (!Model.HasVoted)
+                {
+                    using (Html.BeginForm("VoteOnMeeting", "NewMeetings", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.HiddenFor(modelItem => Model.MeetingId)
+                        @Html.HiddenFor(modelItem => Model.UserId)
+                        @Html.HiddenFor(modelItem => Model.Title)
+                        @Html.HiddenFor(modelItem => Model.Creator)
+                        @Html.HiddenFor(modelItem => Model.Date1)
+                        @Html.HiddenFor(modelItem => Model.Date2)
+                        @Html.HiddenFor(modelItem => Model.Date3)
+                        @Html.HiddenFor(modelItem => Model.Votes1)
+                        @Html.HiddenFor(modelItem => Model.Votes2)
+                        @Html.HiddenFor(modelItem => Model.Votes3)
+                        @Html.HiddenFor(modelItem => Model.HasVoted)
+                        @Html.HiddenFor(modelItem => Model.Selected)
+                        <hr class="notificationDivider" />
+                        <div class="row">
+                            <div class="col-md-12 votes">
+                                <div class="col-md-4">
+                                    <p>
+                                        @Html.RadioButtonFor(modelItem => Model.VoteOn, 1, new { @class = "voteRadio custom-control-input" })
+                                        <span class="check"></span>
+                                    </p>
+                                </div>
+                                <div class="col-md-4 middle">
+                                    <p>
+                                        @Html.RadioButtonFor(modelItem => Model.VoteOn, 2, new { @class = "voteRadio custom-control-input" })
+                                        <span class="check"></span>
+                                    </p>
+                                </div>
+                                <div class="col-md-4">
+                                    <p>
+                                        @Html.RadioButtonFor(modelItem => Model.VoteOn, 3, new { @class = "voteRadio custom-control-input" })
+                                        <span class="check"></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="notificationDivider" />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <br />
+                                <input type="submit" value="Rösta på mötestid" class="btn btn-default voteBtn" />
+                            </div>
+
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-</body>
-</html>
+</div>
+
+

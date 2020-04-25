@@ -11,14 +11,14 @@ namespace WebApplicationGrupp13.Services
 {
     public class MeetingService
     {
-        public MeetingVotesViewModel GetMeeting(int? meetingId)
+        public MeetingVotesViewModel GetMeeting(int? meetingId, string currentUser)
         {
             using (var context = new ApplicationDbContext())
             {
                 var result = context.MeetingsUsers
                     .Include(x => x.user)
                     .Include(x => x.meeting)
-                    .FirstOrDefault(x => x.meetingId == meetingId);
+                    .FirstOrDefault(x => x.meetingId == meetingId && x.userId == currentUser);
 
                 return result.ToDto();
             }

@@ -34,8 +34,8 @@ namespace WebApplicationGrupp13.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            var meeting = service.GetMeeting(id);
+            var currentUser = User.Identity.GetUserId();
+            var meeting = service.GetMeeting(id, currentUser);
 
             return View(meeting);
         }
@@ -45,24 +45,27 @@ namespace WebApplicationGrupp13.Controllers
 
             using (var context = new ApplicationDbContext())
             {
-                var entity = model.ToEntity();
 
                 var dbEntity = context.Meeting
-                    .FirstOrDefault(x => x.id == entity.id);
+                    .FirstOrDefault(x => x.id == model.MeetingId);
 
-                dbEntity.vote1 = entity.vote1;
-                dbEntity.vote2 = entity.vote2;
-                dbEntity.vote3 = entity.vote3;
+                dbEntity.vote1 =
+                    model.VoteOn == 1 ? dbEntity.vote1 + 1 : dbEntity.vote1;
+                dbEntity.vote2 =
+                    model.VoteOn == 2 ? dbEntity.vote2 + 1 : dbEntity.vote2;
+                dbEntity.vote3 =
+                    model.VoteOn == 3 ? dbEntity.vote3 + 1 : dbEntity.vote3;
 
                 var meetUserEntity = context.MeetingsUsers
-                    .FirstOrDefault(x => x.meetingId == entity.id && x.userId == model.UserId);
+                    .FirstOrDefault(x => x.meetingId == model.MeetingId && x.userId == model.UserId);
 
                 meetUserEntity.hasVoted = true;
+                meetUserEntity.votedOn = model.VoteOn;
 
                 context.SaveChanges();
             }
 
-            return RedirectToAction("Details", new { model.MeetingId });
+            return RedirectToAction("Details", new {id = model.MeetingId });
         }
 
 
@@ -90,18 +93,6 @@ namespace WebApplicationGrupp13.Controllers
             }
 
             return View(meetings);
-        }
-
-        public ActionResult MeetingVotes(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            var meeting = service.GetMeeting(id);
-
-            return View(meeting);
         }
 
         // GET: NewMeetings/Edit/5

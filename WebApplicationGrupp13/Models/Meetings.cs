@@ -47,5 +47,7 @@ public class MeetingsUsers
 
         public bool hasVoted { get; set; }
 
+        public int votedOn { get; set; }
+
     }
 }

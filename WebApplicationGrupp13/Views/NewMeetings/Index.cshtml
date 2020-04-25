@@ -14,49 +14,41 @@
 else
 {
     <div class="row">
-        <div class="col-md-4"><p class="authorName">Mötesnamn</p></div>
-        <div class="col-md-3"><p class="authorName">Mötesadministratör</p></div>
-        <div class="col-md-3"><p class="authorName">Valbara tider</p></div>
-        <div class="col-md-2"><p></p></div>
-    </div>
-    <hr class="notificationDivider" />
-
-
-
-    foreach (var item in Model)
-    {
-
-        var Name = FormalBlogPostsController.GetNameFromUsername(item.Creator);
-
-        <div class="row meetings">
-            <div class="col-md-4">
-                <p>@Html.DisplayFor(modelItem => item.Title)</p>
-            </div>
-            <div class="col-md-3">
-                <p>@Name</p>
-                <p class="eMail">@Html.DisplayFor(modelItem => item.Creator)</p>
-            </div>
-            <div class="col-md-3">
-                <p>@Html.DisplayFor(modelItem => item.Date1)</p>
-                <p>@Html.DisplayFor(modelItem => item.Date2)</p>
-                <p>@Html.DisplayFor(modelItem => item.Date3)</p>
-            </div>
-            @if (!item.HasVoted)
+        <div class="col-md-9">
+            @foreach (var item in Model)
             {
-                <div class="col-md-2">
-                    <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("MeetingVotes", "NewMeetings", new { id = item.MeetingId})'">Rösta på mötestid</button>
+                var Name = FormalBlogPostsController.GetNameFromUsername(item.Creator);
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="col-md-12">
+                            <a href="@Url.Action("Details", "NewMeetings", new {id = item.MeetingId })">
+                                <div class="row @Html.Raw(!item.HasVoted? "newNotification" : "oldNotification")">
+                                    <div class="col-md-1">
+                                        <span class="noti glyphicon glyphicon-calendar postType"></span>
+                                        @if (!item.HasVoted)
+                                        {
+                                            <span class="badge isNew" style="margin-left: -8px;">Rösta</span>
+                                        }
+                                    </div>
+                                    <div class="col-md-11">
+
+                                        <p class="topRow">
+                                            <span class="authorName">@Name</span> har bjudit in dig till ett möte: @item.Title
+                                        </p>
+                                        <div class="col-sm-2 date">
+                                            <p class="bottomRow">@item.Creator</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="notificationDivider" />
+                        </div>
+                    </div>
                 </div>
             }
-            else
-            {
-                <div class="col-md-2">
-                    <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("Details", "NewMeetings", new { id = item.MeetingId})'">Se mötesdetaljer</button>
-                </div>
-            }
-
         </div>
-        <hr class="notificationDivider" />
-    }
+    </div>
 }
 
 
