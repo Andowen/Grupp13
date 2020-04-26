@@ -23,5 +23,6 @@ namespace WebApplicationGrupp13.Models
         public bool Informal { get; set; }
         public bool Education { get; set; }
         public bool Research { get; set; }
+        public bool Calender { get; set; }
     }
 }

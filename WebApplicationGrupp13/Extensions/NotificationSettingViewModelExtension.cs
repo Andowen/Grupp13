@@ -15,6 +15,7 @@ namespace WebApplicationGrupp13.Extensions
             bool informal = false;
             bool education = false;
             bool research = false;
+            bool calender = false;
 
             foreach (NotificationType notification in Enum.GetValues(typeof(NotificationType)))
             {
@@ -34,9 +35,9 @@ namespace WebApplicationGrupp13.Extensions
                         case NotificationType.Research:
                             research = true;
                             break;
-                        //case NotificationType.Calender:
-                        //    result.AddRange(AddCalenderPost(currentUser, user.UpdatedDate, userName));
-                        //    break;
+                        case NotificationType.Calender:
+                            calender = true;
+                            break;
                         default:
                             break;
                     }
@@ -48,7 +49,8 @@ namespace WebApplicationGrupp13.Extensions
                 Formal = formal,
                 Informal = informal,
                 Education = education,
-                Research = research
+                Research = research,
+                Calender = calender
             };
 
             return notificationSettings;
@@ -74,6 +76,9 @@ namespace WebApplicationGrupp13.Extensions
 
             entity.SelectedNotification |=
                 model.Research ? NotificationType.Research : 0;
+            
+            entity.SelectedNotification |=
+                model.Calender ? NotificationType.Calender : 0;
 
             return entity;
         }

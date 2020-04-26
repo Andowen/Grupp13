@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using WebApplicationGrupp13.Models;
 using WebApplicationGrupp13.Services;
 using WebApplicationGrupp13.Extensions;
+using WebApplicationGrupp13.Enums;
 
 namespace WebApplicationGrupp13.Controllers
 {
@@ -35,6 +36,35 @@ namespace WebApplicationGrupp13.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var currentUser = User.Identity.GetUserId();
+            try
+            {
+                using (var context = new ApplicationDbContext())
+                {
+                    var postId = id.Value;
+                    var postType = PostType.Calender;
+                    var exists = context.ViewedNotifications
+                        .Any(x => x.PostId == postId &&
+                                  x.PostType == postType &&
+                                  x.UserId == currentUser);
+                    if (!exists)
+                    {
+                        var viewedNotification = new ViewedNotifications
+                        {
+                            PostId = postId,
+                            UserId = currentUser,
+                            PostType = postType,
+                            TimeStamp = DateTime.Now
+                        };
+                        context.ViewedNotifications.Add(viewedNotification);
+                        context.SaveChanges();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
             var meeting = service.GetMeeting(id, currentUser);
 
             return View(meeting);

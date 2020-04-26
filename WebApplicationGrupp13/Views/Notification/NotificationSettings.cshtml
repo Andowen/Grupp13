@@ -9,37 +9,30 @@
 <hr />
 @using (Html.BeginForm("EditSettings", "Notification", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
-   @Html.HiddenFor(model => model.UserNotiId)
+    @Html.HiddenFor(model => model.UserNotiId)
     <div class="row">
-        <div class="col-md-1">
-            <p>Information</p>
-        </div>
-        <div class="col-md-8">
-            @Html.CheckBoxFor(model => model.Formal)
+        <div class="col-md-12">
+            <p>@Html.CheckBoxFor(model => model.Formal)  Information</p>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-1">
-            <p>Anslagstavlan</p>
-        </div>
-        <div class="col-md-8">
-            @Html.CheckBoxFor(model => model.Informal)
+        <div class="col-md-12">
+            <p>@Html.CheckBoxFor(model => model.Informal)  Anslagstavlan</p>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-1">
-            <p>Utbildning</p>
-        </div>
-        <div class="col-md-8">
-            @Html.CheckBoxFor(model => model.Education)
+        <div class="col-md-12">
+            <p>@Html.CheckBoxFor(model => model.Education)  Utbildning</p>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-1">
-            <p>Forskning</p>
+        <div class="col-md-12">
+            <p>@Html.CheckBoxFor(model => model.Research)  Forskning</p>
         </div>
-        <div class="col-md-8">
-            @Html.CheckBoxFor(model => model.Research)
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p>@Html.CheckBoxFor(model => model.Calender)  Mötesinbjudningar</p>
         </div>
     </div>
     <hr />

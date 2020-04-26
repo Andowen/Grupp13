@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data;
+using System.Data.Entity;
 using WebApplicationGrupp13.Enums;
 using WebApplicationGrupp13.Extensions;
 using WebApplicationGrupp13.Models;
@@ -38,9 +40,9 @@ namespace WebApplicationGrupp13.Services
                                 case NotificationType.Research:
                                     result.AddRange(AddResearchBlogPosts(currentUser, user.UpdatedDate, userName));
                                     break;
-                                //case NotificationType.Calender:
-                                //    result.AddRange(AddCalenderPost(currentUser, user.UpdatedDate, userName));
-                                //    break;
+                                case NotificationType.Calender:
+                                    result.AddRange(AddMeetingPost(currentUser, user.UpdatedDate, userName));
+                                    break;
                                 default:
                                     break;
                             }
@@ -108,19 +110,19 @@ namespace WebApplicationGrupp13.Services
             }
         }
 
-        //private IEnumerable<NotificationViewModel> AddCalenderPost(string userId, DateTime timeStamp, string userName)
-        //{
-        //    using (var context = new ApplicationDbContext())
-        //    {
-        //        var data = context.Calender
-        //            .Where(m => m.dateTime > timeStamp && m.creator != userName)
-        //            .OrderByDescending(m => m.dateTime)
-        //            .Take(10)
-        //            .ToList();
+        private IEnumerable<NotificationViewModel> AddMeetingPost(string userId, DateTime timeStamp, string userName)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var data = context.MeetingsUsers
+                    .Include(x => x.user)
+                    .Include(x => x.meeting)
+                    .Where(x => x.userId == userId)
+                    .ToList();
 
-        //        return data.Select(x => x.ToDto(IsPostNew(x.id, PostType.Calender, userId)));
-        //    }
-        //}
+                return data.Select(x => x.ToDto(IsPostNew(x.meeting.id, PostType.Calender, userId)));
+            }
+        }
         private bool IsPostNew(int id, PostType postType, string userId)
         {
             using (var context = new ApplicationDbContext())

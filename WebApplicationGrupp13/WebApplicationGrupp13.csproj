@@ -262,7 +262,7 @@
     <Compile Include="Enums\PostType.cs" />
     <Compile Include="ErrorHandling\ErrorMessageHandler.cs" />
     <Compile Include="Extensions\ApplicationUserExtensions.cs" />
-    <Compile Include="Extensions\CalenderViewModelExtensions.cs" />
+    <Compile Include="Extensions\MeetingsUsersExtensions.cs" />
     <Compile Include="Extensions\CustomAuthorize.cs" />
     <Compile Include="Extensions\EducationalPostExtensions.cs" />
     <Compile Include="Extensions\FormalBlogPostExtensions.cs" />
