@@ -7,6 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -26,7 +27,6 @@
                         <li>@Html.ActionLink("Kalender", "Index", "Calender")</li>
                         <li>@Html.ActionLink("Information", "Index", "FormalBlogPosts")</li>
                         <li>@Html.ActionLink("Anslagstavla", "Index", "InformalBlogPosts")</li>
-                        <li>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                 Utbildning och forskning
@@ -37,6 +37,19 @@
                                 <li class="divider"></li>
                                 <li>@Html.ActionLink("Forskning", "Index", "ResearchBlogPosts")</li>
                             </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Möten och inbjudningar
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Mina mötesinbjudningar", "Index", "NewMeetings")</li>
+                                <li>@Html.ActionLink("Mina möten", "CreatedMeetings", "NewMeetings")</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Skapa nytt möte", "Create", "NewMeetings")</li>
+                            </ul>
+                        </li>
                     </ul>
                 }
                 @Html.Partial("_LoginPartial")
@@ -52,6 +65,7 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/moment")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 

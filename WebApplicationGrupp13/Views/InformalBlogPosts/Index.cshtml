@@ -33,10 +33,11 @@
                         var Name = FormalBlogPostsController.GetNameFromUsername(BlogPost.creator);
                     }
                     <h3>@Html.DisplayFor(modelItem => BlogPost.title)<span class="authorTime">@time</span></h3>
-                    <h4><span class="authorTime">@Name</span></h4>
                     <h6>@Html.DisplayFor(modelItem => BlogPost.category)</h6>
                     <div class="profile-thumbnail" style="float:right;">
-                        <span><img src="~/Image/@imageSrc" style="height:70px; width:auto;"></span>
+                        <span><img src="~/Image/@imageSrc" style="height:70px; width:70px;"></span>
+                        <br />
+                        <p style="margin-left: 10px;">@Name</p>
                     </div>
                     <p style="white-space: pre-line">@Html.DisplayFor(modelItem => BlogPost.postText)</p>
                     <br />
@@ -81,7 +82,6 @@
 
                         }
 
-        @*</table>*@
 
                                 }
                             
