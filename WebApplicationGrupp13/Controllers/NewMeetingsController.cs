@@ -112,7 +112,7 @@ namespace WebApplicationGrupp13.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,meetingName,date1,date2,date3,creator")] Meetings meetings)
+        public ActionResult Create([Bind(Include = "id,meetingName,meetingDescription,date1,date2,date3,creator")] Meetings meetings)
         {
             if (ModelState.IsValid)
             {
@@ -195,17 +195,55 @@ namespace WebApplicationGrupp13.Controllers
 
             var currentUser = User.Identity.Name;
             //var createdMeetings = new Meetings();
-            var createdMeetingsList = new List<Meetings>();
-            var meetingList = db.Meeting.ToList();
-            foreach(var item in meetingList) {
-                if (currentUser.Equals(item.creator)) {
-                    //createdMeetings = db.Meeting.Add(item);
-                    createdMeetingsList.Add(item);
-
-                    
-                }
-            }
+            var createdMeetingsList = service.GetMyMeetings(currentUser);
             return View(createdMeetingsList);
+        }
+
+        public ActionResult CreatorDetails(int? id)
+        {
+            var currentUser = User.Identity.Name;
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var createdMeetingsList = service.GetMyMeeting(id.Value, currentUser);
+            return View(createdMeetingsList);
+        }
+
+        public ActionResult AddMeetingToCalender([Bind(Include = "MeetingId,Title,Description,Date 1,Date2,Date3,Start,End,Selected")] MeetingCreatorViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var entity = new CalenderViewModel()
+                {
+                    Subject = model.Title,
+                    Description = model.Description,
+                    Start = model.Start,
+                    End = model.End,
+                    Creator = User.Identity.GetUserId()
+                };
+
+                switch(model.Selected)
+                {
+                    case 1:
+                        entity.Start = model.Date1;
+                        break;
+                    case 2:
+                        entity.Start = model.Date2;
+                        break;
+                    case 3:
+                        entity.Start = model.Date3;
+                        break;
+                    default:
+                        break;
+                }
+
+                db.Calender.Add(entity);
+                db.SaveChanges();
+                return RedirectToAction("CreatorDetails", new { id = model.MeetingId });
+            }
+
+            return RedirectToAction("CreatedMeetings");
         }
     }
 }

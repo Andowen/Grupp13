@@ -1,76 +1,50 @@
-﻿@model IEnumerable<WebApplicationGrupp13.Models.Meetings>
+﻿@model IEnumerable<WebApplicationGrupp13.Models.MeetingCreatorViewModel>
 @{
     ViewBag.Title = "CreatedMeetings";
 }
 
-<html>
-<head>
-    <title>Möten</title>
-</head>
-<body>
-    <h2>Dina skapade mötesinbjudningar</h2>
+<h2>Möten</h2>
+<p>Dina skapade mötesinbjudningar</p>
+<hr />
+@if (Model.Count() == 0)
+{
+    <p>Du har inga skapade möten just nu</p>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-9">
+            @foreach (var item in Model)
+            {
+                <div class="row">
+                    <div class="col-md-12">
 
-    @using (Html.BeginForm()) {
-        <table class="table">
-            <tr>
-                <th>
-                    Mötesnamn
-                </th>
-                <th>
-                    Förslag 1
-                </th>
-                <th>
-                    Antal röster
-                </th>
-                <th>
-                    Förslag 2
-                </th>
-                <th>
-                    Antal röster
-                </th>
-                <th>
-                    Förslag 3
-                </th>
-                <th>
-                    Antal röster
-                </th>
-                <th></th>
-            </tr>
+                        <div class="col-md-12">
+                            <a href="@Url.Action("CreatorDetails", "NewMeetings", new {id = item.MeetingId })">
+                                <div class="row @Html.Raw(!item.HasScheduled? "newNotification" : "oldNotification")">
+                                    <div class="col-md-1">
+                                        <span class="noti glyphicon glyphicon-calendar postType"></span>
+                                        @if (!item.HasScheduled)
+                                        {
+                                            <span class="badge isNew" style="margin-left: -8px;">Boka</span>
+                                        }
+                                    </div>
+                                    <div class="col-md-11">
 
-            @foreach (var item in Model) {
-
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.meetingName)
-                    </td>
-                    <td>
-                        @*@Html.RadioButton("RadioButton1", objectValue, true)*@
-                        @Html.DisplayFor(modelItem => item.date1)
-                    </td>
-                    <td>
-                        @*@Html.RadioButton("RadioButton1", objectValue, true)*@
-                        @Html.DisplayFor(modelItem => item.vote1)
-                    </td>
-                    <td>
-                        @*@Html.RadioButton("RadioButton2", item.Id)*@
-                        @Html.DisplayFor(modelItem => item.date2)
-                    </td>
-                    <td>
-                        @*@Html.RadioButton("RadioButton2", item.Id)*@
-                        @Html.DisplayFor(modelItem => item.vote2)
-                    </td>
-                    <td>
-                        @*@Html.RadioButton("RadioButton3", item.Id)*@
-                        @Html.DisplayFor(modelItem => item.date3)
-                    </td>
-                    <td>
-                        @*@Html.RadioButton("RadioButton3", item.Id)*@
-                        @Html.DisplayFor(modelItem => item.vote3)
-                    </td>
-                </tr>
+                                        <p class="topRow">
+                                            Du har skapat ett möte: @item.Title
+                                        </p>
+                                        <div class="col-sm-12 date">
+                                            <p class="bottomRow">@item.Date1 | @item.Date2 | @item.Date3 </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="notificationDivider" />
+                        </div>
+                    </div>
+                </div>
             }
-
-        </table>
-    }
-</body>
-</html>
+        </div>
+    </div>
+}

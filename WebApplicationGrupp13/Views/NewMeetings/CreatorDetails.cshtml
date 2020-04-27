@@ -1,0 +1,158 @@
+﻿@model WebApplicationGrupp13.Models.MeetingCreatorViewModel
+@using WebApplicationGrupp13.Controllers
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+
+@{
+    ViewBag.Title = "Schemalägg möte";
+}
+
+<h2>Schemalägg möte</h2>
+<p>Välj tider och lägg mötet i kalendern</p>
+<hr />
+
+@{
+    var Name = FormalBlogPostsController.GetNameFromUsername(Model.Creator);
+}
+
+
+
+<div class="container">
+    <div class="row meetings">
+
+        <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-12 frame">
+                <div class="row">
+                    <div class="col-md-12 title">
+                        <h1>@Html.DisplayFor(modelItem => Model.Title)</h1>
+                        <hr class="notificationDivider" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 creator">
+                        <br />
+                        <p style="white-space: pre-line">@Html.DisplayFor(modelItem => Model.Description)</p>
+                        <br />
+                        <hr class="notificationDivider" />
+                    </div>
+                </div>
+                @if (!Model.HasScheduled)
+                {
+                    <div class="row">
+                        <div class="col-md-12 creator">
+                            <h2>Välj starttid</h2>
+                            <hr class="notificationDivider" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 dateVotes">
+                            <div class="col-md-4">
+                                <h3>@Model.Date1.ToShortDateString()</h3>
+                                <h3>@Model.Date1.ToShortTimeString()</h3>
+                                <h1>@Html.DisplayFor(modelItem => Model.Votes1)</h1>
+                                <p>Röster</p>
+                                <br />
+                            </div>
+                            <div class="col-md-4 middle">
+                                <h3>@Model.Date2.ToShortDateString()</h3>
+                                <h3>@Model.Date2.ToShortTimeString()</h3>
+                                <h1>@Html.DisplayFor(modelItem => Model.Votes2)</h1>
+                                <p>Röster</p>
+                                <br />
+                            </div>
+                            <div class="col-md-4">
+                                <h3>@Model.Date3.ToShortDateString()</h3>
+                                <h3>@Model.Date3.ToShortTimeString()</h3>
+                                <h1>@Html.DisplayFor(modelItem => Model.Votes3)</h1>
+                                <p>Röster</p>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    using (Html.BeginForm("AddMeetingToCalender", "NewMeetings", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.HiddenFor(modelItem => Model.MeetingId)
+                        @Html.HiddenFor(modelItem => Model.Creator)
+                        @Html.HiddenFor(modelItem => Model.Title)
+                        @Html.HiddenFor(modelItem => Model.Description)
+                        @Html.HiddenFor(modelItem => Model.Date1)
+                        @Html.HiddenFor(modelItem => Model.Date2)
+                        @Html.HiddenFor(modelItem => Model.Date3)
+                        <hr class="notificationDivider" />
+                        <div class="row">
+                            <div class="col-md-12 votes">
+                                <div class="col-md-4">
+                                    <p>
+                                        @Html.RadioButtonFor(modelItem => Model.Selected, 1, new { @class = "voteRadio custom-control-input" })
+                                        <span class="check"></span>
+                                    </p>
+                                </div>
+                                <div class="col-md-4 middle">
+                                    <p>
+                                        @Html.RadioButtonFor(modelItem => Model.Selected, 2, new { @class = "voteRadio custom-control-input" })
+                                        <span class="check"></span>
+                                    </p>
+                                </div>
+                                <div class="col-md-4">
+                                    <p>
+                                        @Html.RadioButtonFor(modelItem => Model.Selected, 3, new { @class = "voteRadio custom-control-input" })
+                                        <span class="check"></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="notificationDivider" />
+                        <div class="row">
+                            <div class="col-md-12 creator">
+                                <h2>Välj sluttid</h2>
+                                <div class="input-group date" id="enddatetimepicker" style="max-width:280px; display:inline-table">
+                                    @Html.EditorFor(model => Model.End, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => Model.End, "", new { @class = "text-danger" })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                                <br />
+                                <br />
+                                <hr class="notificationDivider" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <br />
+                                <input type="submit" value="Lägg till möte i kalendern" class="btn btn-default voteBtn" />
+                            </div>
+
+                        </div>
+                    }
+                    @section scripts {
+                        <script>
+                            $("#enddatetimepicker").datetimepicker({
+                                format: 'YYYY/MM/DD HH:mm'
+                            });
+                        </script>
+                    }
+                }
+                else
+                {
+                    <div class="row">
+                        <div class="col-md-12 dateVotes">
+                            <div class="col-md-6">
+                                <h3 style="text-decoration:underline">Start</h3>
+                                <h3>@Model.Start.ToShortDateString()</h3>
+                                <h3>@Model.Start.ToShortTimeString()</h3>
+                                <br />
+                            </div>
+                            <div class="col-md-6 end-date">
+                                <h3 style="text-decoration:underline">Slut</h3>
+                                <h3>@Model.End.ToShortDateString()</h3>
+                                <h3>@Model.End.ToShortTimeString()</h3>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

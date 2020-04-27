@@ -3,7 +3,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Mötedetaljer";
 }
 
 <h2>Mötesdetaljer</h2>
@@ -29,6 +29,8 @@
                 <div class="row">
                     <div class="col-md-12 creator">
                         <br />
+                        <p style="white-space: pre-line">@Html.DisplayFor(modelItem => Model.Description)</p>
+                        <hr />
                         <p>Mötesadministratör</p>
                         <h2>@Name</h2>
                         <p>@Html.DisplayFor(modelItem => Model.Creator)</p>

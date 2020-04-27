@@ -37,17 +37,48 @@ namespace WebApplicationGrupp13.Services
             }
         }
 
-        public IEnumerable<MeetingVotesViewModel> GetMyMeetings(string currentUser)
+        public IEnumerable<MeetingCreatorViewModel> GetMyMeetings(string currentUser)
+        {
+
+            using (var context = new ApplicationDbContext())
+            {
+                var result = context.Meeting
+                    .Where(x => x.creator == currentUser)
+                    .ToList();
+
+                return result.Select(x => x.ToDto(IsPostScheduled(currentUser, x.date1, x.date2, x.date3)));
+            }
+        }
+
+        public MeetingCreatorViewModel GetMyMeeting(int meetingId, string currentUser)
         {
             using (var context = new ApplicationDbContext())
             {
-                var result = context.MeetingsUsers
-                    .Include(x => x.user)
-                    .Include(x => x.meeting)
-                    .Where(x => x.meeting.creator == currentUser)
-                    .ToList();
+                var result = context.Meeting
+                    .FirstOrDefault(x => x.id == meetingId);
+                var calenderResult = context.Calender.FirstOrDefault(x =>
+                    x.Creator == result.creator &&
+                    x.Start == result.date1 ||
+                    x.Start == result.date2 ||
+                    x.Start == result.date3);
+                if (calenderResult != null)
+                {
+                    return result.ToDto(calenderResult, IsPostScheduled(currentUser, result.date1, result.date2, result.date3));
+                }
 
-                return result.Select(x => x.ToDto());
+                return result.ToDto(IsPostScheduled(currentUser, result.date1, result.date2, result.date3));
+            }
+        }
+
+        public bool IsPostScheduled(string userId, DateTime date1, DateTime date2, DateTime date3)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                return context.Calender.Any(x =>
+                    x.Creator == userId &&
+                    x.Start == date1 ||
+                    x.Start == date2 ||
+                    x.Start == date3);
             }
         }
     }

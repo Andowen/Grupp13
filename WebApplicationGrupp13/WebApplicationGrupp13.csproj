@@ -262,6 +262,7 @@
     <Compile Include="Enums\PostType.cs" />
     <Compile Include="ErrorHandling\ErrorMessageHandler.cs" />
     <Compile Include="Extensions\ApplicationUserExtensions.cs" />
+    <Compile Include="Extensions\MeetingsExtensions.cs" />
     <Compile Include="Extensions\MeetingsUsersExtensions.cs" />
     <Compile Include="Extensions\CustomAuthorize.cs" />
     <Compile Include="Extensions\EducationalPostExtensions.cs" />
@@ -529,6 +530,18 @@
     <Compile Include="Migrations\202004252244206_addedColumnToMeetingsUsers.Designer.cs">
       <DependentUpon>202004252244206_addedColumnToMeetingsUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004261852031_addedCreatorToCalendar.cs" />
+    <Compile Include="Migrations\202004261852031_addedCreatorToCalendar.Designer.cs">
+      <DependentUpon>202004261852031_addedCreatorToCalendar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004261859208_addedDescriptionToMeeting.cs" />
+    <Compile Include="Migrations\202004261859208_addedDescriptionToMeeting.Designer.cs">
+      <DependentUpon>202004261859208_addedDescriptionToMeeting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004270629060_CalenderChanges.cs" />
+    <Compile Include="Migrations\202004270629060_CalenderChanges.Designer.cs">
+      <DependentUpon>202004270629060_CalenderChanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
@@ -548,7 +561,7 @@
     <Compile Include="Models\InviteUserModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Meetings.cs" />
-    <Compile Include="Models\MeetingVotesViewModel.cs" />
+    <Compile Include="Models\MeetingViewModels.cs" />
     <Compile Include="Models\NotificationViewModel.cs" />
     <Compile Include="Models\ResearchBlogPost.cs" />
     <Compile Include="Models\ResearchBlogPostCategory.cs" />
@@ -685,6 +698,7 @@
     <Content Include="Views\Admin\_UserAuthorizationPartial.cshtml" />
     <Content Include="Views\NewMeetings\MeetingVotes.cshtml" />
     <Content Include="Views\NewMeetings\CreatedMeetings.cshtml" />
+    <Content Include="Views\NewMeetings\CreatorDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -903,6 +917,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004252244206_addedColumnToMeetingsUsers.resx">
       <DependentUpon>202004252244206_addedColumnToMeetingsUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004261852031_addedCreatorToCalendar.resx">
+      <DependentUpon>202004261852031_addedCreatorToCalendar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004261859208_addedDescriptionToMeeting.resx">
+      <DependentUpon>202004261859208_addedDescriptionToMeeting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004270629060_CalenderChanges.resx">
+      <DependentUpon>202004270629060_CalenderChanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

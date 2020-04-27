@@ -17,12 +17,12 @@
                 <h4 class="modal-title"><span id="eventTitle"></span></h4>
             </div>
             <div class="modal-body">
-                <button id="btnDelete" class="btn btn-default btn-sm pull-right">
-                    <span class="glyphicon glyphicon-remove"></span> Radera
-                </button>
-                <button id="btnEdit" class="btn btn-default btn-sm pull-right" style="margin-right:5px;">
-                    <span class="glyphicon glyphicon-pencil"></span> Redigera
-                </button>
+                    <button id="btnDelete" class="btn btn-default btn-sm pull-right">
+                        <span class="glyphicon glyphicon-remove"></span> Radera
+                    </button>
+                    <button id="btnEdit" class="btn btn-default btn-sm pull-right" style="margin-right:5px;">
+                        <span class="glyphicon glyphicon-pencil"></span> Redigera
+                    </button>
                 <p id="pDetails"></p>
             </div>
             <div class="modal-footer">
@@ -105,6 +105,7 @@
                             //lägger till data i events
                             events.push({
                                 eventID: v.EventId,
+                                creator: v.Creator,
                                 title: v.Subject,
                                 description: v.Description,
                                 start: moment(v.Start),

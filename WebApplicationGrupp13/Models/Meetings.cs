@@ -12,6 +12,8 @@ namespace WebApplicationGrupp13.Models
         [Key]
         public int id { get; set; }
         public string meetingName { get; set; }
+
+        public string meetingDescription { get; set; }
         public DateTime date1 { get; set; }
 
         public DateTime date2 { get; set; }

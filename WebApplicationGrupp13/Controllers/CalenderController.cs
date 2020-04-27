@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -33,8 +34,10 @@ namespace WebApplicationGrupp13.Controllers {
                         v.Start = e.Start;
                         v.End = e.End;
                         v.Description = e.Description;
+                        v.Creator = User.Identity.GetUserId();
                     }
                 } else {
+                    e.Creator = User.Identity.GetUserId();
                     dc.Calender.Add(e);
                 }
                 dc.SaveChanges();
